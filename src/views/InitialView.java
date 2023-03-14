@@ -82,7 +82,7 @@ public class InitialView extends JFrame{
 		registerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Change content pane.
-				changeContentPane(new RegisterView(thisFrame));				
+				changeContentPane(new RegisterView(thisFrame), "Register");				
 			}
 		});
 		
@@ -90,15 +90,15 @@ public class InitialView extends JFrame{
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Change content pane.
-				changeContentPane(new LoginView(thisFrame));
+				changeContentPane(new LoginView(thisFrame), "Login");
 			}
 		});
 	}
 	
 	//Changes content pane with that of another frame.
-	private void changeContentPane(JFrame frame) {
+	private void changeContentPane(JFrame frame, String frameType) {
 		//Rename frame.
-		this.setTitle("YorkUParking - Register");
+		this.setTitle("YorkUParking - " + frameType);
 		
 		//Replace content pane with LoginView content pane.
 		this.setContentPane(frame.getContentPane());
