@@ -69,7 +69,7 @@ public class LoginView extends JFrame{
 		//Make a new text field for password.
 		JTextField passField = new JTextField();
 		//Make a new button for registering.
-		this.saveButton = new JButton("Register Account");
+		this.saveButton = new JButton("Login");
 		//Make a new button for canceling.
 		JButton cancelButton = new JButton("Cancel");
 		

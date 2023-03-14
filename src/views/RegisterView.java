@@ -12,7 +12,7 @@ public class RegisterView extends LoginView {
 		super(previousFrame);
 		
 		//Change save button text.
-		this.saveButton.setText("Login");
+		this.saveButton.setText("Register Account");
 		
 		//Add confirm password label and text field to field pane.
 		//Make a new label for confirm password.
