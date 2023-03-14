@@ -7,18 +7,18 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-public class InitialView extends JFrame{
+public class Main extends JFrame{
 	//Default contentPane to be passed.
 	private Container contentPane;
 	
 	//Instance of object for action listener.
-	InitialView thisFrame = this;
+	Main thisFrame = this;
 	
 	public static void main(String[] args) {
-		new InitialView();
+		new Main();
 	}
 	
-	public InitialView() {
+	public Main() {
 		//Frame setup.
 		//Set frame title.
 		this.setTitle("YorkUParking - Main");

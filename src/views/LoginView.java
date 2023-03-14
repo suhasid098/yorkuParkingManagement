@@ -129,7 +129,7 @@ public class LoginView extends JFrame{
 				thisView.frame.setTitle("YorkUParking - Main");
 				
 				//Change content pane back.
-				thisView.frame.setContentPane(((InitialView)thisView.frame).getOriginalContentPane());		
+				thisView.frame.setContentPane(((Main)thisView.frame).getOriginalContentPane());		
 				thisView.frame.validate();
 			}
 		});
