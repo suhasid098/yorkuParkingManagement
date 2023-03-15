@@ -9,7 +9,7 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class LoginView extends JFrame{
 	//Object instance for action listeners.
-	protected LoginView thisView = this;
+	private LoginView thisView = this;
 	
 	//Previous frame instance.
 	protected Main frame;
@@ -17,6 +17,11 @@ public class LoginView extends JFrame{
 	//Objects to be edited by child.
 	protected JButton saveButton;
 	protected JPanel fieldPane;
+	protected JLabel errorLabel;
+	
+	//Fields to be accessed.
+	protected JTextField emailField;
+	protected JPasswordField passField;
 	
 	//Shared constants.
 	protected static final int sameSectionSpace = 5;
@@ -60,46 +65,54 @@ public class LoginView extends JFrame{
 		
 		
 		//Component setup.
-		//Make a new label for username.
-		JLabel nameLabel = new JLabel("Username");
+		//Make a new label for email.
+		JLabel emailLabel = new JLabel("Email");
 		//Make a new label for password.
 		JLabel passLabel = new JLabel("Password");
+		//Make a new label for an error message.
+		this.errorLabel = new JLabel("Test");
 		//Make a new text field for username.
-		JTextField nameField = new JTextField();
+		this.emailField = new JTextField();
 		//Make a new text field for password.
-		JTextField passField = new JTextField();
+		this.passField = new JPasswordField();
 		//Make a new button for registering.
-		this.saveButton = new JButton("Login");
+		this.saveButton = new JButton("Log In");
 		//Make a new button for canceling.
 		JButton cancelButton = new JButton("Cancel");
 		
 		//Set component alignments.
-		nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		emailLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		passLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		nameField.setAlignmentX(Component.CENTER_ALIGNMENT);
-		passField.setAlignmentX(Component.CENTER_ALIGNMENT);
+		this.errorLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		this.emailField.setAlignmentX(Component.CENTER_ALIGNMENT);
+		this.passField.setAlignmentX(Component.CENTER_ALIGNMENT);
 				
 		//Set up text field sizes and prevent resizing.
-		nameField.setSize(fieldX, fieldY);
-		nameField.setMaximumSize(nameField.getSize());
-		passField.setSize(fieldX, fieldY);
-		passField.setMaximumSize(passField.getSize());
+		this.emailField.setSize(fieldX, fieldY);
+		this.emailField.setMaximumSize(this.emailField.getSize());
+		this.passField.setSize(fieldX, fieldY);
+		this.passField.setMaximumSize(this.passField.getSize());
 		
 		//Set up button fonts and font sizes.
 		int fontSize = 10;
 		this.saveButton.setFont(new Font("Tahoma", Font.PLAIN, fontSize));
 		cancelButton.setFont(new Font("Tahoma", Font.PLAIN, fontSize));
 		
+		//Set up error label colour.
+		this.errorLabel.setForeground(Color.RED);
+		
 		//Build frame.
 		//Add labels and fields to field panel.
 		this.fieldPane.add(Box.createVerticalGlue()); //Makes components move with the top of the pane. Used in centering components with resizing.
-		this.fieldPane.add(nameLabel); //Adds name label to pane.
-		this.fieldPane.add(Box.createRigidArea(new Dimension(0, sameSectionSpace))); //Space between buttons.
-		this.fieldPane.add(nameField); //Adds name field to pane.
-		this.fieldPane.add(Box.createRigidArea(new Dimension(0, diffSectionSpace))); //Space between buttons.
+		this.fieldPane.add(emailLabel); //Adds name label to pane.
+		this.fieldPane.add(Box.createRigidArea(new Dimension(0, sameSectionSpace))); //Space between label and field.
+		this.fieldPane.add(this.emailField); //Adds name field to pane.
+		this.fieldPane.add(Box.createRigidArea(new Dimension(0, diffSectionSpace))); //Space between sections.
 		this.fieldPane.add(passLabel); //Adds name label to pane.
-		this.fieldPane.add(Box.createRigidArea(new Dimension(0, sameSectionSpace))); //Space between buttons.
-		this.fieldPane.add(passField); //Adds name field to pane.
+		this.fieldPane.add(Box.createRigidArea(new Dimension(0, sameSectionSpace))); //Space between label and field.
+		this.fieldPane.add(this.passField); //Adds name field to pane.
+		this.fieldPane.add(Box.createRigidArea(new Dimension(0, diffSectionSpace))); //Space between sections.
+		this.fieldPane.add(this.errorLabel);
 		this.fieldPane.add(Box.createVerticalGlue()); //Makes components move with the bottom of the pane. Used in centering components with resizing.
 		
 		//Add buttons to button panel.

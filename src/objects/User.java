@@ -7,7 +7,6 @@ public class User {
 	public String password;
 	
 	public User(String name, int id, String email, String password) {
-		super();
 		this.name = name;
 		this.id = id;
 		this.email = email;
@@ -15,7 +14,6 @@ public class User {
 	}
 	
 	public User(){
-		super();
 	}
 	
 
