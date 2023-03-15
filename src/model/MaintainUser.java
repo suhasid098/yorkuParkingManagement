@@ -15,6 +15,7 @@ public class MaintainUser {
 	private static final MaintainUser maintain = new MaintainUser();
 	
 	public static void main(String [] args) throws Exception{
+		//hello
 		String path = "C:\\Users\\natal\\eecs3311project\\user.csv"; //Add your path here to test.
 		MaintainUser maintain = MaintainUser.getInstance();
 	
