@@ -3,6 +3,8 @@ package views;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import controllers.UserController;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -118,6 +120,8 @@ public class BookingActionsView extends JFrame{
 		//Set up what to do when the logout button is pressed.
 		logoutButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				UserController.logOutUser();
+				
 				//Rename frame.
 				thisView.frame.resetContentPane();
 			}

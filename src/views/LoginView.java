@@ -3,6 +3,8 @@ package views;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import controllers.UserController;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -131,7 +133,13 @@ public class LoginView extends JFrame{
 		//Set up what to do when the save button is pressed.
 		this.saveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");				
+				String result = UserController.logInUser(thisView.emailField.getText(), new String(thisView.passField.getPassword()));
+				
+				errorLabel.setText(result);
+				
+				if(result.equals("")) {
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");	
+				}			
 			}
 		});
 		

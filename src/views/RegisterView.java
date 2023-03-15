@@ -68,7 +68,7 @@ public class RegisterView extends LoginView {
 		//Replace action listener.
 		this.saveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String result = UserController.registerUser(thisView.nameField.getText(), thisView.emailField.getText(), thisView.passField.getText(), thisView.confirmField.getText());
+				String result = UserController.registerUser(thisView.nameField.getText(), thisView.emailField.getText(), new String(thisView.passField.getPassword()), new String(thisView.confirmField.getPassword()));
 				
 				errorLabel.setText(result);
 				

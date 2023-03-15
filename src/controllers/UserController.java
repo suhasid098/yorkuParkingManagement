@@ -6,6 +6,7 @@ import objects.User;
 public class UserController {
 	private static MaintainUser maintain = MaintainUser.getInstance();
 	private static int userCount = 0;
+	private static User loggedInUser;
 	
 	//Attempts to register user. Returns nothing if successful and error message upon fail.
 	public static String registerUser(String name, String email, String password, String confirmPass) {
@@ -30,7 +31,9 @@ public class UserController {
 		
 		//Create user and update users list and DB.
 		if(!maintain.users.isEmpty()) userCount = maintain.users.get(maintain.users.size()-1).getId() + 1;
-		maintain.users.add(new User(name, userCount, email, password));
+		User user = new User(name, userCount, email, password);
+		maintain.users.add(user);
+		loggedInUser = user;
 		try {
 			maintain.update(maintain.path);
 		} catch (Exception e) {
@@ -38,6 +41,27 @@ public class UserController {
 		}
 		
 		return "";
+	}
+	
+	public static String logInUser(String email, String password) {
+		for(User user:maintain.users) {
+			if(email.equals(user.getEmail()) && password.equals(user.getPassword())) {
+				loggedInUser = user;
+				return "";
+			}
+			if(email.equals(user.getEmail()) && !password.equals(user.getPassword())) {
+				return "Password incorrect.";
+			}
+		}
+		return "Email not registered.";
+	}
+	
+	public static void logOutUser() {
+		loggedInUser = null;
+	}
+	
+	public static User getLoggedInUser() {
+		return loggedInUser;
 	}
 	
 	private static String checkPassword(String password) {
