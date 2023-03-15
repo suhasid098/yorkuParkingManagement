@@ -70,7 +70,7 @@ public class LoginView extends JFrame{
 		//Make a new label for password.
 		JLabel passLabel = new JLabel("Password");
 		//Make a new label for an error message.
-		this.errorLabel = new JLabel("Test");
+		this.errorLabel = new JLabel("");
 		//Make a new text field for username.
 		this.emailField = new JTextField();
 		//Make a new text field for password.

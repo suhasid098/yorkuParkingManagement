@@ -9,6 +9,8 @@ public class UserController {
 	
 	//Attempts to register user. Returns nothing if successful and error message upon fail.
 	public static String registerUser(String name, String email, String password, String confirmPass) {
+		
+		
 		//Check email.
 		String result = checkEmail(email);
 		if(!result.equals("")) {
@@ -27,7 +29,7 @@ public class UserController {
 		}
 		
 		//Create user and update users list and DB.
-		userCount++;
+		if(!maintain.users.isEmpty()) userCount = maintain.users.get(maintain.users.size()-1).getId() + 1;
 		maintain.users.add(new User(name, userCount, email, password));
 		try {
 			maintain.update(maintain.path);
