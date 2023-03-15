@@ -8,7 +8,7 @@ import java.awt.event.*;
 
 @SuppressWarnings("serial")
 public class RegisterView extends LoginView {
-	public RegisterView(JFrame previousFrame) {
+	public RegisterView(Main previousFrame) {
 		super(previousFrame);
 		
 		//Change save button text.

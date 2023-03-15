@@ -12,7 +12,7 @@ public class Main extends JFrame{
 	private Container contentPane;
 	
 	//Instance of object for action listener.
-	Main thisFrame = this;
+	private Main thisFrame = this;
 	
 	public static void main(String[] args) {
 		new Main();
@@ -46,7 +46,7 @@ public class Main extends JFrame{
 		//Make a new label for title.
 		JLabel title = new JLabel("YorkU Parking Booking");
 		//Make a new button for logging in.
-		JButton loginButton = new JButton("Login");
+		JButton loginButton = new JButton("Log In");
 		//Make a new button for registering.
 		JButton registerButton = new JButton("Register");
 		
@@ -86,26 +86,36 @@ public class Main extends JFrame{
 			}
 		});
 		
-		//Set up what to do when the add button is pressed.
+		//Set up what to do when the log in button is pressed.
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Change content pane.
-				changeContentPane(new LoginView(thisFrame), "Login");
+				changeContentPane(new LoginView(thisFrame), "Log In");
 			}
 		});
 	}
 	
 	//Changes content pane with that of another frame.
-	private void changeContentPane(JFrame frame, String frameType) {
+	public void changeContentPane(JFrame frame, String frameType) {
 		//Rename frame.
 		this.setTitle("YorkUParking - " + frameType);
 		
-		//Replace content pane with LoginView content pane.
+		//Replace content pane with new frame's content pane.
 		this.setContentPane(frame.getContentPane());
 		this.validate();			
 		
-		//Get rid of loginFrame instance to save resources.
+		//Get rid of new frame instance to save resources.
 		frame.dispose();
+	}
+	
+	//Sets frame content pane back to the original.
+	public void resetContentPane() {
+		//Rename frame.
+		this.setTitle("YorkUParking - Main");
+		
+		//Change content pane back.
+		this.setContentPane(this.contentPane);		
+		this.validate();
 	}
 	
 	//Returns original content pane.

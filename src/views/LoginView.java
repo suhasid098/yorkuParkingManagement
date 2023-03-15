@@ -9,10 +9,10 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class LoginView extends JFrame{
 	//Object instance for action listeners.
-	LoginView thisView = this;
+	protected LoginView thisView = this;
 	
 	//Previous frame instance.
-	protected JFrame frame;
+	protected Main frame;
 	
 	//Objects to be edited by child.
 	protected JButton saveButton;
@@ -24,7 +24,7 @@ public class LoginView extends JFrame{
 	protected static final int fieldX = 280;
 	protected static final int fieldY = 30; //This value doesn't actually get used for some reason.
 	
-	public LoginView(JFrame frame) {
+	public LoginView(Main frame) {
 		//Save previous frame.
 		this.frame = frame;
 		
@@ -115,22 +115,18 @@ public class LoginView extends JFrame{
 		
 		
 		//Set up component actions
-		//Set up what to do when the register button is pressed.
+		//Set up what to do when the save button is pressed.
 		this.saveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-									
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");				
 			}
 		});
 		
-		//Set up what to do when the add button is pressed.
+		//Set up what to do when the cancel button is pressed.
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Rename frame.
-				thisView.frame.setTitle("YorkUParking - Main");
-				
-				//Change content pane back.
-				thisView.frame.setContentPane(((Main)thisView.frame).getOriginalContentPane());		
-				thisView.frame.validate();
+				//Reset content pane.
+				thisView.frame.resetContentPane();
 			}
 		});
 	}
