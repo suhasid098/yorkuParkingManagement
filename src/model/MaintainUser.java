@@ -16,7 +16,8 @@ public class MaintainUser {
 	
 	public static void main(String [] args) throws Exception{
 		//suha's comment
-		String path = "C:\\Users\\suhas\\Downloads\\EECS 3311\\FinalProjectEECS3311\\eecs3311project\\eecs3311project\\user.csv"; //Add your path here to test.
+		String path = "C:\\Users\\Shaharyar\\Desktop\\EECS3311Final\\eecs3311project\\user.csv"; //Add your path here to test.
+
 		MaintainUser maintain = MaintainUser.getInstance();
 	
 		//Load users in csv file to User ArrayList.
@@ -36,7 +37,8 @@ public class MaintainUser {
 	}
 	
 	private MaintainUser() {
-		this.path = "C:\\Users\\suhas\\Downloads\\EECS 3311\\FinalProjectEECS3311\\eecs3311project\\eecs3311project\\user.csv"; //Add your path here.
+		this.path = "C:\\Users\\Shaharyar\\Desktop\\EECS3311Final\\eecs3311project\\user.csv"; //Add your path here.
+
 		try {
 			this.load(this.path);
 		} catch (Exception e) {
@@ -61,6 +63,8 @@ public class MaintainUser {
 			user.setId(Integer.valueOf(reader.get("id")));
 			user.setEmail(reader.get("email"));
 			user.setPassword(reader.get("password"));
+			user.setParkingSpot(reader.get("parking_spot"));
+			user.setParkingLot(reader.get("lot"));
 			users.add(user);
 		}
 	}
@@ -75,6 +79,10 @@ public class MaintainUser {
 				csvOutput.write("id");
 		    	csvOutput.write("email");
 				csvOutput.write("password");
+				csvOutput.write("parking_spot");
+				csvOutput.write("lot");
+
+
 				csvOutput.endRecord();
 
 				//Add users in ArrayList to csv file.
@@ -83,6 +91,10 @@ public class MaintainUser {
 					csvOutput.write(String.valueOf(u.getId()));
 					csvOutput.write(u.getEmail());
 					csvOutput.write(u.getPassword());
+					csvOutput.write(u.getParkingSpotName());
+					csvOutput.write(u.getLotName());
+
+
 					csvOutput.endRecord();
 				}
 				csvOutput.close();
@@ -91,4 +103,8 @@ public class MaintainUser {
 				e.printStackTrace();
 			}
 	}
+
+
+	
+	 
 }

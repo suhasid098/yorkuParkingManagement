@@ -1,5 +1,4 @@
-name,id,email,password
-t4,4,t4@yorku.ca,t4t4
-t4,4,t4@yorku.ca,t4t4
-t4,4,t4@yorku.ca,t4t4
-stupid,5,stupid@gmail.com,Stupid123!
+name,id,email,password,parking_spot,lot
+sharry,0,s@gmail.com,Password1!,010,Bethune
+harry,1,harry@gmail.com,Password1!,001,Calumet
+

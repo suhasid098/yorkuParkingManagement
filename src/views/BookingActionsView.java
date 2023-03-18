@@ -74,6 +74,11 @@ public class BookingActionsView extends JFrame{
 		int fontSize = 10;
 		logoutButton.setFont(new Font("Tahoma", Font.PLAIN, fontSize));
 		
+		JLabel lblNewLabel = new JLabel("Hello " + UserController.getLoggedInUser().name);
+		lblNewLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		optionsPane.add(lblNewLabel);
+		
+		
 		//Build frames.
 		//Add option buttons to options panel.
 		optionsPane.add(Box.createVerticalGlue()); //Makes components move with the top of the pane. Used in centering components with resizing.
@@ -83,7 +88,7 @@ public class BookingActionsView extends JFrame{
 		optionsPane.add(Box.createRigidArea(new Dimension(0, sectionSpace))); //Space between buttons.
 		optionsPane.add(cancelButton); //Adds name label to pane.
 		optionsPane.add(Box.createRigidArea(new Dimension(0, sectionSpace))); //Space between buttons.
-		optionsPane.add(logoutButton); //Adds name field to pane.
+//		optionsPane.add(logoutButton); //Adds name field to pane.
 		optionsPane.add(Box.createVerticalGlue()); //Makes components move with the bottom of the pane. Used in centering components with resizing.
 		
 		//Add logout button to logout panel.
@@ -100,7 +105,7 @@ public class BookingActionsView extends JFrame{
 		bookButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thisView.frame.changeContentPane(new LotChoiceView(thisView.frame), "Lot");
-									
+
 			}
 		});
 		
