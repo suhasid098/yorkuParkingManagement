@@ -24,7 +24,7 @@ public class RegisterView extends LoginView {
 		
 		//Add labels and text fields to field pane.
 		//Make a new label for name.
-		JLabel nameLabel = new JLabel("Name");
+		JLabel nameLabel = new JLabel("Namei");
 		//Make a new label for confirm password.
 		JLabel confirmLabel = new JLabel("Confirm Password");
 		//Make a new text field for name.

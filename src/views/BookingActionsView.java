@@ -99,7 +99,8 @@ public class BookingActionsView extends JFrame{
 		//Set up what to do when the book button is pressed.
 		bookButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-									
+				thisView.frame.changeContentPane(new SelectParkingLot(thisView.frame), "Select Parking");	
+							
 			}
 		});
 		
