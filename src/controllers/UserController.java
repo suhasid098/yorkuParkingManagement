@@ -1,5 +1,8 @@
 package controllers;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import model.MaintainUser;
 import objects.User;
 
@@ -43,19 +46,18 @@ public class UserController {
 		return "";
 	}
 	
-	//try with just loggedInuser varaible
-	public static void addParkingSpot(String spotID) {
-		maintain.users.get(loggedInUser.getId()).setParkingSpot(spotID);
-		try {
-			System.out.println(maintain.users.get(loggedInUser.getId()).getParkingSpotName());
-			maintain.update(maintain.path);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-	}
-	
+//	public static void setParkingLot(String lotName) {
+//		maintain.users.get(loggedInUser.getId()).setParkingLot(lotName);
+//		try {
+//			System.out.println(maintain.users.get(loggedInUser.getId()).getLotName());
+//			maintain.update(maintain.path);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//	
 	public static String logInUser(String email, String password) {
 		for(User user:maintain.users) {
 			if(email.equals(user.getEmail()) && password.equals(user.getPassword())) {
@@ -135,4 +137,52 @@ public class UserController {
 		
 		return "";
 	}
+	
+	public static boolean isSpotTaken(String spot, String lot) {
+		System.out.println("expected:" + spot + " " + lot);
+		try {
+			maintain.update(maintain.path);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<User> userList = maintain.users;
+		// Itterator design pattern
+		Iterator it = userList.iterator();
+		int i = 0;
+	      while (it.hasNext() && i < userList.size()) {
+	  		System.out.println("actual:" + userList.get(i).getParkingSpotName() + " " + userList.get(i).getLotName());
+
+
+	    	  if(userList.get(i).getParkingSpotName().equals(spot) && userList.get(i).getLotName().equals(lot)) {
+	    		  System.out.println(userList.get(i).getParkingSpotName());
+		    	  System.out.println(userList.get(i).getLotName());
+		    	  System.out.println("------------");
+	    		  return true;
+	    	  } 
+	    	  i++;
+	      }
+	      return false;
+	}
+
+//	public static void addParkingSpot(String spotID, String lotName) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+	//try with just loggedInuser varaible
+	public static void addParkingSpot(String spotID, String lotName) {
+		maintain.users.get(loggedInUser.getId()).setParkingSpot(spotID);
+		maintain.users.get(loggedInUser.getId()).setParkingLot(lotName);
+		
+		try {
+			System.out.println(maintain.users.get(loggedInUser.getId()).getParkingSpotName());
+			System.out.println(maintain.users.get(loggedInUser.getId()).getLotName());
+			maintain.update(maintain.path);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	
 }

@@ -5,8 +5,9 @@ public class User {
 	public int id;
 	public String email;
 	public String password;
-	public ParkingSpot spot;
+//	public ParkingSpot spot;
 	public String parkingSpotName;
+	public String lotName;
 	
 	public User(String name, int id, String email, String password) {
 		this.name = name;
@@ -14,10 +15,10 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.parkingSpotName = "";
+		this.lotName = "";
 	
 	}
 	public void setParkingSpot(String s) {
-		
 		this.parkingSpotName = s;
 	}
 	public String getParkingSpotName() {
@@ -63,6 +64,12 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [name=" + name + ", id=" + id + ", email=" + email + ", password=" + password + "]";
+	}
+	public void setParkingLot(String lotName) {
+		this.lotName = lotName;
+	}
+	public String getLotName() {
+		return lotName;
 	}
 	
 }

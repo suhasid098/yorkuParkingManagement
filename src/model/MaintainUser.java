@@ -62,6 +62,7 @@ public class MaintainUser {
 			user.setEmail(reader.get("email"));
 			user.setPassword(reader.get("password"));
 			user.setParkingSpot(reader.get("parking_spot"));
+			user.setParkingLot(reader.get("lot"));
 			users.add(user);
 		}
 	}
@@ -77,6 +78,8 @@ public class MaintainUser {
 		    	csvOutput.write("email");
 				csvOutput.write("password");
 				csvOutput.write("parking_spot");
+				csvOutput.write("lot");
+
 
 				csvOutput.endRecord();
 
@@ -87,6 +90,8 @@ public class MaintainUser {
 					csvOutput.write(u.getEmail());
 					csvOutput.write(u.getPassword());
 					csvOutput.write(u.getParkingSpotName());
+					csvOutput.write(u.getLotName());
+
 
 					csvOutput.endRecord();
 				}
