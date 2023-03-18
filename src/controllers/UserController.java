@@ -7,7 +7,7 @@ public class UserController {
 	private static MaintainUser maintain = MaintainUser.getInstance();
 	private static int userCount = 0;
 	private static User loggedInUser;
-	
+
 	//Attempts to register user. Returns nothing if successful and error message upon fail.
 	public static String registerUser(String name, String email, String password, String confirmPass) {
 		
@@ -41,6 +41,19 @@ public class UserController {
 		}
 		
 		return "";
+	}
+	
+	//try with just loggedInuser varaible
+	public static void addParkingSpot(String spotID) {
+		maintain.users.get(loggedInUser.getId()).setParkingSpot(spotID);
+		try {
+			System.out.println(maintain.users.get(loggedInUser.getId()).getParkingSpotName());
+			maintain.update(maintain.path);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 	public static String logInUser(String email, String password) {

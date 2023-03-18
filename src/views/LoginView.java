@@ -132,7 +132,7 @@ public class LoginView extends JFrame{
 		//Set up component actions
 		//Set up what to do when the save button is pressed.
 		this.saveButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) { // loggedInuser is set in UserController
 				String result = UserController.logInUser(thisView.emailField.getText(), new String(thisView.passField.getPassword()));
 				
 				errorLabel.setText(result);

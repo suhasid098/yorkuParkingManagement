@@ -6,19 +6,22 @@ public class User {
 	public String email;
 	public String password;
 	public ParkingSpot spot;
+	public String parkingSpotName;
 	
 	public User(String name, int id, String email, String password) {
 		this.name = name;
 		this.id = id;
 		this.email = email;
 		this.password = password;
+		this.parkingSpotName = "";
+	
 	}
 	public void setParkingSpot(String s) {
 		
-		this.spot = new ParkingSpot(s);
+		this.parkingSpotName = s;
 	}
 	public String getParkingSpotName() {
-		return spot.getCode();
+		return parkingSpotName;
 	}
 	
 	public User(){

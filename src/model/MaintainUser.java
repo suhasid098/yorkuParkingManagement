@@ -13,8 +13,9 @@ public class MaintainUser {
 	public String path;
 	
 	private static final MaintainUser maintain = new MaintainUser();
-	// Sharry was here test!
+	
 	public static void main(String [] args) throws Exception{
+		//suha's comment
 		String path = "C:\\Users\\Shaharyar\\Desktop\\EECS3311Final\\eecs3311project\\user.csv"; //Add your path here to test.
 		MaintainUser maintain = MaintainUser.getInstance();
 	
@@ -76,6 +77,7 @@ public class MaintainUser {
 		    	csvOutput.write("email");
 				csvOutput.write("password");
 				csvOutput.write("parking_spot");
+
 				csvOutput.endRecord();
 
 				//Add users in ArrayList to csv file.
@@ -85,6 +87,7 @@ public class MaintainUser {
 					csvOutput.write(u.getEmail());
 					csvOutput.write(u.getPassword());
 					csvOutput.write(u.getParkingSpotName());
+
 					csvOutput.endRecord();
 				}
 				csvOutput.close();
@@ -93,5 +96,8 @@ public class MaintainUser {
 				e.printStackTrace();
 			}
 	}
-//	public void setParkingSpot
+
+
+	
+	 
 }

@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controllers.UserController;
+import model.MaintainUser;
 
 import java.awt.GridBagLayout;
 import java.awt.BorderLayout;
@@ -32,7 +33,7 @@ public class CalumetParkingLot extends JFrame {
 	//Shared constants.
 	private static final int sectionSpace = 20;
 	
-	
+	// id is id of user
 	public CalumetParkingLot(Main frame) {
 		//Save previous frame.
 		this.frame = frame;
@@ -56,9 +57,23 @@ public class CalumetParkingLot extends JFrame {
 		btnNewButton_1.setBounds(320, 362, 89, 23);
 		getContentPane().add(btnNewButton_1);
 		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				// loggedInUser var should be set by now
+				UserController.addParkingSpot("A1");// try without id param
+				
+				thisView.frame.resetContentPane();
+				
+				//Rename frame.
+//				thisView.frame.
+			}
+		});
+		
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.logOutUser();
+				thisView.frame.resetContentPane();
 				
 				//Rename frame.
 //				thisView.frame.
