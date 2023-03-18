@@ -41,6 +41,7 @@ public class LotChoiceView extends JFrame {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(
 				new String[] { "", "Vanier", "Bethune", "Calumet", "Schulich", "Lassonde" }));
+
 		comboBox.setBounds(143, 153, 106, 21);
 		getContentPane().add(comboBox);
 		
@@ -54,6 +55,7 @@ public class LotChoiceView extends JFrame {
 				if (comboBox.getSelectedItem() == "Vanier") {
 					thisView.frame.changeContentPane(new VanierLotView(thisView.frame), "Vanier");
 				}
+
 				else if(comboBox.getSelectedItem() == "Bethune") {
 					thisView.frame.changeContentPane(new BethuneLotView(thisView.frame), "Bethune");
 				}
@@ -65,8 +67,7 @@ public class LotChoiceView extends JFrame {
 				}
 				else if(comboBox.getSelectedItem() == "Lassonde") {
 					thisView.frame.changeContentPane(new LassondeLotView(thisView.frame), "Lassonde");
-				}
-				
+      }
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
@@ -75,3 +76,4 @@ public class LotChoiceView extends JFrame {
 
 	}
 }
+
