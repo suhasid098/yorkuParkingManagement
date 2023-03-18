@@ -15,7 +15,8 @@ public class MaintainUser {
 	private static final MaintainUser maintain = new MaintainUser();
 	
 	public static void main(String [] args) throws Exception{
-		String path = "C:\\Users\\natal\\eecs3311project\\user.csv"; //Add your path here to test.
+		//suha's comment
+		String path = "C:\\Users\\suhas\\Downloads\\EECS 3311\\FinalProjectEECS3311\\eecs3311project\\eecs3311project\\user.csv"; //Add your path here to test.
 		MaintainUser maintain = MaintainUser.getInstance();
 	
 		//Load users in csv file to User ArrayList.
@@ -35,7 +36,7 @@ public class MaintainUser {
 	}
 	
 	private MaintainUser() {
-		this.path = "C:\\Users\\natal\\eecs3311project\\user.csv"; //Add your path here.
+		this.path = "C:\\Users\\suhas\\Downloads\\EECS 3311\\FinalProjectEECS3311\\eecs3311project\\eecs3311project\\user.csv"; //Add your path here.
 		try {
 			this.load(this.path);
 		} catch (Exception e) {
