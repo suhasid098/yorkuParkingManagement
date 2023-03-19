@@ -183,6 +183,9 @@ public class UserController {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public static void checkoutInfo(String nameCardField, String cardNumberField, String cvvField, String creditDebit) {
+		
+	}
 	
 }

@@ -53,7 +53,7 @@ public class LotChoiceView extends JFrame {
 		JButton btnNewButton = new JButton("Next");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					String lotName = (String) comboBox.getSelectedItem();
+				String lotName = (String) comboBox.getSelectedItem();
 				System.out.println("factory: " + lotName);
 				JFrame lotFrame = factory.getLot(thisView.frame, lotName);
 				System.out.println("frame: " + lotFrame);
