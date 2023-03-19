@@ -35,6 +35,7 @@ public class UserController {
 		//Create user and update users list and DB.
 		if(!maintain.users.isEmpty()) userCount = maintain.users.get(maintain.users.size()-1).getId() + 1;
 		User user = new User(name, userCount, email, password);
+//		User user = userFactory.getUser(type, name, userCount, email, password);
 		maintain.users.add(user);
 		loggedInUser = user;
 		try {

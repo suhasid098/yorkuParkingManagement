@@ -15,6 +15,8 @@ public class RegisterView extends LoginView {
 	//More fields to be edited.
 	private JTextField nameField;
 	private JPasswordField confirmField;
+	private JComboBox selectType;
+
 	
 	public RegisterView(Main previousFrame) {
 		super(previousFrame);
@@ -31,18 +33,23 @@ public class RegisterView extends LoginView {
 		this.nameField = new JTextField();
 		//Make a new text field for confirm password.
 		this.confirmField = new JPasswordField();
+		this.selectType = new JComboBox();
 		
 		//Set confirm label and field alignment.
 		nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		confirmLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		this.nameField.setAlignmentX(Component.CENTER_ALIGNMENT);
 		this.confirmField.setAlignmentX(Component.CENTER_ALIGNMENT);
+		this.selectType.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 		
 		//Set up field size and prevent resizing.
 		this.nameField.setSize(fieldX, fieldY);
 		this.nameField.setMaximumSize(nameField.getSize());
 		this.confirmField.setSize(fieldX, fieldY);
 		this.confirmField.setMaximumSize(confirmField.getSize());
+		this.selectType.setSize(fieldX, fieldY);
+		this.selectType.setMaximumSize(selectType.getSize());
 		
 		//Add components to top of pane.
 		int pos = 1;
@@ -58,7 +65,8 @@ public class RegisterView extends LoginView {
 		this.fieldPane.add(Box.createRigidArea(new Dimension(0, sameSectionSpace)), fieldPane.getComponentCount()-pos); //Space between label and field.
 		this.fieldPane.add(confirmField, fieldPane.getComponentCount()-pos); //Adds name field to pane.
 		
-		
+		this.fieldPane.add(selectType, fieldPane.getComponentCount()-pos); //Adds name field to pane.
+
 		//Alter what to do when the save button is pressed.
 		//Remove action listeners.
 		for(ActionListener l : this.saveButton.getActionListeners()) {
