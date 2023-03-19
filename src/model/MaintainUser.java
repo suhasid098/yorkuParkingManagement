@@ -16,7 +16,7 @@ public class MaintainUser {
 	
 	public static void main(String [] args) throws Exception{
 		//suha's comment
-		String path = "C:\\Users\\Shaharyar\\Desktop\\EECS3311Final\\eecs3311project\\user.csv"; //Add your path here to test.
+		String path = "C:\\Users\\suhas\\Downloads\\EECS 3311\\FinalProjectEECS3311\\eecs3311project\\user.csv"; //Add your path here to test.
 
 		MaintainUser maintain = MaintainUser.getInstance();
 	
@@ -29,15 +29,15 @@ public class MaintainUser {
 		}
 		
 		//Add user example.
-		User newUser = new User("t4", 4, "t4@yorku.ca", "t4t4");
-		maintain.users.add(newUser);
+//		User newUser = new User("t4", 4, "t4@yorku.ca", "t4t4");
+//		maintain.users.add(newUser);
 		
 		//Update csv file DB.
 		maintain.update(path);
 	}
 	
 	private MaintainUser() {
-		this.path = "C:\\Users\\Shaharyar\\Desktop\\EECS3311Final\\eecs3311project\\user.csv"; //Add your path here.
+		this.path = "C:\\Users\\suhas\\Downloads\\EECS 3311\\FinalProjectEECS3311\\eecs3311project\\user.csv"; //Add your path here.
 
 		try {
 			this.load(this.path);
@@ -65,6 +65,7 @@ public class MaintainUser {
 			user.setPassword(reader.get("password"));
 			user.setParkingSpot(reader.get("parking_spot"));
 			user.setParkingLot(reader.get("lot"));
+			user.setAccountType(reader.get("account_type"));
 			users.add(user);
 		}
 	}
@@ -81,6 +82,7 @@ public class MaintainUser {
 				csvOutput.write("password");
 				csvOutput.write("parking_spot");
 				csvOutput.write("lot");
+				csvOutput.write("account_type");
 
 
 				csvOutput.endRecord();
@@ -93,6 +95,7 @@ public class MaintainUser {
 					csvOutput.write(u.getPassword());
 					csvOutput.write(u.getParkingSpotName());
 					csvOutput.write(u.getLotName());
+					csvOutput.write(u.getAccountType());
 
 
 					csvOutput.endRecord();

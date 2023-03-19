@@ -12,7 +12,7 @@ public class UserController {
 	private static User loggedInUser;
 
 	//Attempts to register user. Returns nothing if successful and error message upon fail.
-	public static String registerUser(String name, String email, String password, String confirmPass) {
+	public static String registerUser(String name, String email, String password, String confirmPass, String accountType) {
 		
 		
 		//Check email.
@@ -34,7 +34,7 @@ public class UserController {
 		
 		//Create user and update users list and DB.
 		if(!maintain.users.isEmpty()) userCount = maintain.users.get(maintain.users.size()-1).getId() + 1;
-		User user = new User(name, userCount, email, password);
+		User user = new User(name, userCount, email, password, accountType);
 		maintain.users.add(user);
 		loggedInUser = user;
 		try {

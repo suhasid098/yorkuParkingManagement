@@ -1,4 +1,12 @@
-name,id,email,password,parking_spot,lot
-sharry,0,s@gmail.com,Password1!,010,Bethune
-harry,1,harry@gmail.com,Password1!,001,Calumet
-
+name,id,email,password,parking_spot,lot,account_type
+sharry,0,s@gmail.com,Password1!,010,Bethune,
+harry,1,harry@gmail.com,Password1!,001,Calumet,
+suha,2,suha@gmail.com,Password1!,,,
+alpha,3,alpha@gmail.com,Password1!,,,
+beta,4,beta@gmail.com,Password1!,,,
+gamma,5,gamma@gmail.com,Password1!,,,
+delta,6,delta@gmail.com,Password1!,,,
+epsilon,7,epsilon@gmail.com,Password1!,,,
+digamma,8,gigamma@gmail.com,Password1!,,,
+omega,9,omega@gmail.com,Password1!,,,
+phi,10,phi@gmail.com,Password1!,,,Faculty
