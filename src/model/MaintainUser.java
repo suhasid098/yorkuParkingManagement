@@ -16,7 +16,7 @@ public class MaintainUser {
 	
 	public static void main(String [] args) throws Exception{
 		//suha's comment
-		String path = "C:\\Users\\suhas\\Downloads\\EECS 3311\\FinalProjectEECS3311\\eecs3311project\\user.csv"; //Add your path here to test.
+		String path = "C:\\Users\\Shaharyar\\Desktop\\EECS3311Final\\eecs3311project\\user.csv"; //Add your path here to test.
 
 		MaintainUser maintain = MaintainUser.getInstance();
 	
@@ -37,8 +37,7 @@ public class MaintainUser {
 	}
 	
 	private MaintainUser() {
-		this.path = "C:\\Users\\suhas\\Downloads\\EECS 3311\\FinalProjectEECS3311\\eecs3311project\\user.csv"; //Add your path here.
-
+		this.path = "C:\\Users\\Shaharyar\\Desktop\\EECS3311Final\\eecs3311project\\user.csv"; //Add your path here.
 		try {
 			this.load(this.path);
 		} catch (Exception e) {
