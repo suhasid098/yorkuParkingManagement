@@ -106,6 +106,10 @@ public class BethuneLotView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 				UserController.addParkingSpot("001", "Bethune");// try without id param
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
+
+				
 //				thisView.frame.resetContentPane();
 			}
 		});
@@ -113,54 +117,72 @@ public class BethuneLotView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 				UserController.addParkingSpot("002", "Bethune");// try without id param
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psBethune003.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 				UserController.addParkingSpot("003","Bethune");// try without id param
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psBethune004.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 				UserController.addParkingSpot("004","Bethune");// try without id param
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psBethune005.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 				UserController.addParkingSpot("005","Bethune");// try without id param
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psBethune006.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 				UserController.addParkingSpot("006","Bethune");// try without id param
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psBethune007.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 				UserController.addParkingSpot("007","Bethune");// try without id param
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psBethune008.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 				UserController.addParkingSpot("008", "Bethune");// try without id param
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psBethune009.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 				UserController.addParkingSpot("009", "Bethune");// try without id param
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psBethune010.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 				UserController.addParkingSpot("010", "Bethune");// try without id param
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		

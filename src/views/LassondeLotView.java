@@ -89,41 +89,57 @@ public class LassondeLotView extends JFrame {
 		psLassonde001.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("001", "Lassonde");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psLassonde002.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("002", "Lassonde");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psLassonde003.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("003", "Lassonde");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psLassonde004.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("004", "Lassonde");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psLassonde005.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("005", "Lassonde");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psLassonde006.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("006", "Lassonde");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psLassonde007.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("007", "Lassonde");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psLassonde008.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("008", "Lassonde");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 
@@ -131,6 +147,7 @@ public class LassondeLotView extends JFrame {
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thisView.frame.changeContentPane(new LotChoiceView(thisView.frame), "Lot");
+				
 			}
 		});
 		backButton.setBounds(341, 10, 85, 21);

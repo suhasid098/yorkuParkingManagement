@@ -15,6 +15,7 @@ public class LotChoiceView extends JFrame {
 
 	private LotChoiceView thisView = this;
 	protected Main frame;
+	private LotFactory factory = new LotFactory(); 	// Here I am using the Factory Design Pattern
 
 	public LotChoiceView(Main frame) {
 		this.frame = frame;
@@ -52,22 +53,14 @@ public class LotChoiceView extends JFrame {
 		JButton btnNewButton = new JButton("Next");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (comboBox.getSelectedItem() == "Vanier") {
-					thisView.frame.changeContentPane(new VanierLotView(thisView.frame), "Vanier");
-				}
+					String lotName = (String) comboBox.getSelectedItem();
+				System.out.println("factory: " + lotName);
+				JFrame lotFrame = factory.getLot(thisView.frame, lotName);
+				System.out.println("frame: " + lotFrame);
 
-				else if(comboBox.getSelectedItem() == "Bethune") {
-					thisView.frame.changeContentPane(new BethuneLotView(thisView.frame), "Bethune");
-				}
-				else if(comboBox.getSelectedItem() == "Calumet") {
-					thisView.frame.changeContentPane(new CalumetLotView(thisView.frame), "Calumet");
-				}
-				else if(comboBox.getSelectedItem() == "Schulich") {
-					thisView.frame.changeContentPane(new SchulichLotView(thisView.frame), "Schulich");
-				}
-				else if(comboBox.getSelectedItem() == "Lassonde") {
-					thisView.frame.changeContentPane(new LassondeLotView(thisView.frame), "Lassonde");
-      }
+				thisView.frame.changeContentPane(lotFrame, lotName);
+
+	
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 10));

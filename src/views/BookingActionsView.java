@@ -70,6 +70,7 @@ public class BookingActionsView extends JFrame{
 		cancelButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		logoutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
+		
 		//Set up button fonts and font sizes.
 		int fontSize = 10;
 		logoutButton.setFont(new Font("Tahoma", Font.PLAIN, fontSize));
@@ -88,6 +89,8 @@ public class BookingActionsView extends JFrame{
 		optionsPane.add(Box.createRigidArea(new Dimension(0, sectionSpace))); //Space between buttons.
 		optionsPane.add(cancelButton); //Adds name label to pane.
 		optionsPane.add(Box.createRigidArea(new Dimension(0, sectionSpace))); //Space between buttons.
+		
+		
 //		optionsPane.add(logoutButton); //Adds name field to pane.
 		optionsPane.add(Box.createVerticalGlue()); //Makes components move with the bottom of the pane. Used in centering components with resizing.
 		
@@ -99,6 +102,19 @@ public class BookingActionsView extends JFrame{
 		contentPane.add(logoutPane, BorderLayout.NORTH);
 		contentPane.add(optionsPane);
 		
+		if (!UserController.getLoggedInUser().parkingSpotName.isBlank()) {
+			//Make a new button for proceeding to checkout
+			JButton checkoutButton = new JButton("Proceed to Checkout");
+			checkoutButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					thisView.frame.changeContentPane(new CheckoutView(thisView.frame), "Checkout");
+					
+				}
+			});
+			checkoutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+			optionsPane.add(checkoutButton); //Adds name label to pane.
+			optionsPane.add(Box.createRigidArea(new Dimension(0, sectionSpace))); //Space between buttons.
+		}
 		
 		//Set up component actions
 		//Set up what to do when the book button is pressed.

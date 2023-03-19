@@ -83,6 +83,8 @@ public class CalumetLotView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 				UserController.addParkingSpot("001", "Calumet");// try without id param
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 
 //				thisView.frame.resetContentPane();
 			}
@@ -91,30 +93,40 @@ public class CalumetLotView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 				UserController.addParkingSpot("002", "Calumet");// try without id param
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psCalumet003.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 				UserController.addParkingSpot("003", "Calumet");// try without id param
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 				}
 		});
 		psCalumet004.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 				UserController.addParkingSpot("004", "Calumet");// try without id param
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psCalumet005.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 				UserController.addParkingSpot("005","Calumet");// try without id param
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psCalumet006.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 				UserController.addParkingSpot("006", "Calumet");// try without id param
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		
