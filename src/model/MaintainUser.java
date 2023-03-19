@@ -29,8 +29,8 @@ public class MaintainUser {
 		}
 		
 		//Add user example.
-		User newUser = new User("t4", 4, "t4@yorku.ca", "t4t4");
-		maintain.users.add(newUser);
+//		User newUser = new User("t4", 4, "t4@yorku.ca", "t4t4");
+//		maintain.users.add(newUser);
 		
 		//Update csv file DB.
 		maintain.update(path);
@@ -65,6 +65,7 @@ public class MaintainUser {
 			user.setPassword(reader.get("password"));
 			user.setParkingSpot(reader.get("parking_spot"));
 			user.setParkingLot(reader.get("lot"));
+			user.setAccountType(reader.get("account_type"));
 			users.add(user);
 		}
 	}
@@ -81,6 +82,7 @@ public class MaintainUser {
 				csvOutput.write("password");
 				csvOutput.write("parking_spot");
 				csvOutput.write("lot");
+				csvOutput.write("account_type");
 
 
 				csvOutput.endRecord();
@@ -93,6 +95,7 @@ public class MaintainUser {
 					csvOutput.write(u.getPassword());
 					csvOutput.write(u.getParkingSpotName());
 					csvOutput.write(u.getLotName());
+					csvOutput.write(u.getAccountType());
 
 
 					csvOutput.endRecord();

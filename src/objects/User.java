@@ -8,26 +8,39 @@ public class User {
 //	public ParkingSpot spot;
 	public String parkingSpotName;
 	public String lotName;
-	
-	public User(String name, int id, String email, String password) {
+	public String accountType;
+	public double rate;
+
+	public User(String name, int id, String email, String password, String accountType) {
 		this.name = name;
 		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.parkingSpotName = "";
 		this.lotName = "";
-	
+		this.accountType = accountType;
+//		this.rate=getRate(accountType);
+
 	}
+
 	public void setParkingSpot(String s) {
 		this.parkingSpotName = s;
 	}
+
 	public String getParkingSpotName() {
 		return parkingSpotName;
 	}
-	
-	public User(){
+
+	public String getAccountType() {
+		return accountType;
 	}
-	
+
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
+	}
+
+	public User() {
+	}
 
 	public String getName() {
 		return name;
@@ -63,13 +76,16 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", id=" + id + ", email=" + email + ", password=" + password + "]";
+		return "User [name=" + name + ", id=" + id + ", email=" + email + ", password=" + password + ", accountType="
+				+ accountType + "]";
 	}
+
 	public void setParkingLot(String lotName) {
 		this.lotName = lotName;
 	}
+
 	public String getLotName() {
 		return lotName;
 	}
-	
+
 }
