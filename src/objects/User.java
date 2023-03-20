@@ -1,110 +1,212 @@
 package objects;
 
+import java.time.LocalDateTime;
+
 public class User {
-    public String name;
-    public int id;
-    public String email;
-    public String password;
-//    public ParkingSpot spot;
-    public String parkingSpotName;
-    public String lotName;
-    public String accountType;
-    public double rate;
+	public String name;
+	public int id;
+	public String email;
+	public String password;
+	public String parkingSpotName;
+	public String lotName;
+	public String accountType;
+	public double rate;
+	public String cardName;
+	public String cardNumber;
+	public String cvvNumber;
+	public String paymentType;
+	public int debitBalance = 1000; // preset to $1000 (user has $1000)
+	public int creditBalnce = 0; // used $0 of credit card at the start
+	public LocalDateTime parkingStartTime;
+	public LocalDateTime parkingEndTime;
+	public String plateNumber;
 
-    public User(String name, int id, String email, String password, String accountType) {
-        this.name = name;
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.parkingSpotName = "";
-        this.lotName = "";
-        this.accountType = accountType;
-        this.rate = getRate();
+	
+	// could create a parking object with start date, end date, lotname,parkingspotname
+	// assume there is no credit limit
+	public int parkingFee = 0;
+	public User(String name, int id, String email, String password, String accountType) {
+		this.name = name;
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.parkingSpotName = "";
+		this.lotName = "";
+		this.accountType = accountType;
+		this.rate = getRate();
+	}
+	
+	
+	//updating balance of either credit or debit card
+	public void chargeUser(String payementType, int parkingfee) {
+		paymentType = payementType;
+		parkingFee = parkingfee;
+		if(payementType.equalsIgnoreCase("credit")) {
+			creditBalnce = creditBalnce + parkingfee;
+		} else if(payementType.equalsIgnoreCase("debit")) {
+			debitBalance = debitBalance - parkingfee;
+		}
+	}
+	
+	public void setCreditBalance(String balance) {
+		if(balance.equals("")) {
+			this.creditBalnce = 0;
+		}
+		this.creditBalnce = Integer.parseInt(balance);
+	}
+	public void setDebitBalance(String balance) {
+		if(balance.equals("")) {
+			this.creditBalnce = 1000;
+		}
+		this.debitBalance = Integer.parseInt(balance);
+	}
 
-    }
+	public void setPaymentType(String paymentType1) {
+		this.paymentType = paymentType1;
+	}
+	public String getPaymentType() {
+		return this.paymentType;
+	}
 
-    public double getRate() {
-    	System.out.println("ACCOUNT TYPE:" + accountType);
-        // TODO Auto-generated method stub
-        if (accountType.equals("Faculty")) {
-            rate = 8.00;
-            
-        } else if (accountType.equals("Non-Faculty")) {
-            rate = 10.00;
-        } else if (accountType.equals("Student")) {
-            rate = 5.00;
-        } else if (accountType.equals("Visitor")) {
-            rate = 15.00;
-        }
-        System.out.println("Rate TYPE:" + rate);
-        return rate;
-    }
+	public double getRate() {
+		System.out.println("ACCOUNT TYPE:" + accountType);
+		// TODO Auto-generated method stub
+		if (accountType.equals("Faculty")) {
+			rate = 8.00;
+
+		} else if (accountType.equals("Non-Faculty")) {
+			rate = 10.00;
+		} else if (accountType.equals("Student")) {
+			rate = 5.00;
+		} else if (accountType.equals("Visitor")) {
+			rate = 15.00;
+		}
+		System.out.println("Rate TYPE:" + rate);
+		return rate;
+	}
+
+	public void setCardName(String cName) {
+		this.cardName = cName;
+	}
+
+	public String getCardName() {
+		return cardName;
+
+	}
+
+	public void setCardNumber(String cNum) {
+		this.cardNumber = cNum;
+	}
+
+	public String getCardNumber() {
+		return cardNumber;
+	}
+
+	public void setCvvNumber(String cvvNum) {
+		this.cvvNumber = cvvNum;
+	}
+
+	public String getCvvNumber() {
+		return cvvNumber;
+	}
+
+	public void setParkingSpot(String s) {
+		this.parkingSpotName = s;
+	}
+
+	public String getParkingSpotName() {
+		return parkingSpotName;
+	}
+
+	public String getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
+	}
+
+	public User() {
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "User [name=" + name + ", id=" + id + ", email=" + email + ", password=" + password + ", accountType="
+				+ accountType + "]";
+	}
+
+	public void setParkingLot(String lotName) {
+		this.lotName = lotName;
+	}
+
+	public String getLotName() {
+		return lotName;
+	}
+
+	public String getDebitBalance() {
+		// TODO Auto-generated method stub
+		return this.debitBalance + "";
+	}
+	public String getCredittBalance() {
+		// TODO Auto-generated method stub
+		return this.creditBalnce + "";
+	}
 
 
+	public void setParkingStartTime(LocalDateTime startTime) {
+		this.parkingStartTime = startTime;
+	}
+	public void setParkingEndTime(LocalDateTime endTime) {
+		this.parkingEndTime = endTime;
+	}
+	public LocalDateTime getParkingStartTime() {
+		return this.parkingStartTime;
+	}
+	public LocalDateTime getParkingEndTime() {
+		return this.parkingEndTime;
+	}
 
-    public void setParkingSpot(String s) {
-        this.parkingSpotName = s;
-    }
 
-    public String getParkingSpotName() {
-        return parkingSpotName;
-    }
-
-    public String getAccountType() {
-        return accountType;
-    }
-
-    public void setAccountType(String accountType) {
-        this.accountType = accountType;
-    }
-
-    public User() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "User [name=" + name + ", id=" + id + ", email=" + email + ", password=" + password + ", accountType="
-                + accountType + "]";
-    }
-
-    public void setParkingLot(String lotName) {
-        this.lotName = lotName;
-    }
-
-    public String getLotName() {
-        return lotName;
-    }
-
+	public void setplateNumber(String plateNumber) {
+		this.plateNumber = plateNumber;
+	}
+	
+	public String getPlateNumber() {
+		return this.plateNumber;
+	}
+	
+	
+	
 }

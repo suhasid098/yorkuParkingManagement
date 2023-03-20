@@ -10,12 +10,16 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+
+import controllers.UserController;
 
 public class LotChoiceView extends JFrame {
 
 	private LotChoiceView thisView = this;
 	protected Main frame;
 	private LotFactory factory = new LotFactory(); 	// Here I am using the Factory Design Pattern
+	private JTextField textField;
 
 	public LotChoiceView(Main frame) {
 		this.frame = frame;
@@ -36,14 +40,14 @@ public class LotChoiceView extends JFrame {
 
 		JLabel lblNewLabel = new JLabel("Select a Parking Lot");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel.setBounds(118, 114, 159, 32);
+		lblNewLabel.setBounds(118, 208, 159, 32);
 		getContentPane().add(lblNewLabel);
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(
 				new String[] { "", "Vanier", "Bethune", "Calumet", "Schulich", "Lassonde" }));
 
-		comboBox.setBounds(143, 153, 106, 21);
+		comboBox.setBounds(141, 252, 106, 21);
 		getContentPane().add(comboBox);
 		
 		
@@ -53,6 +57,12 @@ public class LotChoiceView extends JFrame {
 		JButton btnNewButton = new JButton("Next");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				String plateNumber = textField.getText();				
+
+				UserController.addPlateNumber(plateNumber);
+				//update to database
+				
 					String lotName = (String) comboBox.getSelectedItem();
 				System.out.println("factory: " + lotName);
 				JFrame lotFrame = factory.getLot(thisView.frame, lotName);
@@ -66,6 +76,16 @@ public class LotChoiceView extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnNewButton.setBounds(341, 382, 85, 21);
 		getContentPane().add(btnNewButton);
+		
+		JLabel lblNewLabel_1 = new JLabel("Enter License Plate Number");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel_1.setBounds(95, 55, 237, 32);
+		getContentPane().add(lblNewLabel_1);
+		
+		textField = new JTextField();
+		textField.setBounds(141, 94, 96, 20);
+		getContentPane().add(textField);
+		textField.setColumns(10);
 
 	}
 }
