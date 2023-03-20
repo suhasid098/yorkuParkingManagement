@@ -55,7 +55,6 @@ public class CheckoutView extends JFrame{
 	public boolean dateConfirmed = false;
 	public long hoursBookedFor;
 	public String price;
-	private JTextField textField_2;
     
     public CheckoutView(Main frame) {
         //Save previous frame.
@@ -159,12 +158,7 @@ public class CheckoutView extends JFrame{
         btnNewButton = new JButton("Confirm");
         btnNewButton.setBounds(344, 349, 85, 21);
         getContentPane().add(btnNewButton);
-
-     
-
-  
-    
-        
+      
         JComboBox year = new JComboBox();
         year.setModel(new DefaultComboBoxModel(new Integer[] {2023, 2024}));
         year.setBounds(10, 96, 61, 22);
@@ -195,7 +189,7 @@ public class CheckoutView extends JFrame{
         getContentPane().add(confirmTime);
         
         JLabel outputMessage = new JLabel("");
-        outputMessage.setBounds(108, 385, 186, 14);
+        outputMessage.setBounds(116, 388, 186, 14);
         outputMessage.setForeground(Color.RED);
         getContentPane().add(outputMessage);
         
@@ -242,14 +236,15 @@ public class CheckoutView extends JFrame{
         minute_1.setBounds(279, 138, 38, 22);
         getContentPane().add(minute_1);
         
-        textField_2 = new JTextField();
-        textField_2.setBounds(318, 251, 108, 20);
-        getContentPane().add(textField_2);
-        textField_2.setColumns(10);
-        
-        JLabel plateNumber = new JLabel("License Plate Number");
-        plateNumber.setBounds(318, 226, 118, 14);
-        getContentPane().add(plateNumber);
+        JButton btnNewButton_1 = new JButton("Back");
+        btnNewButton_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
+        	}
+        });
+        btnNewButton_1.setBounds(245, 348, 89, 23);
+        getContentPane().add(btnNewButton_1);
     
     
 confirmTime.addActionListener(new ActionListener() {
@@ -347,15 +342,11 @@ btnNewButton.addActionListener(new ActionListener() {
 			cvvNumber = cvvField.getText() + "";
 		}
 		
-		if(plateNumber.getText().equals(UserController.getLoggedInUser().getPlateNumber())) {
-			validPlateNumber = true;
-		}
-		
 		if(dateConfirmed == false) {
 			outputMessage.setText("Confirm Date/Time First");
 
 		}
-		if(!nameOnCard.equals("") && !cardNumber.equals("") && !cardNumber.equals("") && !cardNumber.equals("") && validPlateNumber == true) {
+		if(!nameOnCard.equals("") && !cardNumber.equals("") && !cardNumber.equals("") && !cardNumber.equals("")) {
 //			UserController.checkoutInfo(nameOnCard, cardNumber, cvvNumber, creditDebitText, updatedBalance);
 			outputMessage.setForeground(Color.BLUE);
 			// could have created a method to update the info below in the UserController
@@ -383,6 +374,7 @@ btnNewButton.addActionListener(new ActionListener() {
 //	UserController.checkoutInfo(nameOnCard, cardNumber, cvvNumber, creditDebitText, updatedBalance);
 	}
 });
+
 
 }
 }

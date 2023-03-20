@@ -9,10 +9,13 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
 import controllers.UserController;
+import java.awt.Color;
 
 public class LotChoiceView extends JFrame {
 
@@ -40,52 +43,71 @@ public class LotChoiceView extends JFrame {
 
 		JLabel lblNewLabel = new JLabel("Select a Parking Lot");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel.setBounds(118, 208, 159, 32);
+		lblNewLabel.setBounds(125, 156, 159, 32);
 		getContentPane().add(lblNewLabel);
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(
 				new String[] { "", "Vanier", "Bethune", "Calumet", "Schulich", "Lassonde" }));
 
-		comboBox.setBounds(141, 252, 106, 21);
+		comboBox.setBounds(151, 199, 106, 21);
 		getContentPane().add(comboBox);
-		
-		
 		comboBox.getSelectedIndex();
-		
-		
-		JButton btnNewButton = new JButton("Next");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String plateNumber = textField.getText();				
-
-				UserController.addPlateNumber(plateNumber);
-				//update to database
-				
-					String lotName = (String) comboBox.getSelectedItem();
-				System.out.println("factory: " + lotName);
-				JFrame lotFrame = factory.getLot(thisView.frame, lotName);
-				System.out.println("frame: " + lotFrame);
-
-				thisView.frame.changeContentPane(lotFrame, lotName);
-
-	
-			}
-		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnNewButton.setBounds(341, 382, 85, 21);
-		getContentPane().add(btnNewButton);
-		
+			
 		JLabel lblNewLabel_1 = new JLabel("Enter License Plate Number");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel_1.setBounds(95, 55, 237, 32);
 		getContentPane().add(lblNewLabel_1);
 		
 		textField = new JTextField();
-		textField.setBounds(141, 94, 96, 20);
+		textField.setBounds(161, 98, 96, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		
+		JButton btnNewButton = new JButton("Next");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnNewButton.setBounds(341, 382, 85, 21);
+		getContentPane().add(btnNewButton);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setForeground(Color.RED);
+		lblNewLabel_2.setBounds(136, 300, 152, 14);
+		getContentPane().add(lblNewLabel_2);
+
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String plateNumber = textField.getText();	
+				String lotName = (String) comboBox.getSelectedItem();
+
+				if(lotName.equals("")) {
+					System.out.println("select option");
+					lblNewLabel_2.setText("Select a lot");
+				}
+				if(plateNumber.length() < 2) {
+					System.out.println("too short");
+					lblNewLabel_2.setText("Invalid plate number");
+				} 
+				
+				
+				if(!lotName.equals("") && plateNumber.length() >= 2) {
+					UserController.addPlateNumber(plateNumber);
+					//update to database
+					System.out.println("factory: " + lotName);
+					JFrame lotFrame = factory.getLot(thisView.frame, lotName);
+					System.out.println("frame: " + lotFrame);
+					thisView.frame.changeContentPane(lotFrame, lotName);
+				}
+			}
+		});
+		
+		textField.addKeyListener(new KeyAdapter() {
+	            @Override
+	            public void keyTyped(KeyEvent e) {
+	                if (textField.getText().length() >= 8 ) // limit to 8 characters
+	                    e.consume();
+	            }
+	        });    
 
 	}
 }

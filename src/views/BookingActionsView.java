@@ -135,6 +135,11 @@ public class BookingActionsView extends JFrame{
 		//Set up what to do when the cancel button is pressed.
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				boolean result = false;
+				if(result = true) {
+					JOptionPane.showMessageDialog(null, "Booking canceled");
+					UserController.removeParkingLot();
+				}
 											
 			}
 		});

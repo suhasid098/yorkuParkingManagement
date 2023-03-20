@@ -215,5 +215,24 @@ public class UserController {
 		}
 
 	}
+
+
+	public static void removeParkingLot() {
+		maintain.users.get(loggedInUser.getId()).setParkingEndTime(null);
+		maintain.users.get(loggedInUser.getId()).setParkingStartTime(null);
+		maintain.users.get(loggedInUser.getId()).setParkingLot("");
+		maintain.users.get(loggedInUser.getId()).setParkingSpot("");
+		try {
+			maintain.update(maintain.path);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+
+
+		
+	}
 	
 }
