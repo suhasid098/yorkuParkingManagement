@@ -1,11 +1,11 @@
 package objects;
 
-public class Manager {
+public class Manager extends Account{
 	
-	public String name;
-	public int id;
-	public String email;
-	public String password;
+	public Manager(){		
+	}
 	
-
+	public Manager(String name, int id, String password) {
+		super(name, id, password);
+	}
 }

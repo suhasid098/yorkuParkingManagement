@@ -2,11 +2,8 @@ package objects;
 
 import java.time.LocalDateTime;
 
-public class User {
-	public String name;
-	public int id;
+public class User extends Account{
 	public String email;
-	public String password;
 	public String parkingSpotName;
 	public String lotName;
 	public String accountType;
@@ -26,16 +23,16 @@ public class User {
 	// assume there is no credit limit
 	public int parkingFee = 0;
 	public User(String name, int id, String email, String password, String accountType) {
-		this.name = name;
-		this.id = id;
+		super(name, id, password);
 		this.email = email;
-		this.password = password;
 		this.parkingSpotName = "";
 		this.lotName = "";
 		this.accountType = accountType;
 		this.rate = getRate();
 	}
 	
+	public User() {
+	}
 	
 	//updating balance of either credit or debit card
 	public void chargeUser(String payementType, int parkingfee) {
@@ -126,39 +123,12 @@ public class User {
 		this.accountType = accountType;
 	}
 
-	public User() {
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	@Override

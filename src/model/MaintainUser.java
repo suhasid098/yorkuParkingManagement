@@ -9,38 +9,15 @@ import com.csvreader.CsvWriter;
 import objects.User;
 
 //Singleton pattern.
-public class MaintainUser {
+public class MaintainUser extends Maintain{
 	public ArrayList<User> users = new ArrayList<User>();
-	public String path;
 	
 	private static final MaintainUser maintain = new MaintainUser();
 	
-	public static void main(String [] args) throws Exception{
-		//suha's comment
-		String path = "C:\\Users\\Shaharyar\\Desktop\\EECS3311Final\\eecs3311project\\user.csv"; //Add your path here to test.
-
-		MaintainUser maintain = MaintainUser.getInstance();
-	
-		//Load users in csv file to User ArrayList.
-		maintain.load(path);
-		
-		//Display users.
-		for(User u: maintain.users){
-			System.out.println(u.toString());
-		}
-		
-		//Add user example.
-//		User newUser = new User("t4", 4, "t4@yorku.ca", "t4t4");
-//		maintain.users.add(newUser);
-		
-		//Update csv file DB.
-		maintain.update(path);
-	}
-	
 	private MaintainUser() {
-		this.path = "C:\\Users\\Shaharyar\\Desktop\\EECS3311Final\\eecs3311project\\user.csv"; //Add your path here.
+		this.path = this.path + "\\user.csv"; //Add your path here.
 		try {
-			this.load(this.path);
+			this.load();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -51,9 +28,10 @@ public class MaintainUser {
 	}
 	
 	//Loads users in csv file to User ArrayList.
-	public void load(String path) throws Exception{
+	@Override
+	public void load() throws Exception{
 		//Create a new reader for the csv file and read the file's headers.
-		CsvReader reader = new CsvReader(path); 
+		CsvReader reader = new CsvReader(this.path); 
 		reader.readHeaders();
 		
 		//For each row, add a user to the User ArrayList using the data in each column as the attributes.
@@ -87,11 +65,12 @@ public class MaintainUser {
 	}
 	
 	//Add users in User ArrayList to csv file.
-	public void update(String path) throws Exception{
+	@Override
+	public void update() throws Exception{
 		try {		
 			
 				//Create new csv file with appropriate headers at given path.
-				CsvWriter csvOutput = new CsvWriter(new FileWriter(path, false), ',');
+				CsvWriter csvOutput = new CsvWriter(new FileWriter(this.path, false), ',');
 				csvOutput.write("name");
 				csvOutput.write("id");
 		    	csvOutput.write("email");

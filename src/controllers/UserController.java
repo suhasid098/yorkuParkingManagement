@@ -39,7 +39,7 @@ public class UserController {
 		maintain.users.add(user);
 		loggedInUser = user;
 		try {
-			maintain.update(maintain.path);
+			maintain.update();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -142,7 +142,7 @@ public class UserController {
 	public static boolean isSpotTaken(String spot, String lot) {
 		System.out.println("expected:" + spot + " " + lot);
 		try {
-			maintain.update(maintain.path);
+			maintain.update();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -178,7 +178,7 @@ public class UserController {
 		try {
 			System.out.println(maintain.users.get(loggedInUser.getId()).getParkingSpotName());
 			System.out.println(maintain.users.get(loggedInUser.getId()).getLotName());
-			maintain.update(maintain.path);
+			maintain.update();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -197,7 +197,7 @@ public class UserController {
 
 		
 		try {
-			maintain.update(maintain.path);
+			maintain.update();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -208,7 +208,7 @@ public class UserController {
 	public static void addPlateNumber(String plateNumber) {
 		maintain.users.get(loggedInUser.getId()).setplateNumber(plateNumber);
 		try {
-			maintain.update(maintain.path);
+			maintain.update();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -223,7 +223,7 @@ public class UserController {
 		maintain.users.get(loggedInUser.getId()).setParkingLot("");
 		maintain.users.get(loggedInUser.getId()).setParkingSpot("");
 		try {
-			maintain.update(maintain.path);
+			maintain.update();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
