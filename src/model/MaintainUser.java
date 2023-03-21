@@ -2,6 +2,7 @@ package model;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
@@ -16,7 +17,7 @@ public class MaintainUser {
 	
 	public static void main(String [] args) throws Exception{
 		//suha's comment
-		String path = "C:\\Users\\suhas\\Downloads\\EECS 3311\\FinalProjectEECS3311\\eecs3311project\\user.csv"; //Add your path here to test.
+		String path = "C:\\Users\\Shaharyar\\Desktop\\EECS3311Final\\eecs3311project\\user.csv"; //Add your path here to test.
 
 		MaintainUser maintain = MaintainUser.getInstance();
 	
@@ -37,8 +38,7 @@ public class MaintainUser {
 	}
 	
 	private MaintainUser() {
-		this.path = "C:\\Users\\suhas\\Downloads\\EECS 3311\\FinalProjectEECS3311\\eecs3311project\\user.csv"; //Add your path here.
-
+		this.path = "C:\\Users\\Shaharyar\\Desktop\\EECS3311Final\\eecs3311project\\user.csv"; //Add your path here.
 		try {
 			this.load(this.path);
 		} catch (Exception e) {
@@ -66,6 +66,22 @@ public class MaintainUser {
 			user.setParkingSpot(reader.get("parking_spot"));
 			user.setParkingLot(reader.get("lot"));
 			user.setAccountType(reader.get("account_type"));
+			user.setPaymentType(reader.get("payment_type"));
+			user.setCardName(reader.get("name_on_card"));
+			user.setCardNumber(reader.get("card_number"));
+			user.setCvvNumber(reader.get("cvv_number"));
+			user.setCreditBalance(reader.get("credit_balance"));
+			user.setDebitBalance(reader.get("debit_balance"));
+			if(reader.get("parking_startTime").equals("") || reader.get("parking_startTime").equals("null")) {
+			} else {
+				user.setParkingStartTime(LocalDateTime.parse(reader.get("parking_startTime")));
+			}
+			
+			if(reader.get("parking_endTime").equals("") || reader.get("parking_endTime").equals("null")) {
+			} else {
+				user.setParkingEndTime(LocalDateTime.parse(reader.get("parking_endTime")));
+			}
+			user.setplateNumber(reader.get("license_plate_number"));
 			users.add(user);
 		}
 	}
@@ -83,6 +99,22 @@ public class MaintainUser {
 				csvOutput.write("parking_spot");
 				csvOutput.write("lot");
 				csvOutput.write("account_type");
+				csvOutput.write("payment_type");
+				csvOutput.write("name_on_card");
+				csvOutput.write("card_number");
+				csvOutput.write("cvv_number");
+				csvOutput.write("credit_balance");
+				csvOutput.write("debit_balance");
+				csvOutput.write("parking_startTime");
+				csvOutput.write("parking_endTime");
+				csvOutput.write("license_plate_number");
+
+
+
+
+
+
+
 
 
 				csvOutput.endRecord();
@@ -96,8 +128,18 @@ public class MaintainUser {
 					csvOutput.write(u.getParkingSpotName());
 					csvOutput.write(u.getLotName());
 					csvOutput.write(u.getAccountType());
-
-
+					csvOutput.write(u.getPaymentType());
+					csvOutput.write(u.getCardName());
+					csvOutput.write(u.getCardNumber());
+					csvOutput.write(u.getCvvNumber());
+					csvOutput.write(u.getCredittBalance());
+					csvOutput.write(u.getDebitBalance());
+//					System.out.println("Ptime2: "+ u.getParkingTime());
+//					System.out.println("Ptime3: "+ String.valueOf(u.getParkingTime()));
+					csvOutput.write(String.valueOf(u.getParkingStartTime()));
+					csvOutput.write(String.valueOf(u.getParkingEndTime()));
+					csvOutput.write(u.getPlateNumber());
+					
 					csvOutput.endRecord();
 				}
 				csvOutput.close();

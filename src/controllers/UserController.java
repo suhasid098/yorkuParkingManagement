@@ -1,5 +1,6 @@
 package controllers;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -183,6 +184,55 @@ public class UserController {
 			e.printStackTrace();
 		}
 	}
+	public static void checkoutInfo(String cardName, String cardNumber, String cvvNumber, String creditDebitText, int price, LocalDateTime startTime, LocalDateTime endTime) {
+//		double rate = maintain.users.get(loggedInUser.getId()).getRate();
+//		int price = rate*hou
+		maintain.users.get(loggedInUser.getId()).setCardName(cardName);
+		maintain.users.get(loggedInUser.getId()).setCardNumber(cardNumber);
+		maintain.users.get(loggedInUser.getId()).setCvvNumber(cvvNumber);
+		maintain.users.get(loggedInUser.getId()).chargeUser(creditDebitText, price);
+		maintain.users.get(loggedInUser.getId()).setParkingStartTime(startTime);
+		maintain.users.get(loggedInUser.getId()).setParkingEndTime(endTime);
 
+
+		
+		try {
+			maintain.update(maintain.path);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+		
+	public static void addPlateNumber(String plateNumber) {
+		maintain.users.get(loggedInUser.getId()).setplateNumber(plateNumber);
+		try {
+			maintain.update(maintain.path);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+
+	public static void removeParkingLot() {
+		maintain.users.get(loggedInUser.getId()).setParkingEndTime(null);
+		maintain.users.get(loggedInUser.getId()).setParkingStartTime(null);
+		maintain.users.get(loggedInUser.getId()).setParkingLot("");
+		maintain.users.get(loggedInUser.getId()).setParkingSpot("");
+		try {
+			maintain.update(maintain.path);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+
+
+		
+	}
 	
 }

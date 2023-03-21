@@ -46,6 +46,8 @@ public class SchulichLotView extends JFrame {
 		psSchulich004.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("004", "Schulich");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		
@@ -57,6 +59,8 @@ public class SchulichLotView extends JFrame {
 		psSchulich003.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("003", "Schulich");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		
@@ -68,6 +72,8 @@ public class SchulichLotView extends JFrame {
 		psSchulich002.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("002", "Schulich");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		
@@ -79,6 +85,8 @@ public class SchulichLotView extends JFrame {
 		psSchulich001.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("001", "Schulich");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		
@@ -90,6 +98,8 @@ public class SchulichLotView extends JFrame {
 		psSchulich006.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("006", "Schulich");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		
@@ -101,6 +111,8 @@ public class SchulichLotView extends JFrame {
 		psSchulich005.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("005", "Schulich");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		

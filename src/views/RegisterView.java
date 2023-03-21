@@ -25,8 +25,7 @@ public class RegisterView extends LoginView {
 	
 	public RegisterView(Main previousFrame) {
 		super(previousFrame);
-		
-		//Change save button text.
+				//Change save button text.
 		this.saveButton.setText("Register Account");
 		
 		//Add labels and text fields to field pane.

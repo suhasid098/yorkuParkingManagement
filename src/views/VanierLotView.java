@@ -48,6 +48,8 @@ public class VanierLotView extends JFrame {
 		psVanier001.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("001", "Varnier");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psVanier001.setBounds(10, 49, 174, 76);
@@ -59,6 +61,8 @@ public class VanierLotView extends JFrame {
 		psVanier002.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("002", "Varnier");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		psVanier002.setBounds(10, 135, 174, 76);
@@ -71,6 +75,8 @@ public class VanierLotView extends JFrame {
 		psVanier003.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("003", "Varnier");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 		getContentPane().add(psVanier003);
@@ -85,6 +91,8 @@ public class VanierLotView extends JFrame {
 		psVanier004.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("004", "Varnier");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 
@@ -96,6 +104,8 @@ public class VanierLotView extends JFrame {
 		psVanier005.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("005", "Varnier");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 
@@ -107,6 +117,8 @@ public class VanierLotView extends JFrame {
 		psVanier006.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("006", "Varnier");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 
@@ -118,6 +130,8 @@ public class VanierLotView extends JFrame {
 		psVanier007.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("007", "Varnier");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 
@@ -129,6 +143,8 @@ public class VanierLotView extends JFrame {
 		psVanier008.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserController.addParkingSpot("008", "Varnier");
+				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
 			}
 		});
 
