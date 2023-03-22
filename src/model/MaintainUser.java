@@ -94,16 +94,6 @@ public class MaintainUser extends Maintain{
 				csvOutput.write("license_plate_number");
 				csvOutput.write("price");
 
-				
-
-
-
-
-
-
-
-
-
 				csvOutput.endRecord();
 
 				//Add users in ArrayList to csv file.
