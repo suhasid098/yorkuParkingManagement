@@ -116,7 +116,7 @@ public class RegisterView extends LoginView {
 		                buttonText = button.getText();
 		            }
 		        }
-				String result = UserController.registerUser(thisView.nameField.getText(), thisView.emailField.getText(), new String(thisView.passField.getPassword()), new String(thisView.confirmField.getPassword()), new String(buttonText));
+				String result = UserController.registerUser(thisView.nameField.getText(), thisView.emailField.getText(), new String(thisView.passField.getPassword()), new String(thisView.confirmField.getPassword()), buttonText);
 
 				errorLabel.setText(result);
 				

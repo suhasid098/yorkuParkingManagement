@@ -33,6 +33,11 @@ public class UserController {
 			return "Password does not match Confirm Password.";
 		}
 		
+		//Check that button text isn't null.
+		if(accountType == null) {
+			return "Account type not selected!";
+		}
+		
 		//Create user and update users list and DB.
 		if(!maintain.users.isEmpty()) userCount = maintain.users.get(maintain.users.size()-1).getId() + 1;
 		User user = new User(name, userCount, email, password, accountType);
