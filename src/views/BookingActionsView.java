@@ -78,7 +78,7 @@ public class BookingActionsView extends JFrame{
 		int fontSize = 10;
 		logoutButton.setFont(new Font("Tahoma", Font.PLAIN, fontSize));
 		
-		JLabel lblNewLabel = new JLabel("Hello " + UserController.getLoggedInUser().name);
+		JLabel lblNewLabel = new JLabel("Hello " + UserController.getLoggedInUser().getName());
 		lblNewLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		optionsPane.add(lblNewLabel);
 		

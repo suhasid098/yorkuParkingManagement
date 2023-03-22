@@ -11,7 +11,6 @@ import objects.User;
 public class UserController {
 	private static MaintainUser maintain = MaintainUser.getInstance();
 	private static int userCount = 0;
-	private static User loggedInUser;
 
 	//Attempts to register user. Returns nothing if successful and error message upon fail.
 	public static String registerUser(String name, String email, String password, String confirmPass, String accountType) {
@@ -38,13 +37,16 @@ public class UserController {
 		if(!maintain.users.isEmpty()) userCount = maintain.users.get(maintain.users.size()-1).getId() + 1;
 		User user = new User(name, userCount, email, password, accountType);
 		maintain.users.add(user);
-		loggedInUser = user;
 		try {
-			maintain.update(maintain.path);
+			maintain.update();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+		if(!user.getApproved()) {
+			return "Registration request submitted. Please await approval.";
+		}
+		maintain.loggedInUser = user;
 		return "";
 	}
 	
@@ -62,25 +64,35 @@ public class UserController {
 //	
 	public static String logInUser(String email, String password) {
 		for(User user:maintain.users) {
+			//Check approval status of account with entered email.
+			if(email.equals(user.getEmail()) && !user.getApproved()) {
+				return "Account with this email is not approved.";
+			}
+			//Log in user if username and password are correct
 			if(email.equals(user.getEmail()) && password.equals(user.getPassword())) {
-				loggedInUser = user;
+				maintain.loggedInUser = user;
 				return "";
 			}
+			//Inform user if email exists but password is incorrect and do nothing.
 			if(email.equals(user.getEmail()) && !password.equals(user.getPassword())) {
 				return "Password incorrect.";
 			}
 		}
+		//Otherwise, since email is not in database, inform the user of such.
 		return "Email not registered.";
 	}
 	
+	//Logs out the user.
 	public static void logOutUser() {
-		loggedInUser = null;
+		maintain.loggedInUser = null;
 	}
 	
+	//Returns the logged in user.
 	public static User getLoggedInUser() {
-		return loggedInUser;
+		return maintain.loggedInUser;
 	}
 	
+	//Checks that the entered password is valid.
 	private static String checkPassword(String password) {
 		boolean lowercase = false;
 		boolean uppercase = false;
@@ -126,6 +138,7 @@ public class UserController {
 		return result + ".";
 	}
 	
+	//Checks that the entered email is valid.
 	private static String checkEmail(String email) {
 		//Check email format.
 		if(!(email.contains("@") && (email.contains(".ca") || email.contains(".com")))) {
@@ -140,10 +153,65 @@ public class UserController {
 		return "";
 	}
 	
+	//Gets a list of the users that have yet to be fully registered.
+	public static ArrayList<User> getUnapprovedUsers() {
+		ArrayList<User> users = new ArrayList<User>();
+		for(User user:maintain.users) {
+			if(!user.getApproved()) {
+				users.add(user);
+			}
+		}
+		
+		return users;
+	}
+	
+	//Sets a user's registration/account status to approved.
+	public static boolean approveUser(User user) {
+		boolean updated = false;
+		
+		if(maintain.loggedInUser != null) {
+			return false;
+		}
+		for(User u:maintain.users) {
+			if(user.getId() == u.getId()) {
+				u.setApproved(true);
+				updated = true;
+			}
+		}
+		
+		try {
+			maintain.update();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return updated;
+	}
+	
+	//Removes the given unapproved account from the database.
+	public static boolean denyUser(User user) {
+		if(maintain.loggedInUser != null) {
+			return false;
+		}
+		if(user.getApproved()) {
+			return false;
+		}
+		
+		maintain.users.remove(user);
+		try {
+			maintain.update();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
+	}
+	
 	public static boolean isSpotTaken(String spot, String lot) {
 		System.out.println("expected:" + spot + " " + lot);
 		try {
-			maintain.update(maintain.path);
+			maintain.update();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -173,13 +241,13 @@ public class UserController {
 //	}
 	//try with just loggedInuser varaible
 	public static void addParkingSpot(String spotID, String lotName) {
-		maintain.users.get(loggedInUser.getId()).setParkingSpot(spotID);
-		maintain.users.get(loggedInUser.getId()).setParkingLot(lotName);
+		maintain.users.get(maintain.loggedInUser.getId()).setParkingSpot(spotID);
+		maintain.users.get(maintain.loggedInUser.getId()).setParkingLot(lotName);
 		
 		try {
-			System.out.println(maintain.users.get(loggedInUser.getId()).getParkingSpotName());
-			System.out.println(maintain.users.get(loggedInUser.getId()).getLotName());
-			maintain.update(maintain.path);
+			System.out.println(maintain.users.get(maintain.loggedInUser.getId()).getParkingSpotName());
+			System.out.println(maintain.users.get(maintain.loggedInUser.getId()).getLotName());
+			maintain.update();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -195,12 +263,9 @@ public class UserController {
 		maintain.users.get(loggedInUser.getId()).setParkingStartTime(startTime);
 		maintain.users.get(loggedInUser.getId()).setParkingEndTime(endTime);
 		maintain.users.get(loggedInUser.getId()).setPrice(price);
-
-
-
 		
 		try {
-			maintain.update(maintain.path);
+			maintain.update();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -209,9 +274,9 @@ public class UserController {
 
 		
 	public static void addPlateNumber(String plateNumber) {
-		maintain.users.get(loggedInUser.getId()).setplateNumber(plateNumber);
+		maintain.users.get(maintain.loggedInUser.getId()).setplateNumber(plateNumber);
 		try {
-			maintain.update(maintain.path);
+			maintain.update();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -242,13 +307,13 @@ public class UserController {
 				u.refund(price);			
 //		}
 		try {
-			maintain.update(maintain.path);
+			maintain.update();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-
+		
 
 
 		

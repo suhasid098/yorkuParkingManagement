@@ -75,7 +75,7 @@ public class CheckoutView extends JFrame{
         Container contentPane = this.getContentPane();
         getContentPane().setLayout(null);
 
-        JLabel nameLabel = new JLabel("The total for " + UserController.getLoggedInUser().name);
+        JLabel nameLabel = new JLabel("The total for " + UserController.getLoggedInUser().getName());
         nameLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
         nameLabel.setBounds(10, 11, 159, 25);
         getContentPane().add(nameLabel);
