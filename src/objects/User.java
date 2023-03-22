@@ -18,6 +18,7 @@ public class User extends Account{
 	public LocalDateTime parkingStartTime;
 	public LocalDateTime parkingEndTime;
 	public String plateNumber;
+	public int price;
 
 	
 	// could create a parking object with start date, end date, lotname,parkingspotname
@@ -42,7 +43,7 @@ public class User extends Account{
 	
 	//updating balance of either credit or debit card
 	public void chargeUser(String payementType, int parkingfee) {
-		paymentType = payementType;
+		this.paymentType = payementType;
 		parkingFee = parkingfee;
 		if(payementType.equalsIgnoreCase("credit")) {
 			creditBalnce = creditBalnce + parkingfee;
@@ -59,9 +60,19 @@ public class User extends Account{
 	}
 	public void setDebitBalance(String balance) {
 		if(balance.equals("")) {
-			this.creditBalnce = 1000;
+			this.debitBalance = 1000;
 		}
 		this.debitBalance = Integer.parseInt(balance);
+	}
+
+
+	public void refund(int balance) {
+		if(this.paymentType.equals("Credit")) {
+			this.creditBalnce = this.creditBalnce - balance;
+		}else {
+			this.debitBalance = this.debitBalance + balance;
+
+		}
 	}
 
 	public void setPaymentType(String paymentType1) {
@@ -145,11 +156,6 @@ public class User extends Account{
 		this.approved = approved;
 	}
 
-	@Override
-	public String toString() {
-		return "User [name=" + name + ", id=" + id + ", email=" + email + ", password=" + password + ", accountType="
-				+ accountType + "]";
-	}
 
 	public void setParkingLot(String lotName) {
 		this.lotName = lotName;
@@ -190,7 +196,16 @@ public class User extends Account{
 	public String getPlateNumber() {
 		return this.plateNumber;
 	}
-	
+
+	public void setPrice(int price) {
+		this.price = price;		
+	}
+	public void addPrice(int addedPrice) {
+		this.price = this.price + addedPrice;
+	}
+	public int getPrice() {
+		return this.price;
+	}
 	
 	
 }

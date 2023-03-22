@@ -1,5 +1,6 @@
 package controllers;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -255,14 +256,13 @@ public class UserController {
 	public static void checkoutInfo(String cardName, String cardNumber, String cvvNumber, String creditDebitText, int price, LocalDateTime startTime, LocalDateTime endTime) {
 //		double rate = maintain.users.get(loggedInUser.getId()).getRate();
 //		int price = rate*hou
-		maintain.users.get(maintain.loggedInUser.getId()).setCardName(cardName);
-		maintain.users.get(maintain.loggedInUser.getId()).setCardNumber(cardNumber);
-		maintain.users.get(maintain.loggedInUser.getId()).setCvvNumber(cvvNumber);
-		maintain.users.get(maintain.loggedInUser.getId()).chargeUser(creditDebitText, price);
-		maintain.users.get(maintain.loggedInUser.getId()).setParkingStartTime(startTime);
-		maintain.users.get(maintain.loggedInUser.getId()).setParkingEndTime(endTime);
-
-
+		maintain.users.get(loggedInUser.getId()).setCardName(cardName);
+		maintain.users.get(loggedInUser.getId()).setCardNumber(cardNumber);
+		maintain.users.get(loggedInUser.getId()).setCvvNumber(cvvNumber);
+		maintain.users.get(loggedInUser.getId()).chargeUser(creditDebitText, price);
+		maintain.users.get(loggedInUser.getId()).setParkingStartTime(startTime);
+		maintain.users.get(loggedInUser.getId()).setParkingEndTime(endTime);
+		maintain.users.get(loggedInUser.getId()).setPrice(price);
 		
 		try {
 			maintain.update();
@@ -286,10 +286,26 @@ public class UserController {
 
 
 	public static void removeParkingLot() {
-		maintain.users.get(maintain.loggedInUser.getId()).setParkingEndTime(null);
-		maintain.users.get(maintain.loggedInUser.getId()).setParkingStartTime(null);
-		maintain.users.get(maintain.loggedInUser.getId()).setParkingLot("");
-		maintain.users.get(maintain.loggedInUser.getId()).setParkingSpot("");
+		maintain.users.get(loggedInUser.getId()).setParkingEndTime(null);
+		maintain.users.get(loggedInUser.getId()).setParkingStartTime(null);
+		maintain.users.get(loggedInUser.getId()).setParkingLot("");
+		maintain.users.get(loggedInUser.getId()).setParkingSpot("");
+		LocalDateTime startTime = maintain.users.get(loggedInUser.getId()).getParkingStartTime();
+		LocalDateTime en = maintain.users.get(loggedInUser.getId()).getParkingEndTime();
+
+		LocalDateTime currTime = LocalDateTime.now();
+		System.out.println("hey");
+//		Duration diff1 = Duration.between(startTime,en);
+		System.out.println(currTime);
+//		System.out.println(diff1ss);
+		System.out.println("hii");
+
+
+		User u = maintain.users.get(loggedInUser.getId());
+		int price = u.getPrice();
+//		if(diff1.toHours() >= 1) { // if booking canceled at least 1 hour before start time give user refund
+				u.refund(price);			
+//		}
 		try {
 			maintain.update();
 		} catch (Exception e) {
@@ -301,6 +317,28 @@ public class UserController {
 
 
 		
+	}
+
+
+	public static String getRefundAmount() {
+		return maintain.users.get(loggedInUser.getId()).getPrice() + "";
+	}
+	public static String getType() {
+		return maintain.users.get(loggedInUser.getId()).getPaymentType() + "";
+	}
+
+
+	public static void extendTime(int hours, int price1) {
+		maintain.users.get(loggedInUser.getId()).setParkingEndTime(maintain.users.get(loggedInUser.getId()).getParkingEndTime().plusHours(hours));
+		maintain.users.get(loggedInUser.getId()).chargeUser(maintain.users.get(loggedInUser.getId()).getPaymentType(), price1);
+		maintain.users.get(loggedInUser.getId()).addPrice(price1);
+		try {
+			maintain.update(maintain.path);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 }

@@ -112,7 +112,7 @@ public class CheckoutView extends JFrame{
         getContentPane().add(cardNumberField);
         cardNumberField.setColumns(10);
         cardNumberField.addKeyListener(new KeyAdapter() {
-            @Override
+//            @Override
             public void keyTyped(KeyEvent e) {
                 if (cardNumberField.getText().length() >= 12 ) // limit to 12 characters
                     e.consume();
@@ -136,7 +136,7 @@ public class CheckoutView extends JFrame{
         getContentPane().add(cvvField);
         cvvField.setColumns(10);
         cvvField.addKeyListener(new KeyAdapter() {
-            @Override
+//            @Override
             public void keyTyped(KeyEvent e) {
                 if (cvvField.getText().length() >= 3 ) // limit to 3 characters
                     e.consume();
@@ -361,7 +361,7 @@ btnNewButton.addActionListener(new ActionListener() {
 			System.out.println("price: " + price);
 			System.out.println("t1: " + endTime);
 			System.out.println("t2: " + String.valueOf(endTime));
-			System.out.println("t3: " + endTime.toString());
+//			System.out.println("t3: " + endTime.toString());
 
 			UserController.checkoutInfo(nameOnCard, cardNumber, cvvNumber, creditDebitText, price1, startTime, endTime);
 

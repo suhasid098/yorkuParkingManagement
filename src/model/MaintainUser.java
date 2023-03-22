@@ -62,6 +62,8 @@ public class MaintainUser extends Maintain{
 				user.setParkingEndTime(LocalDateTime.parse(reader.get("parking_endTime")));
 			}
 			user.setplateNumber(reader.get("license_plate_number"));
+			user.setPrice(Integer.valueOf(reader.get("price")));
+
 			users.add(user);
 		}
 	}
@@ -90,6 +92,9 @@ public class MaintainUser extends Maintain{
 				csvOutput.write("parking_startTime");
 				csvOutput.write("parking_endTime");
 				csvOutput.write("license_plate_number");
+				csvOutput.write("price");
+
+				
 
 
 
@@ -122,7 +127,8 @@ public class MaintainUser extends Maintain{
 					csvOutput.write(String.valueOf(u.getParkingStartTime()));
 					csvOutput.write(String.valueOf(u.getParkingEndTime()));
 					csvOutput.write(u.getPlateNumber());
-					
+					csvOutput.write(String.valueOf(u.getPrice()));
+
 					csvOutput.endRecord();
 				}
 				csvOutput.close();
