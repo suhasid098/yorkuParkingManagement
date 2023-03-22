@@ -7,10 +7,12 @@ import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
 import objects.Manager;
+import objects.SuperManager;
 
 //Singleton pattern.
 public class MaintainManager extends Maintain {
 	public ArrayList<Manager> managers = new ArrayList<Manager>();
+	public Manager loggedInManager = null;
 	
 	private static final MaintainManager maintain = new MaintainManager();
 	
@@ -19,6 +21,7 @@ public class MaintainManager extends Maintain {
 
 		try {
 			this.load();
+			System.out.println(managers.get(0).getName());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -37,9 +40,15 @@ public class MaintainManager extends Maintain {
 		
 		//For each row, add a manager to the Manager ArrayList using the data in each column as the attributes.
 		while(reader.readRecord()){ 
-			Manager manager = new Manager();
+			int id = Integer.valueOf(reader.get("id"));
+			Manager manager;
+			if(id == 0) {
+				manager = new SuperManager();
+			} else {
+				manager = new Manager();
+			}
 			manager.setName(reader.get("name"));
-			manager.setId(Integer.valueOf(reader.get("id")));
+			manager.setId(id);
 			manager.setPassword(reader.get("password"));
 			managers.add(manager);
 		}

@@ -11,6 +11,7 @@ import objects.User;
 //Singleton pattern.
 public class MaintainUser extends Maintain{
 	public ArrayList<User> users = new ArrayList<User>();
+	public User loggedInUser = null;
 	
 	private static final MaintainUser maintain = new MaintainUser();
 	

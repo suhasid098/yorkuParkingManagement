@@ -3,18 +3,16 @@ package controllers;
 import model.MaintainManager;
 import objects.Manager;
 import objects.SuperManager;
+import objects.User;
 
 public class ManagerController {
 	private static MaintainManager maintain = MaintainManager.getInstance();
-	private static Manager loggedInManager;
-	private static int managerCount = 0;
+	private static int managerCount = 1;
 	
-	public static boolean generateManager() {
-		try {
-			SuperManager manager = (SuperManager) loggedInManager;
-		}catch(Exception e) {
+	public static Manager generateManager() {
+		if(maintain.loggedInManager.getId() != 0) {
 			System.out.println("Logged in manager is not super manager!");
-			return false;
+			return null;
 		}
 		
 		//Create user and update users list and DB.
@@ -25,14 +23,13 @@ public class ManagerController {
 		Manager manager = new Manager("Manager" + managerCount, managerCount, generatePassword());
 		System.out.println("Username: " + manager.getName() + "\nPassword: " + manager.getPassword());
 		maintain.managers.add(manager);
-		loggedInManager = manager;
 		try {
 			maintain.update();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return true;
+		return manager;
 	}
 	
 	private static String generatePassword() {
@@ -49,5 +46,26 @@ public class ManagerController {
 		password = password+((int)(Math.random()*10));
 		
 		return password;
+	}
+	
+	public static String logInManager(String name, String password) {
+		for(Manager m:maintain.managers) {
+			if(name.equals(m.getName()) && password.equals(m.getPassword())) {
+				maintain.loggedInManager = m;
+				return "";
+			}
+			if(name.equals(m.getName()) && !password.equals(m.getPassword())) {
+				return "Password incorrect.";
+			}
+		}
+		return "Account does not exist.";
+	}
+	
+	public static void logOutManager() {
+		maintain.loggedInManager = null;
+	}
+	
+	public static Manager getLoggedInManager() {
+		return maintain.loggedInManager;
 	}
 }

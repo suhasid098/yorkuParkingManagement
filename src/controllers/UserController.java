@@ -10,7 +10,6 @@ import objects.User;
 public class UserController {
 	private static MaintainUser maintain = MaintainUser.getInstance();
 	private static int userCount = 0;
-	private static User loggedInUser;
 
 	//Attempts to register user. Returns nothing if successful and error message upon fail.
 	public static String registerUser(String name, String email, String password, String confirmPass, String accountType) {
@@ -37,7 +36,7 @@ public class UserController {
 		if(!maintain.users.isEmpty()) userCount = maintain.users.get(maintain.users.size()-1).getId() + 1;
 		User user = new User(name, userCount, email, password, accountType);
 		maintain.users.add(user);
-		loggedInUser = user;
+		maintain.loggedInUser = user;
 		try {
 			maintain.update();
 		} catch (Exception e) {
@@ -62,7 +61,7 @@ public class UserController {
 	public static String logInUser(String email, String password) {
 		for(User user:maintain.users) {
 			if(email.equals(user.getEmail()) && password.equals(user.getPassword())) {
-				loggedInUser = user;
+				maintain.loggedInUser = user;
 				return "";
 			}
 			if(email.equals(user.getEmail()) && !password.equals(user.getPassword())) {
@@ -73,11 +72,11 @@ public class UserController {
 	}
 	
 	public static void logOutUser() {
-		loggedInUser = null;
+		maintain.loggedInUser = null;
 	}
 	
 	public static User getLoggedInUser() {
-		return loggedInUser;
+		return maintain.loggedInUser;
 	}
 	
 	private static String checkPassword(String password) {
@@ -172,12 +171,12 @@ public class UserController {
 //	}
 	//try with just loggedInuser varaible
 	public static void addParkingSpot(String spotID, String lotName) {
-		maintain.users.get(loggedInUser.getId()).setParkingSpot(spotID);
-		maintain.users.get(loggedInUser.getId()).setParkingLot(lotName);
+		maintain.users.get(maintain.loggedInUser.getId()).setParkingSpot(spotID);
+		maintain.users.get(maintain.loggedInUser.getId()).setParkingLot(lotName);
 		
 		try {
-			System.out.println(maintain.users.get(loggedInUser.getId()).getParkingSpotName());
-			System.out.println(maintain.users.get(loggedInUser.getId()).getLotName());
+			System.out.println(maintain.users.get(maintain.loggedInUser.getId()).getParkingSpotName());
+			System.out.println(maintain.users.get(maintain.loggedInUser.getId()).getLotName());
 			maintain.update();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -187,12 +186,12 @@ public class UserController {
 	public static void checkoutInfo(String cardName, String cardNumber, String cvvNumber, String creditDebitText, int price, LocalDateTime startTime, LocalDateTime endTime) {
 //		double rate = maintain.users.get(loggedInUser.getId()).getRate();
 //		int price = rate*hou
-		maintain.users.get(loggedInUser.getId()).setCardName(cardName);
-		maintain.users.get(loggedInUser.getId()).setCardNumber(cardNumber);
-		maintain.users.get(loggedInUser.getId()).setCvvNumber(cvvNumber);
-		maintain.users.get(loggedInUser.getId()).chargeUser(creditDebitText, price);
-		maintain.users.get(loggedInUser.getId()).setParkingStartTime(startTime);
-		maintain.users.get(loggedInUser.getId()).setParkingEndTime(endTime);
+		maintain.users.get(maintain.loggedInUser.getId()).setCardName(cardName);
+		maintain.users.get(maintain.loggedInUser.getId()).setCardNumber(cardNumber);
+		maintain.users.get(maintain.loggedInUser.getId()).setCvvNumber(cvvNumber);
+		maintain.users.get(maintain.loggedInUser.getId()).chargeUser(creditDebitText, price);
+		maintain.users.get(maintain.loggedInUser.getId()).setParkingStartTime(startTime);
+		maintain.users.get(maintain.loggedInUser.getId()).setParkingEndTime(endTime);
 
 
 		
@@ -206,7 +205,7 @@ public class UserController {
 
 		
 	public static void addPlateNumber(String plateNumber) {
-		maintain.users.get(loggedInUser.getId()).setplateNumber(plateNumber);
+		maintain.users.get(maintain.loggedInUser.getId()).setplateNumber(plateNumber);
 		try {
 			maintain.update();
 		} catch (Exception e) {
@@ -218,10 +217,10 @@ public class UserController {
 
 
 	public static void removeParkingLot() {
-		maintain.users.get(loggedInUser.getId()).setParkingEndTime(null);
-		maintain.users.get(loggedInUser.getId()).setParkingStartTime(null);
-		maintain.users.get(loggedInUser.getId()).setParkingLot("");
-		maintain.users.get(loggedInUser.getId()).setParkingSpot("");
+		maintain.users.get(maintain.loggedInUser.getId()).setParkingEndTime(null);
+		maintain.users.get(maintain.loggedInUser.getId()).setParkingStartTime(null);
+		maintain.users.get(maintain.loggedInUser.getId()).setParkingLot("");
+		maintain.users.get(maintain.loggedInUser.getId()).setParkingSpot("");
 		try {
 			maintain.update();
 		} catch (Exception e) {
