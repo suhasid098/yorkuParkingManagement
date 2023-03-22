@@ -74,6 +74,16 @@ public class LotChoiceView extends JFrame {
 		lblNewLabel_2.setForeground(Color.RED);
 		lblNewLabel_2.setBounds(136, 300, 152, 14);
 		getContentPane().add(lblNewLabel_2);
+		
+		JButton btnNewButton_1 = new JButton("Back");
+		btnNewButton_1.setBounds(244, 381, 89, 23);
+		getContentPane().add(btnNewButton_1);
+		  btnNewButton_1.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent e) {
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+
+	        	}
+	        });
 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -102,7 +112,7 @@ public class LotChoiceView extends JFrame {
 		});
 		
 		textField.addKeyListener(new KeyAdapter() {
-	            @Override
+//	            @Override
 	            public void keyTyped(KeyEvent e) {
 	                if (textField.getText().length() >= 8 ) // limit to 8 characters
 	                    e.consume();
