@@ -21,7 +21,6 @@ public class MaintainManager extends Maintain {
 
 		try {
 			this.load();
-			System.out.println(managers.get(0).getName());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

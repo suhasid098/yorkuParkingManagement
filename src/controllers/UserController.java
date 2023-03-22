@@ -165,12 +165,46 @@ public class UserController {
 	}
 	
 	//Sets a user's registration/account status to approved.
-	public static void approveUser(User user) {
+	public static boolean approveUser(User user) {
+		boolean updated = false;
+		
 		if(maintain.loggedInUser != null) {
-			return;
+			return false;
+		}
+		for(User u:maintain.users) {
+			if(user.getId() == u.getId()) {
+				u.setApproved(true);
+				updated = true;
+			}
 		}
 		
-		user.setApproved(true);
+		try {
+			maintain.update();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return updated;
+	}
+	
+	//Removes the given unapproved account from the database.
+	public static boolean denyUser(User user) {
+		if(maintain.loggedInUser != null) {
+			return false;
+		}
+		if(user.getApproved()) {
+			return false;
+		}
+		
+		maintain.users.remove(user);
+		try {
+			maintain.update();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
 	}
 	
 	public static boolean isSpotTaken(String spot, String lot) {

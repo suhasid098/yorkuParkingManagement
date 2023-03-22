@@ -1,3 +1,3 @@
 name,id,email,password,parking_spot,lot,account_type,approved,payment_type,name_on_card,card_number,cvv_number,credit_balance,debit_balance,parking_startTime,parking_endTime,license_plate_number
-test,0,test@test.ca,Aa!1,,,Visitor,true,,,,,0,1000,null,null,
-student,1,student@gmail.com,Aa!1,,,Student,false,,,,,0,1000,null,null,
+test,0,test@test.ca,Aa!1,,,Visitor,TRUE,,,,,0,1000,null,null,
+student,1,student@my.yorku.ca,Aa!1,,,Student,FALSE,,,,,0,1000,null,null,

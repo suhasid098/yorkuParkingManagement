@@ -21,7 +21,6 @@ public class ManagerController {
 			managerCount = maintain.managers.get(maintain.managers.size()-1).getId() + 1;
 		}
 		Manager manager = new Manager("Manager" + managerCount, managerCount, generatePassword());
-		System.out.println("Username: " + manager.getName() + "\nPassword: " + manager.getPassword());
 		maintain.managers.add(manager);
 		try {
 			maintain.update();

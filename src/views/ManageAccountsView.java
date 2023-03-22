@@ -29,6 +29,9 @@ public class ManageAccountsView extends JFrame {
 	//Previous frame instance.
 	private Main frame;
 	
+	//Selected list value
+	private int selectedIndex = -1;
+	
 	//List and list model for parking lots
 	private DefaultListModel<String> listModel = new DefaultListModel<>();
 	private JList<String> accountList = new JList<String>(listModel);
@@ -40,12 +43,12 @@ public class ManageAccountsView extends JFrame {
 		/*We should have the parking lots stored somewhere and this string should
 		* grab the names from each lot object, this really shouldn't be hardcoded.*/
 		for(User user: UserController.getUnapprovedUsers()) {
-			listModel.addElement("Name: " + user.getName() + "    Email: " + user.getEmail());
+			listModel.addElement("Type: " + user.getAccountType() + "    Email: " + user.getEmail() + "    Name: " + user.getName());
 		}
 			
 		//Set up List dimensions.
-		accountList.setPrototypeCellValue("Using this to set the list cell width");
-		accountList.setPreferredSize(new Dimension(200, 300));
+		accountList.setPrototypeCellValue("Using this to set the list cell width because I don't know of a better way to do it.");
+		accountList.setPreferredSize(new Dimension(300, 300));
 	}
 	
 	//Adds account generation option if logged in manager is super manager.
@@ -92,6 +95,13 @@ public class ManageAccountsView extends JFrame {
 		//Make an invisible border for the pane.
 		listPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
+		//Make a panel for approve and deny buttons.
+		JPanel buttonPane = new JPanel();
+		//Set the pane's layout manager to the vertical box layout.
+		buttonPane.setLayout(new BoxLayout(buttonPane, BoxLayout.LINE_AXIS));
+		//Make an invisible border for the pane.
+		buttonPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
 		//Make a panel for account generation.
 		JPanel accountPane = new JPanel();
 		//Set the pane's layout manager to the horizontal box layout.
@@ -116,19 +126,27 @@ public class ManageAccountsView extends JFrame {
 		//Result Message.
 		JLabel accountLabel = new JLabel(" ");
 		labelPane.add(accountLabel);
+		//Make approve and deny buttons and disable them by default.
+		JButton approveButton = new JButton("Approve");
+		JButton denyButton = new JButton("Deny");
+		approveButton.setEnabled(false);
+		denyButton.setEnabled(false);
 		//Make button for generating accounts for super manager.
-		JButton accountButton = new JButton("Generate Account");
+		JButton accountButton = new JButton("Generate Manager");
 		//Make a new button for loging out.
 		JButton backButton = new JButton("Back");
 		
 		//Align components.
 		listLabel.setAlignmentX(CENTER_ALIGNMENT);
+		buttonPane.setAlignmentX(CENTER_ALIGNMENT);
 		labelPane.setAlignmentX(CENTER_ALIGNMENT);
 		accountButton.setAlignmentX(CENTER_ALIGNMENT);
 				
 		//Set up fonts and font sizes.
 		int fontSize = 10;
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, fontSize));
+		approveButton.setFont(new Font("Tahoma", Font.PLAIN, fontSize));
+		denyButton.setFont(new Font("Tahoma", Font.PLAIN, fontSize));
 		listLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		//Set up label pane size.
@@ -146,12 +164,19 @@ public class ManageAccountsView extends JFrame {
 		listPane.add(Box.createRigidArea(new Dimension(0, componentSeperation)));
 		listPane.add(Box.createVerticalGlue()); //Makes components move with the bottom of the pane. Used in centering components with resizing.
 		
+		buttonPane.add(Box.createHorizontalGlue());
+		buttonPane.add(denyButton);
+		buttonPane.add(Box.createRigidArea(new Dimension(componentSeperation, 0)));
+		buttonPane.add(approveButton);
+		buttonPane.add(Box.createHorizontalGlue());
+		
 		accountPaneSetup(accountPane, accountButton, labelPane);
 		
 		backPane.add(Box.createHorizontalGlue());
 		backPane.add(backButton);
 		
 		centerPane.add(listPane);
+		centerPane.add(buttonPane);
 		centerPane.add(Box.createRigidArea(new Dimension(0, componentSeperation)));
 		centerPane.add(accountPane);
 		
@@ -169,30 +194,56 @@ public class ManageAccountsView extends JFrame {
 		        		return;
 		        	}
 		        	
+					approveButton.setEnabled(true);
+					denyButton.setEnabled(true);
+		        	
 		        	//Determine selected list item and disable or enable the lot that corresponds to that item.
 		        	String selectedValue = (String) accountList.getSelectedValue();
 		            for(int i = 0; i<listModel.getSize(); i++) {
 		            	if(listModel.getElementAt(i).equals(selectedValue)) {
-		            		//Disable or enable entire lot here.
+		            		thisView.selectedIndex = i;
 		            	}
 		            }
 		        }
 		    }
 		});
 		
-		//Set up what to do when an item in the ingredient list is double-clicked.
-		accountList.addMouseListener(new MouseAdapter() {
-		    public void mouseClicked(MouseEvent e) {
-		        if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
-		        	//Switch to lot view to allow for parking space toggling.
-		        }
-		    }
-		});
-		
-		//Set up what to do when the logout button is pressed.
+		//Set up what to do when the back button is pressed.
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thisView.frame.changeContentPane(new ManagerActionsView(thisView.frame), "Manager Actions");
+			}
+		});
+		
+		//Set up what to do when the approve button is pressed.
+		approveButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(thisView.selectedIndex == -1) {
+					return;
+				}
+				UserController.approveUser(UserController.getUnapprovedUsers().get(thisView.selectedIndex));
+				thisView.accountList.clearSelection();
+				thisView.listModel.removeElementAt(selectedIndex);
+				thisView.selectedIndex = -1;
+				
+				approveButton.setEnabled(false);
+				denyButton.setEnabled(false);
+			}
+		});
+		
+		//Set up what to do when the deny button is pressed.
+		denyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(thisView.selectedIndex == -1) {
+					return;
+				}
+				UserController.denyUser(UserController.getUnapprovedUsers().get(thisView.selectedIndex));
+				thisView.accountList.clearSelection();
+				thisView.listModel.removeElementAt(selectedIndex);
+				thisView.selectedIndex = -1;
+				
+				approveButton.setEnabled(false);
+				denyButton.setEnabled(false);
 			}
 		});
 		
@@ -201,7 +252,7 @@ public class ManageAccountsView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Manager manager = ManagerController.generateManager();
 				if(manager != null) {
-					accountLabel.setText("<html><center>Account Successfully Generated<br> <br>Username: " + manager.getName() + "<br>Password: " + manager.getPassword() + "</center></html>");
+					accountLabel.setText("<html><center>Username: " + manager.getName() + "<br>Password: " + manager.getPassword() + "</center></html>");
 				}				
 			}
 		});
