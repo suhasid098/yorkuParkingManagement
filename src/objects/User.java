@@ -7,6 +7,7 @@ public class User extends Account{
 	public String parkingSpotName;
 	public String lotName;
 	public String accountType;
+	boolean approved;
 	public double rate;
 	public String cardName;
 	public String cardNumber;
@@ -28,6 +29,11 @@ public class User extends Account{
 		this.parkingSpotName = "";
 		this.lotName = "";
 		this.accountType = accountType;
+		if(this.accountType.equals("Visitor")) {
+			approved = true;
+		}else {
+			approved = false;
+		}
 		this.rate = getRate();
 	}
 	
@@ -129,6 +135,14 @@ public class User extends Account{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public boolean getApproved() {
+		return this.approved;
+	}
+	
+	public void setApproved(boolean approved) {
+		this.approved = approved;
 	}
 
 	@Override

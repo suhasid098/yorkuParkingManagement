@@ -36,13 +36,16 @@ public class UserController {
 		if(!maintain.users.isEmpty()) userCount = maintain.users.get(maintain.users.size()-1).getId() + 1;
 		User user = new User(name, userCount, email, password, accountType);
 		maintain.users.add(user);
-		maintain.loggedInUser = user;
 		try {
 			maintain.update();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+		if(!user.getApproved()) {
+			return "Registration request submitted. Please await approval.";
+		}
+		maintain.loggedInUser = user;
 		return "";
 	}
 	
@@ -60,25 +63,35 @@ public class UserController {
 //	
 	public static String logInUser(String email, String password) {
 		for(User user:maintain.users) {
+			//Check approval status of account with entered email.
+			if(email.equals(user.getEmail()) && !user.getApproved()) {
+				return "Account with this email is not approved.";
+			}
+			//Log in user if username and password are correct
 			if(email.equals(user.getEmail()) && password.equals(user.getPassword())) {
 				maintain.loggedInUser = user;
 				return "";
 			}
+			//Inform user if email exists but password is incorrect and do nothing.
 			if(email.equals(user.getEmail()) && !password.equals(user.getPassword())) {
 				return "Password incorrect.";
 			}
 		}
+		//Otherwise, since email is not in database, inform the user of such.
 		return "Email not registered.";
 	}
 	
+	//Logs out the user.
 	public static void logOutUser() {
 		maintain.loggedInUser = null;
 	}
 	
+	//Returns the logged in user.
 	public static User getLoggedInUser() {
 		return maintain.loggedInUser;
 	}
 	
+	//Checks that the entered password is valid.
 	private static String checkPassword(String password) {
 		boolean lowercase = false;
 		boolean uppercase = false;
@@ -124,6 +137,7 @@ public class UserController {
 		return result + ".";
 	}
 	
+	//Checks that the entered email is valid.
 	private static String checkEmail(String email) {
 		//Check email format.
 		if(!(email.contains("@") && (email.contains(".ca") || email.contains(".com")))) {
@@ -136,6 +150,27 @@ public class UserController {
 		}
 		
 		return "";
+	}
+	
+	//Gets a list of the users that have yet to be fully registered.
+	public static ArrayList<User> getUnapprovedUsers() {
+		ArrayList<User> users = new ArrayList<User>();
+		for(User user:maintain.users) {
+			if(!user.getApproved()) {
+				users.add(user);
+			}
+		}
+		
+		return users;
+	}
+	
+	//Sets a user's registration/account status to approved.
+	public static void approveUser(User user) {
+		if(maintain.loggedInUser != null) {
+			return;
+		}
+		
+		user.setApproved(true);
 	}
 	
 	public static boolean isSpotTaken(String spot, String lot) {
@@ -228,7 +263,7 @@ public class UserController {
 			e.printStackTrace();
 		}
 
-
+		
 
 
 		

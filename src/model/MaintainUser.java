@@ -45,6 +45,7 @@ public class MaintainUser extends Maintain{
 			user.setParkingSpot(reader.get("parking_spot"));
 			user.setParkingLot(reader.get("lot"));
 			user.setAccountType(reader.get("account_type"));
+			user.setApproved(Boolean.valueOf(reader.get("approved")));
 			user.setPaymentType(reader.get("payment_type"));
 			user.setCardName(reader.get("name_on_card"));
 			user.setCardNumber(reader.get("card_number"));
@@ -79,6 +80,7 @@ public class MaintainUser extends Maintain{
 				csvOutput.write("parking_spot");
 				csvOutput.write("lot");
 				csvOutput.write("account_type");
+				csvOutput.write("approved");
 				csvOutput.write("payment_type");
 				csvOutput.write("name_on_card");
 				csvOutput.write("card_number");
@@ -108,6 +110,7 @@ public class MaintainUser extends Maintain{
 					csvOutput.write(u.getParkingSpotName());
 					csvOutput.write(u.getLotName());
 					csvOutput.write(u.getAccountType());
+					csvOutput.write(String.valueOf(u.getApproved()));
 					csvOutput.write(u.getPaymentType());
 					csvOutput.write(u.getCardName());
 					csvOutput.write(u.getCardNumber());

@@ -153,7 +153,7 @@ public class LoginView extends JFrame{
 				if(user) {
 					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
 				}else {
-					thisView.frame.changeContentPane(new ManagerActionsView(thisView.frame), "Manager Options");
+					thisView.frame.changeContentPane(new ManagerActionsView(thisView.frame), "Manager Actions");
 				}
 				
 					
