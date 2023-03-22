@@ -7,6 +7,9 @@ import controllers.UserController;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 @SuppressWarnings("serial")
 public class BookingActionsView extends JFrame{
@@ -94,6 +97,15 @@ public class BookingActionsView extends JFrame{
 //		optionsPane.add(logoutButton); //Adds name field to pane.
 		optionsPane.add(Box.createVerticalGlue()); //Makes components move with the bottom of the pane. Used in centering components with resizing.
 		
+		JButton btnNewButton = new JButton("Back");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				thisView.frame.changeContentPane(new Main(), "Main");
+			}
+		});
+		logoutPane.add(btnNewButton);
+		
+
 		//Add logout button to logout panel.
 		logoutPane.add(Box.createHorizontalGlue()); //Makes components keep with the right of the pane. Used in centering components with resizing.
 		logoutPane.add(logoutButton); //Adds name label to pane.
@@ -128,18 +140,28 @@ public class BookingActionsView extends JFrame{
 		//Set up what to do when the edit button is pressed.
 		editButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-											
+				thisView.frame.changeContentPane(new EditBookingView(thisView.frame), "Edit");					
 			}
 		});
 				
 		//Set up what to do when the cancel button is pressed.
 		cancelButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boolean result = false;
-				if(result = true) {
-					JOptionPane.showMessageDialog(null, "Booking canceled");
-					UserController.removeParkingLot();
+			LocalDateTime current = LocalDateTime.now();
+			LocalDateTime startTime = UserController.getLoggedInUser().getParkingStartTime();
+			long duration = -1;
+		    public void actionPerformed(ActionEvent e) { // Req 8,9
+		    	if(current == null || startTime == null) {
+					
+				}else {
+				     duration = current.until(startTime, ChronoUnit.MINUTES);
 				}
+				if(duration > 0) {
+					UserController.removeParkingLot();
+					JOptionPane.showMessageDialog(null, "Booking canceled, Refund of $" + UserController.getRefundAmount() + " deposited into " + UserController.getType()+" card");
+				}else {
+					JOptionPane.showMessageDialog(null, "Too late");
+				}
+					
 											
 			}
 		});

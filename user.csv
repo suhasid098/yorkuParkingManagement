@@ -1,10 +1,7 @@
-name,id,email,password,parking_spot,lot,account_type,payment_type,name_on_card,card_number,cvv_number,credit_balance,debit_balance,parking_startTime,parking_endTime,license_plate_number
-harry,0,h@gmail.com,Password1!,004,Bethune,Faculty,,,,,0,1000,null,null,
-tom,1,t@gmail.com,Password1!,002,Varnier,Faculty,,,,,0,1000,null,null,
-s,2,s@gmail.com,Password1!,,,Faculty,Debit,Shaharyar,222222222222,222,24,800,null,null,66666666
-aonf,3,h1@gmail.com,Password1!,002,Calumet,Faculty,Debit,Shaaer,222222222222,222,0,16,null,null,
-Tom,4,tom@gmail.com,Password1!,002,Bethune,Student,Debit,Shaharyar,123456777777,123,0,980,null,null,
-Shaharyar,5,sharry@gmail.com,Password1!,006,Varnier,Faculty,,,,,0,1000,null,null,
-Harry,6,harry@gmail.com,Pakistan1!,003,Calumet,Student,Debit,Shaharyar,122222222222,123,0,875,2023-04-01T01:00,2023-04-02T01:00,
-Shaharyar,7,sharry09@gmail.com,Password1!,003,Bethune,Non-Faculty,,,,,0,1000,null,null,123abcd
-su,8,su@gmail.com,Password1!,,,Non-Faculty,,,,,0,1000,null,null,
+name,id,email,password,parking_spot,lot,account_type,payment_type,name_on_card,card_number,cvv_number,credit_balance,debit_balance,parking_startTime,parking_endTime,license_plate_number,price
+shaharyar,0,shaharyar@gmail.com,Password1!,,,Faculty,Debit,sssss,111111111111,111,-16,1000,null,null,33333333,200
+s,1,s@gmail.com,Password1!,,,Faculty,Debit,wwwwww,2.22222E+11,222,0,216,null,null,32323223,16
+bill,2,b@gmail.com,Password1!,6,Varnier,Faculty,Debit,ffffffffffffffffff,3.33333E+11,344,0,1400,null,null,3434344,200
+bill,3,c@gmail.com,Password1!,,,Non-Faculty,Debit,bill,111111111111,111,0,1000,null,null,22222222,20
+song,4,song@gmail.com,Password1!,007,Varnier,Faculty,Debit,Song,111111111111,111,0,768,2023-04-01T01:00,2023-04-02T05:00,22222222,800
+Sharry,5,Sharry@gmail.com,Password1!,,,Visitor,Credit,sharry,111111111111,111,0,1000,null,null,333,150

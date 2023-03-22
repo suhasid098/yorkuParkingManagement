@@ -1,5 +1,6 @@
 package controllers;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -193,6 +194,8 @@ public class UserController {
 		maintain.users.get(loggedInUser.getId()).chargeUser(creditDebitText, price);
 		maintain.users.get(loggedInUser.getId()).setParkingStartTime(startTime);
 		maintain.users.get(loggedInUser.getId()).setParkingEndTime(endTime);
+		maintain.users.get(loggedInUser.getId()).setPrice(price);
+
 
 
 		
@@ -222,6 +225,22 @@ public class UserController {
 		maintain.users.get(loggedInUser.getId()).setParkingStartTime(null);
 		maintain.users.get(loggedInUser.getId()).setParkingLot("");
 		maintain.users.get(loggedInUser.getId()).setParkingSpot("");
+		LocalDateTime startTime = maintain.users.get(loggedInUser.getId()).getParkingStartTime();
+		LocalDateTime en = maintain.users.get(loggedInUser.getId()).getParkingEndTime();
+
+		LocalDateTime currTime = LocalDateTime.now();
+		System.out.println("hey");
+//		Duration diff1 = Duration.between(startTime,en);
+		System.out.println(currTime);
+//		System.out.println(diff1ss);
+		System.out.println("hii");
+
+
+		User u = maintain.users.get(loggedInUser.getId());
+		int price = u.getPrice();
+//		if(diff1.toHours() >= 1) { // if booking canceled at least 1 hour before start time give user refund
+				u.refund(price);			
+//		}
 		try {
 			maintain.update(maintain.path);
 		} catch (Exception e) {
@@ -233,6 +252,28 @@ public class UserController {
 
 
 		
+	}
+
+
+	public static String getRefundAmount() {
+		return maintain.users.get(loggedInUser.getId()).getPrice() + "";
+	}
+	public static String getType() {
+		return maintain.users.get(loggedInUser.getId()).getPaymentType() + "";
+	}
+
+
+	public static void extendTime(int hours, int price1) {
+		maintain.users.get(loggedInUser.getId()).setParkingEndTime(maintain.users.get(loggedInUser.getId()).getParkingEndTime().plusHours(hours));
+		maintain.users.get(loggedInUser.getId()).chargeUser(maintain.users.get(loggedInUser.getId()).getPaymentType(), price1);
+		maintain.users.get(loggedInUser.getId()).addPrice(price1);
+		try {
+			maintain.update(maintain.path);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 }
