@@ -89,8 +89,6 @@ public class CheckoutView extends JFrame{
       
         
         String priceLot = UserController.getLoggedInUser().getRate()+"";
-        System.out.println(UserController.getLoggedInUser().getRate());
-        System.out.println(priceLot);
         JLabel priceLabel = new JLabel("Parking Fee: " + priceLot);
         priceLabel.setForeground(Color.blue);
         priceLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -263,7 +261,6 @@ confirmTime.addActionListener(new ActionListener() {
 			minVal = (int) minute_1.getSelectedItem();
 			endTime = LocalDateTime.of(yearVal,monthVal,dayVal,hourVal,minVal);
 			
-			System.out.println(endTime.toString());
 			currentTime = LocalDateTime.now();
 
 			
@@ -278,21 +275,13 @@ confirmTime.addActionListener(new ActionListener() {
 				   price = 0 + "";
 				   outputMessage.setText("Invalid Date");
 				   
-			   } else {// + UserController.getLoggedInUser().getRate() beacuse its the deposit
+			   } else {
 					price = UserController.getLoggedInUser().getRate()* diff.toHours() + UserController.getLoggedInUser().getRate() + "";
 					 outputMessage.setText("");
 						dateConfirmed = true;
 			   }
 			   
-//		        System.out.println(UserController.getLoggedInUser().getRate());
-//		        System.out.println(priceLot);
-//		        JLabel priceLabel = new JLabel(priceLot);
-//		        priceLabel.setForeground(Color.RED);
-//		        priceLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			    priceLabel.setText("Parking Fee: " + price);
-//		        priceLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
-//		        priceLabel.setBounds(144, 78, 111, 32);
-//		        getContentPane().add(priceLabel);
 		}
 	});
 
@@ -310,10 +299,8 @@ btnNewButton.addActionListener(new ActionListener() {
 	        AbstractButton button = buttons.nextElement();
 	      if (button.isSelected()) {
 	          creditDebitText = button.getText();
-	          System.out.println(creditDebitText);
 	         }
 	    }
-        System.out.println(nameCardField);
 
 	    if(nameCardField.getText().length() < 3) {
 			outputMessage.setText("Enter Valid Name");
@@ -358,11 +345,7 @@ btnNewButton.addActionListener(new ActionListener() {
 			debitBalance.setText("Debit: " + UserController.getLoggedInUser().getDebitBalance());
 			outputMessage.setText("Parking Spot Booked!");
 			int price1 =  (int) (UserController.getLoggedInUser().getRate()* hoursBookedFor + UserController.getLoggedInUser().getRate());
-			System.out.println("price: " + price);
-			System.out.println("t1: " + endTime);
-			System.out.println("t2: " + String.valueOf(endTime));
-//			System.out.println("t3: " + endTime.toString());
-
+		
 			UserController.checkoutInfo(nameOnCard, cardNumber, cvvNumber, creditDebitText, price1, startTime, endTime);
 
 			 creditBalance.setText("Credit: " + UserController.getLoggedInUser().getCredittBalance());

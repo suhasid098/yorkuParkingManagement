@@ -12,6 +12,7 @@ import controllers.UserController;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class SchulichLotView extends JFrame {
 	private SchulichLotView thisView = this;
@@ -34,8 +35,9 @@ public class SchulichLotView extends JFrame {
 		getContentPane().setLayout(null);
 		
 		JLabel lblCalumetLot = new JLabel("Schulich Lot");
-		lblCalumetLot.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblCalumetLot.setBounds(167, 10, 99, 25);
+		lblCalumetLot.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCalumetLot.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblCalumetLot.setBounds(157, 20, 142, 25);
 		getContentPane().add(lblCalumetLot);
 		
 		JButton psSchulich004 = new JButton("004");
@@ -126,7 +128,6 @@ public class SchulichLotView extends JFrame {
 		getContentPane().add(backButton);
 	}
 	private void setColorButton(JButton button) {
-		System.out.println("hi " + button.getText());
 		if(UserController.isSpotTaken(button.getText(), "Schulich") == false) {
 			button.setBackground(Color.green);
 		} else {

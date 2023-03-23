@@ -12,6 +12,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 
@@ -37,8 +38,9 @@ public class VanierLotView extends JFrame {
 		getContentPane().setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Vanier Lot");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel.setBounds(165, 24, 83, 15);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblNewLabel.setBounds(143, 10, 145, 29);
 		getContentPane().add(lblNewLabel);
 
 		JButton psVanier001 = new JButton("001");
@@ -160,7 +162,6 @@ public class VanierLotView extends JFrame {
 	}
 
 	private void setColorButton(JButton button) {
-		System.out.println("hi " + button.getText());
 		if (UserController.isSpotTaken(button.getText(), "Varnier") == false) {
 			button.setBackground(Color.green);
 		} else {

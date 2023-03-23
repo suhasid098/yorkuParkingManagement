@@ -69,7 +69,7 @@ public class LoginView extends JFrame{
 		
 		//Component setup.
 		//Make a new label for email.
-		JLabel emailLabel = new JLabel("Email");
+		JLabel emailLabel = new JLabel("Email for a client or Username for Managers/Super Manager");
 		//Make a new label for password.
 		JLabel passLabel = new JLabel("Password");
 		//Make a new label for an error message.

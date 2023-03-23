@@ -112,8 +112,6 @@ public class MaintainUser extends Maintain{
 					csvOutput.write(u.getCvvNumber());
 					csvOutput.write(u.getCredittBalance());
 					csvOutput.write(u.getDebitBalance());
-//					System.out.println("Ptime2: "+ u.getParkingTime());
-//					System.out.println("Ptime3: "+ String.valueOf(u.getParkingTime()));
 					csvOutput.write(String.valueOf(u.getParkingStartTime()));
 					csvOutput.write(String.valueOf(u.getParkingEndTime()));
 					csvOutput.write(u.getPlateNumber());

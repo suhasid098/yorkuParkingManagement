@@ -82,7 +82,6 @@ public class EditBookingView extends JFrame{
       
         
         String priceLot = UserController.getLoggedInUser().getPrice()+"";
-        System.out.println(priceLot);
         JLabel priceLabel = new JLabel("Total Parking Fee: " + priceLot);
         priceLabel.setForeground(Color.blue);
         priceLabel.setHorizontalAlignment(SwingConstants.LEFT);

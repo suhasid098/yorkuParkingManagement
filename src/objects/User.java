@@ -83,7 +83,6 @@ public class User extends Account{
 	}
 
 	public double getRate() {
-		System.out.println("ACCOUNT TYPE:" + accountType);
 		// TODO Auto-generated method stub
 		if (accountType.equals("Faculty")) {
 			rate = 8.00;
@@ -95,7 +94,6 @@ public class User extends Account{
 		} else if (accountType.equals("Visitor")) {
 			rate = 15.00;
 		}
-		System.out.println("Rate TYPE:" + rate);
 		return rate;
 	}
 

@@ -12,6 +12,7 @@ import controllers.UserController;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class BethuneLotView extends JFrame {
@@ -42,8 +43,9 @@ public class BethuneLotView extends JFrame {
 		getContentPane().add(psBethune006);
 
 		JLabel lblBethuneLot = new JLabel("Bethune Lot");
-		lblBethuneLot.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblBethuneLot.setBounds(169, 20, 93, 15);
+		lblBethuneLot.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBethuneLot.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblBethuneLot.setBounds(169, 20, 141, 15);
 		getContentPane().add(lblBethuneLot);
 
 		JButton psBethune007 = new JButton("007");
@@ -196,7 +198,6 @@ public class BethuneLotView extends JFrame {
 
 	}
 	private void setColorButton(JButton button) {
-		System.out.println("hi " + button.getText());
 		if(UserController.isSpotTaken(button.getText(), "Bethune") == false) {
 			button.setBackground(Color.green);
 		} else {

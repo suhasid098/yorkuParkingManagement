@@ -12,6 +12,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class CalumetLotView extends JFrame {
 	private CalumetLotView thisView = this;
@@ -35,8 +36,9 @@ public class CalumetLotView extends JFrame {
 		getContentPane().setLayout(null);
 		
 		JLabel lblCalumetLot = new JLabel("Calumet Lot");
-		lblCalumetLot.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblCalumetLot.setBounds(146, 20, 93, 25);
+		lblCalumetLot.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCalumetLot.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblCalumetLot.setBounds(135, 21, 161, 25);
 		getContentPane().add(lblCalumetLot);
 		
 		JButton psCalumet001 = new JButton("001");
@@ -142,7 +144,6 @@ public class CalumetLotView extends JFrame {
 	}
 	
 	private void setColorButton(JButton button) {
-		System.out.println("hi " + button.getText());
 		if(UserController.isSpotTaken(button.getText(), "Calumet") == false) {
 			button.setBackground(Color.green);
 		} else {
