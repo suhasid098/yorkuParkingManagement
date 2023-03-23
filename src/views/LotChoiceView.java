@@ -91,11 +91,9 @@ public class LotChoiceView extends JFrame {
 				String lotName = (String) comboBox.getSelectedItem();
 
 				if(lotName.equals("")) {
-					System.out.println("select option");
 					lblNewLabel_2.setText("Select a lot");
 				}
 				if(plateNumber.length() < 2) {
-					System.out.println("too short");
 					lblNewLabel_2.setText("Invalid plate number");
 				} 
 				
@@ -103,9 +101,7 @@ public class LotChoiceView extends JFrame {
 				if(!lotName.equals("") && plateNumber.length() >= 2) {
 					UserController.addPlateNumber(plateNumber);
 					//update to database
-					System.out.println("factory: " + lotName);
 					JFrame lotFrame = factory.getLot(thisView.frame, lotName);
-					System.out.println("frame: " + lotFrame);
 					thisView.frame.changeContentPane(lotFrame, lotName);
 				}
 			}

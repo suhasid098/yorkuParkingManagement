@@ -12,6 +12,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class LassondeLotView extends JFrame {
 	private LassondeLotView thisView = this;
@@ -34,8 +35,9 @@ public class LassondeLotView extends JFrame {
 		getContentPane().setLayout(null);
 		
 		JLabel lblLassondeLot = new JLabel("Lassonde Lot");
-		lblLassondeLot.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblLassondeLot.setBounds(167, 19, 109, 25);
+		lblLassondeLot.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLassondeLot.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblLassondeLot.setBounds(147, 19, 159, 25);
 		getContentPane().add(lblLassondeLot);
 		
 		JButton psLassonde001 = new JButton("001");
@@ -154,7 +156,6 @@ public class LassondeLotView extends JFrame {
 		getContentPane().add(backButton);
 	}
 	private void setColorButton(JButton button) {
-		System.out.println("hi " + button.getText());
 		if(UserController.isSpotTaken(button.getText(), "Lassonde") == false) {
 			button.setBackground(Color.green);
 		} else {

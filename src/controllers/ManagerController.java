@@ -11,7 +11,6 @@ public class ManagerController {
 	
 	public static Manager generateManager() {
 		if(maintain.loggedInManager.getId() != 0) {
-			System.out.println("Logged in manager is not super manager!");
 			return null;
 		}
 		
