@@ -51,6 +51,9 @@ public class User extends Account{
 			debitBalance = debitBalance - parkingfee;
 		}
 	}
+	public void setPayementType(String s){
+		this.paymentType = s;
+	}
 	
 	public void setCreditBalance(String balance) {
 		if(balance.equals("")) {
