@@ -1,5 +1,9 @@
 package controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import model.MaintainManager;
 import objects.Manager;
 import objects.SuperManager;
@@ -20,6 +24,7 @@ public class ManagerController {
 			managerCount = maintain.managers.get(maintain.managers.size()-1).getId() + 1;
 		}
 		Manager manager = new Manager("Manager" + managerCount, managerCount, generatePassword());
+		//passwordGenerator.generate(8)
 		maintain.managers.add(manager);
 		try {
 			maintain.update();
@@ -45,6 +50,40 @@ public class ManagerController {
 		
 		return password;
 	}
+	
+	//builder pattern to create a random password 
+	public final class PasswordGenerator {
+
+	public static final String upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    public static final String lowerChars = "abcdefghijklmnopqrstuvwxyz";
+    public static final String numbers = "1234567890";
+    public static final String specialChars = "!@#$%^&*()_+{}";
+
+    public static String generatePassword(
+            int passwordSize,
+            boolean useUpper,
+            boolean useLower,
+            boolean useNumbers,
+            boolean useSpecial
+    ) {
+        char[] password = new char[passwordSize];
+        String charSet = null;
+        Random random = new Random();
+
+        if (useUpper) charSet += upperChars;
+        if (useLower) charSet += lowerChars;
+        if (useNumbers) charSet += numbers;
+        if (useSpecial) charSet += specialChars;
+
+        for (int i = 0; i < passwordSize; i++) {
+            password[i] = charSet.toCharArray()[random.nextInt(charSet.length() - 1)];
+        }
+        return String.valueOf(password);
+    }
+	
+	}
+	
+	
 	
 	public static String logInManager(String name, String password) {
 		for(Manager m:maintain.managers) {
