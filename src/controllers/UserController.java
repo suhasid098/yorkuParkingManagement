@@ -260,6 +260,12 @@ public class UserController {
 			e.printStackTrace();
 		}
 	}
+	public static void setPaymentType(String type) {
+	    maintain.users.get(maintain.loggedInUser.getId()).setPayementType(type);
+
+	}
+
+	
 
 	public static void addPlateNumber(String plateNumber) {
 		maintain.users.get(maintain.loggedInUser.getId()).setplateNumber(plateNumber);
