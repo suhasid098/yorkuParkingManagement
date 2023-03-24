@@ -92,6 +92,7 @@ public class EditBookingView extends JFrame{
     
         
         JButton btnNewButton_1 = new JButton("Back");
+        btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 10));
         btnNewButton_1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
 				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");

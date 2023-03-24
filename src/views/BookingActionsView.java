@@ -60,10 +60,13 @@ public class BookingActionsView extends JFrame{
 		//Component setup.
 		//Make a new button for booking a parking space.
 		JButton bookButton = new JButton("Book a Parking Space");
+		bookButton.setFont(new Font("Tahoma", Font.BOLD, 10));
 		//Make a new button for editing a booking.
 		JButton editButton = new JButton("Edit Booking");
+		editButton.setFont(new Font("Tahoma", Font.BOLD, 10));
 		//Make a new button for canceling a booking.
 		JButton cancelButton = new JButton("Cancel Booking");
+		cancelButton.setFont(new Font("Tahoma", Font.BOLD, 10));
 		//Make a new button for loging out.
 		JButton logoutButton = new JButton("Log Out");
 		
@@ -76,7 +79,7 @@ public class BookingActionsView extends JFrame{
 		
 		//Set up button fonts and font sizes.
 		int fontSize = 10;
-		logoutButton.setFont(new Font("Tahoma", Font.PLAIN, fontSize));
+		logoutButton.setFont(new Font("Tahoma", Font.BOLD, 10));
 		
 		JLabel lblNewLabel = new JLabel("Hello " + UserController.getLoggedInUser().getName());
 		lblNewLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -98,6 +101,7 @@ public class BookingActionsView extends JFrame{
 		optionsPane.add(Box.createVerticalGlue()); //Makes components move with the bottom of the pane. Used in centering components with resizing.
 		
 		JButton btnNewButton = new JButton("Back");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 10));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thisView.frame.changeContentPane(new Main(), "Main");

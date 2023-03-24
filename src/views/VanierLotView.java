@@ -151,6 +151,7 @@ public class VanierLotView extends JFrame {
 		});
 
 		JButton backButton = new JButton("back");
+		backButton.setFont(new Font("Tahoma", Font.BOLD, 10));
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thisView.frame.changeContentPane(new LotChoiceView(thisView.frame), "Lot");
