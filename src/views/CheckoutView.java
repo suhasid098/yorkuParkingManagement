@@ -265,6 +265,7 @@ public class CheckoutView extends JFrame {
 							openWebPage("https://www1.bmo.com/banking/digital/login?lang=en");
 						}
 					});
+
 					bmoButton.setBounds(144, 226, 122, 74);
 					getContentPane().add(bmoButton);
 					bmoButton.setVisible(true);
@@ -275,6 +276,7 @@ public class CheckoutView extends JFrame {
 									"https://www.cibconline.cibc.com/ebm-resources/online-banking/client/index.html#/auth/signon");
 						}
 					});
+
 					cibcButton.setBounds(10, 303, 122, 74);
 					getContentPane().add(cibcButton);
 					cibcButton.setVisible(true);
@@ -285,6 +287,7 @@ public class CheckoutView extends JFrame {
 									"https://secure.royalbank.com/statics/login-service-ui/index#/full/signin?_gl=1*b9ylms*_ga*MTU4MTQ4OTQ4Mi4xNjc5NjMyMDgw*_ga_89NPCTDXQR*MTY3OTYzMjA4MC4xLjAuMTY3OTYzMjA4MC42MC4wLjA.&_ga=2.125395722.1289283434.1679632081-1581489482.1679632080&LANGUAGE=ENGLISH");
 						}
 					});
+
 					rbcButton.setBounds(10, 227, 122, 73);
 					getContentPane().add(rbcButton);
 					rbcButton.setVisible(true);
@@ -295,6 +298,7 @@ public class CheckoutView extends JFrame {
 									"https://auth.scotiaonline.scotiabank.com/online?oauth_key=b9pgGqrNzQg&oauth_key_signature=eyJraWQiOiJrUFVqdlNhT25GWUVDakpjMmV1MXJvNGxnb2VFeXJJb2tCbU1oX3BiZXNVIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJyZWZlcmVyIjoiaHR0cHM6XC9cL3d3dy5nb29nbGUuY29tXC8iLCJvYXV0aF9rZXkiOiJiOXBnR3FyTnpRZyIsImNvbnNlbnRfcmVxdWlyZWQiOmZhbHNlLCJyZWRpcmVjdF91cmkiOiJodHRwczpcL1wvd3d3LnNjb3RpYW9ubGluZS5zY290aWFiYW5rLmNvbVwvb25saW5lXC9sYW5kaW5nXC9vYXV0aGxhbmRpbmcuYm5zIiwiZXhwIjoxNjc5NjMzNTMyLCJpYXQiOjE2Nzk2MzIzMzIsImp0aSI6IjU4NDYwMWY5LWQwOGQtNGU2Mi05ZWI0LTg5NWJmYjhiYmNlMCIsImNsaWVudF9pZCI6IjhlZTkwYzM5LTFjNTItNGZmNC04YWU2LWE3YjU0YzUzOTkzMyIsImNsaWVudF9tZXRhZGF0YSI6eyJDaGFubmVsSUQiOiJTT0wiLCJBcHBsaWNhdGlvbkNvZGUiOiJINyJ9LCJpc3N1ZXIiOiJodHRwczpcL1wvcGFzc3BvcnQuc2NvdGlhYmFuay5jb20ifQ.lsD5LC_luKRjr8cjiqgch8hcFiGddOPr5KSXOlFScqCpdCHoKCZNxN-LwI763AWHgZW4z6-_2vRYKZyT5bDrtaQGFBr2S3JhIBRnjwR8khzw8wNlr7eDKO6uTb7dN2VSJbtufyzbPTRtE1D4eAwdtLtaX3rVxYKg0inrUvHFaPH9YAlLXfrLK27bXNzIAbfbZVPAoXX2AX9xUkuhKxJ1yzInafPZfVRrQB80K1YxQZ67DG8hPksFvKyoIEWrxwpc6JArGzJtbqfAY3hfvOjK0NOGCdxwsTy_x2ByNJ95IuNynS6V4_TI3R9-TwcAMWjHrtadQa-ac4TkjTcI2fZV0Q&preferred_environment=");
 						}
 					});
+
 					scotiabankButton.setBounds(144, 303, 122, 74);
 					getContentPane().add(scotiabankButton);
 					scotiabankButton.setVisible(true);
@@ -305,6 +309,7 @@ public class CheckoutView extends JFrame {
 									"https://authentication.td.com/uap-ui/?consumer=easyweb&locale=en_CA#/uap/login");
 						}
 					});
+
 					tdButton.setBounds(279, 226, 122, 74);
 					getContentPane().add(tdButton);
 					tdButton.setVisible(true);

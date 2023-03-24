@@ -5,6 +5,7 @@ import java.awt.Container;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import controllers.UserController;
 
@@ -17,6 +18,8 @@ import javax.swing.SwingConstants;
 public class CalumetLotView extends JFrame {
 	private CalumetLotView thisView = this;
 	protected Main frame;
+	private AlertStateContext alert = new AlertStateContext(); // to alert if spot is available
+
 	public CalumetLotView(Main frame) {
 
 		this.frame = frame;
@@ -84,52 +87,62 @@ public class CalumetLotView extends JFrame {
 		// can we index through these instead?
 		psCalumet001.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// loggedInUser var should be set by now
-				UserController.addParkingSpot("001", "Calumet");// try without id param
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
-
-//				thisView.frame.resetContentPane();
+				if(psCalumet001.getBackground()==Color.green) {
+					UserController.addParkingSpot("001", "Calumet");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
 		psCalumet002.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// loggedInUser var should be set by now
-				UserController.addParkingSpot("002", "Calumet");// try without id param
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psCalumet002.getBackground()==Color.green) {
+					UserController.addParkingSpot("002", "Calumet");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
 		psCalumet003.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// loggedInUser var should be set by now
-				UserController.addParkingSpot("003", "Calumet");// try without id param
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psCalumet003.getBackground()==Color.green) {
+					UserController.addParkingSpot("003", "Calumet");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
 				}
+			}
 		});
 		psCalumet004.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// loggedInUser var should be set by now
-				UserController.addParkingSpot("004", "Calumet");// try without id param
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psCalumet004.getBackground()==Color.green) {
+					UserController.addParkingSpot("004", "Calumet");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
 		psCalumet005.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// loggedInUser var should be set by now
-				UserController.addParkingSpot("005","Calumet");// try without id param
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psCalumet005.getBackground()==Color.green) {
+					UserController.addParkingSpot("005", "Calumet");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
 		psCalumet006.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// loggedInUser var should be set by now
-				UserController.addParkingSpot("006", "Calumet");// try without id param
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psCalumet006.getBackground()==Color.green) {
+					UserController.addParkingSpot("006", "Calumet");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
 		
@@ -143,11 +156,15 @@ public class CalumetLotView extends JFrame {
 		getContentPane().add(backButton);
 		
 	}
-	
+
 	private void setColorButton(JButton button) {
 		if(UserController.isSpotTaken(button.getText(), "Calumet") == false) {
+			alert.setState(new Available());// will notify user spot is available
+			button.setToolTipText(alert.alert());
 			button.setBackground(Color.green);
 		} else {
+			alert.setState(new Unavailable());// will notify user spot isnt available
+			button.setToolTipText(alert.alert()); // using State to set tooltip
 			button.setBackground(Color.red);
 		}
 	}

@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import controllers.UserController;
 
@@ -17,6 +18,8 @@ import javax.swing.SwingConstants;
 public class SchulichLotView extends JFrame {
 	private SchulichLotView thisView = this;
 	protected Main frame;
+	private AlertStateContext alert = new AlertStateContext(); // to alert if spot is available
+
 	public SchulichLotView(Main frame) {
 		this.frame = frame;
 		// Frame setup.
@@ -45,11 +48,15 @@ public class SchulichLotView extends JFrame {
 		psSchulich004.setBounds(10, 327, 174, 76);
 		setColorButton(psSchulich004);
 		getContentPane().add(psSchulich004);
+		
 		psSchulich004.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserController.addParkingSpot("004", "Schulich");
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psSchulich004.getBackground()==Color.green) {
+					UserController.addParkingSpot("004", "Schulich");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
 		
@@ -58,13 +65,18 @@ public class SchulichLotView extends JFrame {
 		psSchulich003.setBounds(10, 241, 174, 76);
 		setColorButton(psSchulich003);
 		getContentPane().add(psSchulich003);
+		
 		psSchulich003.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserController.addParkingSpot("003", "Schulich");
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psSchulich003.getBackground()==Color.green) {
+					UserController.addParkingSpot("003", "Schulich");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
+		
 		
 		JButton psSchulich002 = new JButton("002");
 		psSchulich002.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -73,9 +85,12 @@ public class SchulichLotView extends JFrame {
 		getContentPane().add(psSchulich002);
 		psSchulich002.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserController.addParkingSpot("002", "Schulich");
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psSchulich002.getBackground()==Color.green) {
+					UserController.addParkingSpot("002", "Schulich");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
 		
@@ -86,9 +101,12 @@ public class SchulichLotView extends JFrame {
 		getContentPane().add(psSchulich001);
 		psSchulich001.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserController.addParkingSpot("001", "Schulich");
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psSchulich001.getBackground()==Color.green) {
+					UserController.addParkingSpot("001", "Schulich");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
 		
@@ -99,9 +117,12 @@ public class SchulichLotView extends JFrame {
 		getContentPane().add(psSchulich006);
 		psSchulich006.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserController.addParkingSpot("006", "Schulich");
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psSchulich006.getBackground()==Color.green) {
+					UserController.addParkingSpot("006", "Schulich");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
 		
@@ -112,9 +133,12 @@ public class SchulichLotView extends JFrame {
 		getContentPane().add(psSchulich005);
 		psSchulich005.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserController.addParkingSpot("005", "Schulich");
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psSchulich005.getBackground()==Color.green) {
+					UserController.addParkingSpot("005", "Schulich");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
 		
@@ -128,10 +152,16 @@ public class SchulichLotView extends JFrame {
 		backButton.setBounds(341, 10, 85, 21);
 		getContentPane().add(backButton);
 	}
+
+
 	private void setColorButton(JButton button) {
 		if(UserController.isSpotTaken(button.getText(), "Schulich") == false) {
+			alert.setState(new Available());// will notify user spot is available
+			button.setToolTipText(alert.alert());
 			button.setBackground(Color.green);
 		} else {
+			alert.setState(new Unavailable());// will notify user spot isnt available
+			button.setToolTipText(alert.alert()); // using State to set tooltip
 			button.setBackground(Color.red);
 		}
 	}
