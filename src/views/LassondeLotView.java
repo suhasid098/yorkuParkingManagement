@@ -5,6 +5,7 @@ import java.awt.Container;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import controllers.UserController;
 
@@ -17,6 +18,8 @@ import javax.swing.SwingConstants;
 public class LassondeLotView extends JFrame {
 	private LassondeLotView thisView = this;
 	protected Main frame;
+	private AlertStateContext alert = new AlertStateContext(); // to alert if spot is available
+
 	public LassondeLotView(Main frame) {
 		this.frame = frame;
 		// Frame setup.
@@ -88,62 +91,89 @@ public class LassondeLotView extends JFrame {
 		setColorButton(psLassonde008);
 		getContentPane().add(psLassonde008);
 		
+
 		psLassonde001.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserController.addParkingSpot("001", "Lassonde");
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psLassonde001.getBackground()==Color.green) {
+					UserController.addParkingSpot("001", "Lassonde");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
 		psLassonde002.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserController.addParkingSpot("002", "Lassonde");
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psLassonde002.getBackground()==Color.green) {
+					UserController.addParkingSpot("002", "Lassonde");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
 		psLassonde003.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserController.addParkingSpot("003", "Lassonde");
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psLassonde002.getBackground()==Color.green) {
+					UserController.addParkingSpot("003", "Lassonde");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
 		psLassonde004.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserController.addParkingSpot("004", "Lassonde");
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psLassonde004.getBackground()==Color.green) {
+					UserController.addParkingSpot("004", "Lassonde");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
 		psLassonde005.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserController.addParkingSpot("005", "Lassonde");
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psLassonde005.getBackground()==Color.green) {
+					UserController.addParkingSpot("005", "Lassonde");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
+		
 		psLassonde006.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserController.addParkingSpot("006", "Lassonde");
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psLassonde006.getBackground()==Color.green) {
+					UserController.addParkingSpot("006", "Lassonde");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
 		psLassonde007.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserController.addParkingSpot("007", "Lassonde");
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psLassonde007.getBackground()==Color.green) {
+					UserController.addParkingSpot("007", "Lassonde");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
 		psLassonde008.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserController.addParkingSpot("008", "Lassonde");
-				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-
+				if(psLassonde008.getBackground()==Color.green) {
+					UserController.addParkingSpot("008", "Lassonde");// try without id param
+					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+				}else {
+				JOptionPane.showMessageDialog(null,"Unavailable");
+				}
 			}
 		});
+		
 
 		JButton backButton = new JButton("back");
 		backButton.addActionListener(new ActionListener() {
@@ -157,8 +187,12 @@ public class LassondeLotView extends JFrame {
 	}
 	private void setColorButton(JButton button) {
 		if(UserController.isSpotTaken(button.getText(), "Lassonde") == false) {
+			alert.setState(new Available());// will notify user spot is available
+			button.setToolTipText(alert.alert());
 			button.setBackground(Color.green);
 		} else {
+			alert.setState(new Unavailable());// will notify user spot isnt available
+			button.setToolTipText(alert.alert()); // using State to set tooltip
 			button.setBackground(Color.red);
 		}
 	}
