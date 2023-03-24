@@ -14,31 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/imgs/bmoBank (1).png</name>
-			<type>1</type>
-			<location>C:/Users/suhas/Downloads/bmoBank (1).png</location>
-		</link>
-		<link>
-			<name>src/imgs/cibcBank (1).png</name>
-			<type>1</type>
-			<location>C:/Users/suhas/Downloads/cibcBank (1).png</location>
-		</link>
-		<link>
-			<name>src/imgs/rbcBank (1).png</name>
-			<type>1</type>
-			<location>C:/Users/suhas/Downloads/rbcBank (1).png</location>
-		</link>
-		<link>
-			<name>src/imgs/scotiabank (1).png</name>
-			<type>1</type>
-			<location>C:/Users/suhas/Downloads/scotiabank (1).png</location>
-		</link>
-		<link>
-			<name>src/imgs/tdBank (1).png</name>
-			<type>1</type>
-			<location>C:/Users/suhas/Downloads/tdBank (1).png</location>
-		</link>
-	</linkedResources>
 </projectDescription>
