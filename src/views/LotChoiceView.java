@@ -66,7 +66,7 @@ public class LotChoiceView extends JFrame {
 		
 		
 		JButton btnNewButton = new JButton("Next");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 10));
 		btnNewButton.setBounds(341, 382, 85, 21);
 		getContentPane().add(btnNewButton);
 		
@@ -76,6 +76,7 @@ public class LotChoiceView extends JFrame {
 		getContentPane().add(lblNewLabel_2);
 		
 		JButton btnNewButton_1 = new JButton("Back");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 10));
 		btnNewButton_1.setBounds(244, 381, 89, 23);
 		getContentPane().add(btnNewButton_1);
 		  btnNewButton_1.addActionListener(new ActionListener() {

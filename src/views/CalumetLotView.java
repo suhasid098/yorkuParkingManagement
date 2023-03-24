@@ -82,6 +82,7 @@ public class CalumetLotView extends JFrame {
 		setColorButton(psCalumet006);
 		
 		JButton backButton = new JButton("back");
+		backButton.setFont(new Font("Tahoma", Font.BOLD, 10));
 		
 		// can we index through these instead?
 		psCalumet001.addActionListener(new ActionListener() {
