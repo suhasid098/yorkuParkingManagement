@@ -1,8 +1,6 @@
 package views;
 
 import javax.swing.*;
-import javax.swing.border.*;
-
 import controllers.UserController;
 
 import java.awt.*;

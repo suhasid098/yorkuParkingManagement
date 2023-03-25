@@ -20,7 +20,6 @@ import javax.swing.ButtonGroup;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JRadioButton;
-import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class CheckoutView extends JFrame {

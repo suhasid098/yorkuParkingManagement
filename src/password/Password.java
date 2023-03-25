@@ -1,8 +1,5 @@
 package password;
 
-import java.security.SecureRandom;
-import java.util.Random;
-
 public class Password {
 	private int length;
 	private boolean includeUpperCase;

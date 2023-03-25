@@ -1,16 +1,9 @@
 package controllers;
 
-import java.security.SecureRandom;
-import java.util.Random;
-
 import model.MaintainManager;
 import password.Generator;
-import password.Password;
-
 import password.StrongPasswordBuilder;
 import objects.Manager;
-import objects.SuperManager;
-import objects.User;
 
 public class ManagerController {
 	private static MaintainManager maintain = MaintainManager.getInstance();

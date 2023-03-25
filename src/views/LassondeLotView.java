@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class LassondeLotView extends JFrame {
 	private LassondeLotView thisView = this;
 	protected Main frame;

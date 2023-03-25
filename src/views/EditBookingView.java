@@ -6,13 +6,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import controllers.UserController;
-import objects.User;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.time.temporal.ChronoUnit;
 
 import javax.swing.SwingConstants;
@@ -21,15 +18,6 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.AbstractButton;
-import javax.swing.ButtonGroup;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.util.Enumeration;
-import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
 public class EditBookingView extends JFrame {

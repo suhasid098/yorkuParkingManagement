@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import controllers.UserController;
 import java.awt.Color;
 
+@SuppressWarnings("serial")
 public class LotChoiceView extends JFrame {
 
 	private LotChoiceView thisView = this;

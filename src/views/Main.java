@@ -5,6 +5,7 @@ import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
 
+@SuppressWarnings("serial")
 public class Main extends JFrame {
 	// Default contentPane to be passed.
 	private Container contentPane;

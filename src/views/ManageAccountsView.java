@@ -1,15 +1,11 @@
 package views;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
@@ -18,7 +14,6 @@ import javax.swing.event.ListSelectionListener;
 import controllers.ManagerController;
 import controllers.UserController;
 import objects.Manager;
-import objects.SuperManager;
 import objects.User;
 
 @SuppressWarnings("serial")

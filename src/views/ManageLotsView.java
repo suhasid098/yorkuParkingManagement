@@ -1,7 +1,6 @@
 package views;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -14,11 +13,6 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
-import controllers.ManagerController;
-import controllers.UserController;
-import objects.Manager;
-import objects.SuperManager;
 
 @SuppressWarnings("serial")
 public class ManageLotsView extends JFrame {

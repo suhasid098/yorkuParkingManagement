@@ -4,8 +4,6 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import controllers.ManagerController;
-import controllers.UserController;
-
 import java.awt.*;
 import java.awt.event.*;
 
