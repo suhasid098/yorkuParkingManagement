@@ -83,10 +83,10 @@ public class EditBookingView extends JFrame {
 		btnNewButton_1.setBounds(337, 379, 89, 23);
 		getContentPane().add(btnNewButton_1);
 
-		JLabel lblNewLabel_1_1 = new JLabel("Extend Booking By _ Hours");
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		lblNewLabel_1_1.setBounds(10, 70, 197, 14);
-		getContentPane().add(lblNewLabel_1_1);
+		JLabel hourLabel = new JLabel("Extend Booking By _ Hours");
+		hourLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		hourLabel.setBounds(10, 70, 197, 14);
+		getContentPane().add(hourLabel);
 
 		JComboBox extendedTime = new JComboBox();
 		extendedTime.setModel(new DefaultComboBoxModel(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }));

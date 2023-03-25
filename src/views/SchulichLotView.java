@@ -38,11 +38,11 @@ public class SchulichLotView extends JFrame {
 		Container contentPane = this.getContentPane();
 		getContentPane().setLayout(null);
 
-		JLabel lblCalumetLot = new JLabel("Schulich Lot");
-		lblCalumetLot.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCalumetLot.setFont(new Font("Tahoma", Font.BOLD, 10));
-		lblCalumetLot.setBounds(157, 20, 142, 25);
-		getContentPane().add(lblCalumetLot);
+		JLabel title = new JLabel("Schulich Lot");
+		title.setHorizontalAlignment(SwingConstants.CENTER);
+		title.setFont(new Font("Tahoma", Font.BOLD, 10));
+		title.setBounds(157, 20, 142, 25);
+		getContentPane().add(title);
 
 		JButton psSchulich004 = new JButton("004");
 		psSchulich004.setFont(new Font("Tahoma", Font.PLAIN, 12));

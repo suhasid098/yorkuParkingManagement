@@ -46,7 +46,6 @@ public class CheckoutView extends JFrame {
 	public CheckoutView(Main frame) {
 		// Save previous frame.
 		this.frame = frame;
-
 		// Frame setup.
 		// Set frame title.
 		this.setTitle("YorkUParking - Checkout");
@@ -56,7 +55,6 @@ public class CheckoutView extends JFrame {
 		this.setSize(450, 450);
 		// Set the frame to open in the middle of the screen.
 		this.setLocationRelativeTo(null);
-
 		// Pane setup.
 		// Get the content pane.
 		Container contentPane = this.getContentPane();
@@ -81,9 +79,9 @@ public class CheckoutView extends JFrame {
 		priceLabel.setBounds(120, 66, 161, 25);
 		getContentPane().add(priceLabel);
 
-		JLabel lblNewLabel_4 = new JLabel("Select payment method");
-		lblNewLabel_4.setBounds(10, 182, 151, 13);
-		getContentPane().add(lblNewLabel_4);
+		JLabel paymentLabel = new JLabel("Select payment method");
+		paymentLabel.setBounds(10, 182, 151, 13);
+		getContentPane().add(paymentLabel);
 
 		nameCardField = new JTextField();
 		nameCardField.setVisible(false);
@@ -371,13 +369,13 @@ public class CheckoutView extends JFrame {
 		creditBalance.setBounds(344, 16, 82, 14);
 		getContentPane().add(creditBalance);
 
-		JLabel lblNewLabel = new JLabel("Start Date/Time");
-		lblNewLabel.setBounds(10, 77, 112, 14);
-		getContentPane().add(lblNewLabel);
+		JLabel timeLabel1 = new JLabel("Start Date/Time");
+		timeLabel1.setBounds(10, 77, 112, 14);
+		getContentPane().add(timeLabel1);
 
-		JLabel lblNewLabel_1 = new JLabel("End Date/Time");
-		lblNewLabel_1.setBounds(10, 124, 88, 14);
-		getContentPane().add(lblNewLabel_1);
+		JLabel timeLabel2 = new JLabel("End Date/Time");
+		timeLabel2.setBounds(10, 124, 88, 14);
+		getContentPane().add(timeLabel2);
 
 		JComboBox year_1 = new JComboBox();
 		year_1.setModel(new DefaultComboBoxModel(new Integer[] { 2023, 2024 }));

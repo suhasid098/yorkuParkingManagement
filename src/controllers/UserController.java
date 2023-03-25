@@ -167,7 +167,7 @@ public class UserController {
 	// Sets a user's registration/account status to approved.
 	public static boolean approveUser(User user) {
 		boolean updated = false;
-		
+
 		if (maintain.loggedInUser != null) {
 			return false;
 		}
@@ -227,13 +227,12 @@ public class UserController {
 		return false;
 	}
 
-
 	public static void addParkingSpot(String spotID, String lotName) {
 		maintain.users.get(maintain.loggedInUser.getId()).setParkingSpot(spotID);
 		maintain.users.get(maintain.loggedInUser.getId()).setParkingLot(lotName);
 
 		try {
-			
+
 			maintain.update();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -259,12 +258,11 @@ public class UserController {
 			e.printStackTrace();
 		}
 	}
+
 	public static void setPaymentType(String type) {
-	    maintain.users.get(maintain.loggedInUser.getId()).setPayementType(type);
+		maintain.users.get(maintain.loggedInUser.getId()).setPayementType(type);
 
 	}
-
-	
 
 	public static void addPlateNumber(String plateNumber) {
 		maintain.users.get(maintain.loggedInUser.getId()).setplateNumber(plateNumber);
