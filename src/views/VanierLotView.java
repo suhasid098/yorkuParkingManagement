@@ -38,11 +38,11 @@ public class VanierLotView extends JFrame {
 		Container contentPane = this.getContentPane();
 		getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Vanier Lot");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
-		lblNewLabel.setBounds(143, 10, 145, 29);
-		getContentPane().add(lblNewLabel);
+		JLabel title = new JLabel("Vanier Lot");
+		title.setHorizontalAlignment(SwingConstants.CENTER);
+		title.setFont(new Font("Tahoma", Font.BOLD, 10));
+		title.setBounds(143, 10, 145, 29);
+		getContentPane().add(title);
 
 		JButton psVanier001 = new JButton("001");
 		psVanier001.setFont(new Font("Tahoma", Font.PLAIN, 12));

@@ -78,9 +78,9 @@ public class BookingActionsView extends JFrame {
 		int fontSize = 10;
 		logoutButton.setFont(new Font("Tahoma", Font.BOLD, 10));
 
-		JLabel lblNewLabel = new JLabel("Hello " + UserController.getLoggedInUser().getName());
-		lblNewLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		optionsPane.add(lblNewLabel);
+		JLabel greetingLabel = new JLabel("Hello " + UserController.getLoggedInUser().getName());
+		greetingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		optionsPane.add(greetingLabel);
 
 		// Build frames.
 		// Add option buttons to options panel.
@@ -94,17 +94,7 @@ public class BookingActionsView extends JFrame {
 		optionsPane.add(Box.createRigidArea(new Dimension(0, sectionSpace))); // Space between buttons.
 
 //		optionsPane.add(logoutButton); //Adds name field to pane.
-		optionsPane.add(Box.createVerticalGlue()); // Makes components move with the bottom of the pane. Used in
-													// centering components with resizing.
-
-		JButton btnNewButton = new JButton("Back");
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 10));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				thisView.frame.changeContentPane(new Main(), "Main");
-			}
-		});
-		logoutPane.add(btnNewButton);
+		optionsPane.add(Box.createVerticalGlue());
 
 		// Add logout button to logout panel.
 		logoutPane.add(Box.createHorizontalGlue()); // Makes components keep with the right of the pane. Used in

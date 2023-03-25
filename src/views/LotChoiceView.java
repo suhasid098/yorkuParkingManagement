@@ -14,6 +14,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
+import controllers.LotController;
 import controllers.UserController;
 import java.awt.Color;
 
@@ -23,7 +24,7 @@ public class LotChoiceView extends JFrame {
 	private LotChoiceView thisView = this;
 	protected Main frame;
 	private LotFactory factory = new LotFactory(); // Here I am using the Factory Design Pattern
-	private JTextField textField;
+	private JTextField plateNumberField;
 
 	public LotChoiceView(Main frame) {
 		this.frame = frame;
@@ -42,60 +43,58 @@ public class LotChoiceView extends JFrame {
 		Container contentPane = this.getContentPane();
 		getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Select a Parking Lot");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel.setBounds(125, 156, 159, 32);
-		getContentPane().add(lblNewLabel);
+		JLabel selectParkingLabel = new JLabel("Select a Parking Lot");
+		selectParkingLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		selectParkingLabel.setBounds(125, 156, 159, 32);
+		getContentPane().add(selectParkingLabel);
+		JComboBox lots = new JComboBox();
+		lots.setModel(new DefaultComboBoxModel(LotController.getLotList().split(",")));
 
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(
-				new DefaultComboBoxModel(new String[] { "", "Vanier", "Bethune", "Calumet", "Schulich", "Lassonde" }));
+		lots.setBounds(151, 199, 106, 21);
+		getContentPane().add(lots);
+		lots.getSelectedIndex();
 
-		comboBox.setBounds(151, 199, 106, 21);
-		getContentPane().add(comboBox);
-		comboBox.getSelectedIndex();
+		JLabel lblLicensePlateNumber = new JLabel("Enter License Plate Number");
+		lblLicensePlateNumber.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblLicensePlateNumber.setBounds(95, 55, 237, 32);
+		getContentPane().add(lblLicensePlateNumber);
 
-		JLabel lblNewLabel_1 = new JLabel("Enter License Plate Number");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_1.setBounds(95, 55, 237, 32);
-		getContentPane().add(lblNewLabel_1);
+		plateNumberField = new JTextField();
+		plateNumberField.setBounds(161, 98, 96, 20);
+		getContentPane().add(plateNumberField);
+		plateNumberField.setColumns(10);
 
-		textField = new JTextField();
-		textField.setBounds(161, 98, 96, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		JButton nextBtn = new JButton("Next");
+		nextBtn.setFont(new Font("Tahoma", Font.BOLD, 10));
+		nextBtn.setBounds(341, 382, 85, 21);
+		getContentPane().add(nextBtn);
 
-		JButton btnNewButton = new JButton("Next");
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 10));
-		btnNewButton.setBounds(341, 382, 85, 21);
-		getContentPane().add(btnNewButton);
+		JLabel lblmsg = new JLabel("");
+		lblmsg.setForeground(Color.RED);
+		lblmsg.setBounds(136, 300, 152, 14);
+		getContentPane().add(lblmsg);
 
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setForeground(Color.RED);
-		lblNewLabel_2.setBounds(136, 300, 152, 14);
-		getContentPane().add(lblNewLabel_2);
-
-		JButton btnNewButton_1 = new JButton("Back");
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 10));
-		btnNewButton_1.setBounds(244, 381, 89, 23);
-		getContentPane().add(btnNewButton_1);
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton backBtn = new JButton("Back");
+		backBtn.setFont(new Font("Tahoma", Font.BOLD, 10));
+		backBtn.setBounds(244, 381, 89, 23);
+		getContentPane().add(backBtn);
+		backBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
 
 			}
 		});
 
-		btnNewButton.addActionListener(new ActionListener() {
+		nextBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String plateNumber = textField.getText();
-				String lotName = (String) comboBox.getSelectedItem();
+				String plateNumber = plateNumberField.getText();
+				String lotName = (String) lots.getSelectedItem();
 
 				if (lotName.equals("")) {
-					lblNewLabel_2.setText("Select a lot");
+					lblmsg.setText("Select a lot");
 				}
 				if (plateNumber.length() < 2) {
-					lblNewLabel_2.setText("Invalid plate number");
+					lblmsg.setText("Invalid plate number");
 				}
 
 				if (!lotName.equals("") && plateNumber.length() >= 2) {
@@ -107,9 +106,9 @@ public class LotChoiceView extends JFrame {
 			}
 		});
 
-		textField.addKeyListener(new KeyAdapter() {
+		plateNumberField.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent e) {
-				if (textField.getText().length() >= 8) // limit to 8 characters
+				if (plateNumberField.getText().length() >= 8) // limit to 8 characters
 					e.consume();
 			}
 		});

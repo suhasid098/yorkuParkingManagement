@@ -14,6 +14,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import controllers.LotController;
+
 @SuppressWarnings("serial")
 public class ManageLotsView extends JFrame {
 	// Object instance for action listeners.
@@ -25,20 +27,31 @@ public class ManageLotsView extends JFrame {
 	// List and list model for parking lots
 	private DefaultListModel<String> listModel = new DefaultListModel<>();
 	private JList<String> lotList = new JList<String>(listModel);
-
+	private String[] defaultlots = { "Vanier", "Bethune", "Calumet", "Schulich", "Lassonde" };
 	private static final int componentSeperation = 10;
 
-	// List setup.
+	// List setup
 	private void listSetup() {
-		String[] lots = { "Vanier", "Bethune", "Calumet", "Schulich", "Lassonde" };
-		for (int i = 0; i < lots.length; i++) {
-			String status = "Enabled";
-			listModel.addElement(lots[i] + ": " + status);
+		String[] lots = LotController.getLotList().split(",");
+		String status = "";
+		for (int i = 0; i < defaultlots.length; i++) {
+			status = "";
+			for (int j = 0; j < lots.length; j++) {
+				if (defaultlots[i].equals(lots[j])) { // lot should be enabled
+					status = "Enabled";
+				}
+			}
+			if (status.equals("Enabled")) {
+				listModel.addElement(defaultlots[i] + ": " + "Enabled");
+			} else {
+				listModel.addElement(defaultlots[i] + ": " + "Disabled");
+			}
 		}
 
 		// Set up List dimensions.
 		lotList.setPrototypeCellValue("Using this to set the list cell width");
 		lotList.setPreferredSize(new Dimension(200, 300));
+
 	}
 
 	public ManageLotsView(Main frame) {
@@ -127,13 +140,19 @@ public class ManageLotsView extends JFrame {
 					for (int i = 0; i < listModel.getSize(); i++) {
 						if (listModel.getElementAt(i).equals(selectedValue)) {
 							// Disable or enable entire lot here.
+
+							if (selectedValue.split(":")[1].equals(" Enabled")) {
+								LotController.removeLot(selectedValue.split(":")[0]);
+							} else {
+								LotController.enableLot(selectedValue.split(":")[0]);
+							}
 						}
 					}
 				}
 			}
 		});
 
-		// Set up what to do when an item in the ingredient list is double-clicked.
+		// Set up what to do when an item in the lot list is double-clicked.
 		lotList.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
