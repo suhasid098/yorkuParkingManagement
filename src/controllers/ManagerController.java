@@ -20,7 +20,7 @@ public class ManagerController {
 		}
 		Generator gen = new Generator(); // director
 		// choosing a strong password rather than a 4 digit pin builder
-		StrongPasswordBuilder strongPassword = new StrongPasswordBuilder(); 
+		StrongPasswordBuilder strongPassword = new StrongPasswordBuilder();
 		gen.setPasswordBuilder(strongPassword);
 		gen.generatePassword();
 		String password = gen.getPassword(); // returns strong password
