@@ -72,11 +72,10 @@ public class User extends Account {
 	}
 
 	public void refund(int balance) {
-		if (this.paymentType.equals("Credit")) {
+		if (this.paymentType.equalsIgnoreCase("Credit")) {
 			this.creditBalnce = this.creditBalnce - balance;
-		} else {
+		} else if(this.paymentType.equalsIgnoreCase("debit")) {
 			this.debitBalance = this.debitBalance + balance;
-
 		}
 	}
 
