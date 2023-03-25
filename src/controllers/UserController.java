@@ -168,7 +168,7 @@ public class UserController {
 	// Sets a user's registration/account status to approved.
 	public static boolean approveUser(User user) {
 		boolean updated = false;
-
+		
 		if (maintain.loggedInUser != null) {
 			return false;
 		}

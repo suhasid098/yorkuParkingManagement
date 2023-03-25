@@ -1,6 +1,10 @@
 package controllers;
 
 import model.MaintainManager;
+import password.Generator;
+import password.Password;
+
+import password.StrongPasswordBuilder;
 import objects.Manager;
 import objects.SuperManager;
 import objects.User;
@@ -19,7 +23,13 @@ public class ManagerController {
 			//Create super manager with generated password.
 			managerCount = maintain.managers.get(maintain.managers.size()-1).getId() + 1;
 		}
-		Manager manager = new Manager("Manager" + managerCount, managerCount, generatePassword());
+		Generator gen = new Generator();
+		StrongPasswordBuilder strongPassword = new StrongPasswordBuilder();
+		gen.setPasswordBuilder(strongPassword);
+		gen.generatePassword();
+		Password p = gen.getPassword();
+		System.out.println(p.getPassword1());
+		Manager manager = new Manager("Manager" + managerCount, managerCount, p.getPassword1());
 		maintain.managers.add(manager);
 		try {
 			maintain.update();
