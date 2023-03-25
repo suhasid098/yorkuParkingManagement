@@ -9,4 +9,3 @@ public class Unavailable implements Alert {
 	}
 
 }
-

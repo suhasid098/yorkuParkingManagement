@@ -36,10 +36,8 @@ public class CheckoutView extends JFrame {
 	private JRadioButton debitRadioButton;
 	private JRadioButton mobilePaymentRadioButton;
 	private JButton finalConfirmButton;
-
 	public LocalDateTime endTime = null;
 	public LocalDateTime startTime = null;
-
 	public LocalDateTime currentTime = null;
 	public boolean dateConfirmed = false;
 	public long hoursBookedFor;
@@ -251,8 +249,6 @@ public class CheckoutView extends JFrame {
 				}
 			}
 		});
-		
-		
 
 		mobilePaymentRadioButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -471,70 +467,70 @@ public class CheckoutView extends JFrame {
 				outputMessage.setText("");
 				outputMessage.setForeground(Color.red);
 				boolean validPlateNumber = false;
-				if(creditRadioButton.isSelected() || debitRadioButton.isSelected() ) {
-				if (creditRadioButton.isSelected()) {
-					creditDebitText = creditRadioButton.getText().toLowerCase();
-				} else if (debitRadioButton.isSelected()) {
-					creditDebitText = debitRadioButton.getText().toLowerCase();
-				}
-				
-				if (nameCardField.getText().length() < 3) {
-					outputMessage.setText("Enter Valid Name");
-				} else {
-					nameOnCard = nameCardField.getText() + "";
-				}
+				if (creditRadioButton.isSelected() || debitRadioButton.isSelected()) {
+					if (creditRadioButton.isSelected()) {
+						creditDebitText = creditRadioButton.getText().toLowerCase();
+					} else if (debitRadioButton.isSelected()) {
+						creditDebitText = debitRadioButton.getText().toLowerCase();
+					}
 
-				if (creditDebitText.equals("")) {
-					outputMessage.setText("Select Payment Option");
-				} else {
-					outputMessage.setText("");
+					if (nameCardField.getText().length() < 3) {
+						outputMessage.setText("Enter Valid Name");
+					} else {
+						nameOnCard = nameCardField.getText() + "";
+					}
 
-				}
+					if (creditDebitText.equals("")) {
+						outputMessage.setText("Select Payment Option");
+					} else {
+						outputMessage.setText("");
 
-				// check if card is 12 digits, should also be only numbers (Add later)
-				if (cardNumberField.getText().length() != 12) {
-					outputMessage.setText("Invalid card number");
-				} else {
-					cardNumber = cardNumberField.getText() + "";
-				}
+					}
+
+					// check if card is 12 digits, should also be only numbers (Add later)
+					if (cardNumberField.getText().length() != 12) {
+						outputMessage.setText("Invalid card number");
+					} else {
+						cardNumber = cardNumberField.getText() + "";
+					}
 
 //		 check if cvv is 3 digits, should also be only numbers (Add later)
-				if (cvvField.getText().length() != 3) {
-					outputMessage.setText("Invalid CVV number");
-				} else {
-					cvvNumber = cvvField.getText() + "";
-				}
+					if (cvvField.getText().length() != 3) {
+						outputMessage.setText("Invalid CVV number");
+					} else {
+						cvvNumber = cvvField.getText() + "";
+					}
 
-				if (dateConfirmed == false) {
-					outputMessage.setText("Confirm Date/Time First");
+					if (dateConfirmed == false) {
+						outputMessage.setText("Confirm Date/Time First");
 
-				}
-				if (!nameOnCard.equals("") && !cardNumber.equals("") && !cardNumber.equals("")
-						&& !cardNumber.equals("")) {
+					}
+					if (!nameOnCard.equals("") && !cardNumber.equals("") && !cardNumber.equals("")
+							&& !cardNumber.equals("")) {
 
-					outputMessage.setForeground(Color.BLUE);
+						outputMessage.setForeground(Color.BLUE);
 
-					creditBalance.setText("Credit: " + UserController.getLoggedInUser().getCredittBalance());
-					debitBalance.setText("Debit: " + UserController.getLoggedInUser().getDebitBalance());
-					outputMessage.setText("Parking Spot Booked!");
-					int price1 = (int) (UserController.getLoggedInUser().getRate() * hoursBookedFor
-							+ UserController.getLoggedInUser().getRate());
+						creditBalance.setText("Credit: " + UserController.getLoggedInUser().getCredittBalance());
+						debitBalance.setText("Debit: " + UserController.getLoggedInUser().getDebitBalance());
+						outputMessage.setText("Parking Spot Booked!");
+						int price1 = (int) (UserController.getLoggedInUser().getRate() * hoursBookedFor
+								+ UserController.getLoggedInUser().getRate());
 
-					UserController.checkoutInfo(nameOnCard, cardNumber, cvvNumber, creditDebitText, price1, startTime,
-							endTime);
+						UserController.checkoutInfo(nameOnCard, cardNumber, cvvNumber, creditDebitText, price1,
+								startTime, endTime);
 
-					creditBalance.setText("Credit: " + UserController.getLoggedInUser().getCredittBalance());
-					debitBalance.setText("Debit: " + UserController.getLoggedInUser().getDebitBalance());
-				} else {
-					outputMessage.setText("Invalid entry");
-				}
-		
-				}
-				else if (mobilePaymentRadioButton.isSelected()) {
+						creditBalance.setText("Credit: " + UserController.getLoggedInUser().getCredittBalance());
+						debitBalance.setText("Debit: " + UserController.getLoggedInUser().getDebitBalance());
+					} else {
+						outputMessage.setText("Invalid entry");
+					}
+
+				} else if (mobilePaymentRadioButton.isSelected()) {
 					creditDebitText = mobilePaymentRadioButton.getText().toLowerCase();
 					UserController.setPaymentType(creditDebitText);
 					outputMessage.setText("Parking Spot Booked!");
-		     	}	}		
+				}
+			}
 		});
 	}
 
@@ -542,7 +538,6 @@ public class CheckoutView extends JFrame {
 		try {
 			java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
 		} catch (java.io.IOException e) {
-			System.out.println(e.getMessage());
 		}
 	}
 }
