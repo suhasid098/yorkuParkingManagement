@@ -2,7 +2,7 @@ package objects;
 
 import java.time.LocalDateTime;
 
-public class User extends Account{
+public class User extends Account {
 	public String email;
 	public String parkingSpotName;
 	public String lotName;
@@ -20,59 +20,61 @@ public class User extends Account{
 	public String plateNumber;
 	public int price;
 
-	
-	// could create a parking object with start date, end date, lotname,parkingspotname
+	// could create a parking object with start date, end date,
+	// lotname,parkingspotname
 	// assume there is no credit limit
 	public int parkingFee = 0;
+
 	public User(String name, int id, String email, String password, String accountType) {
 		super(name, id, password);
 		this.email = email;
 		this.parkingSpotName = "";
 		this.lotName = "";
 		this.accountType = accountType;
-		if(this.accountType.equals("Visitor")) {
+		if (this.accountType.equals("Visitor")) {
 			approved = true;
-		}else {
+		} else {
 			approved = false;
 		}
 		this.rate = getRate();
 	}
-	
+
 	public User() {
 	}
-	
-	//updating balance of either credit or debit card
+
+	// updating balance of either credit or debit card
 	public void chargeUser(String payementType, int parkingfee) {
 		this.paymentType = payementType;
 		parkingFee = parkingfee;
-		if(payementType.equalsIgnoreCase("credit")) {
+		if (payementType.equalsIgnoreCase("credit")) {
 			creditBalnce = creditBalnce + parkingfee;
-		} else if(payementType.equalsIgnoreCase("debit")) {
+		} else if (payementType.equalsIgnoreCase("debit")) {
 			debitBalance = debitBalance - parkingfee;
 		}
 	}
-	public void setPayementType(String s){
+
+	public void setPayementType(String s) {
 		this.paymentType = s;
 	}
-	
+
 	public void setCreditBalance(String balance) {
-		if(balance.equals("")) {
+		if (balance.equals("")) {
 			this.creditBalnce = 0;
 		}
 		this.creditBalnce = Integer.parseInt(balance);
 	}
+
 	public void setDebitBalance(String balance) {
-		if(balance.equals("")) {
+		if (balance.equals("")) {
 			this.debitBalance = 1000;
 		}
 		this.debitBalance = Integer.parseInt(balance);
 	}
 
-
 	public void refund(int balance) {
-		if(this.paymentType.equals("Credit")) {
+		if (this.paymentType.equals("Credit")) {
 			this.creditBalnce = this.creditBalnce - balance;
-		}else {
+		} else {
 			this.debitBalance = this.debitBalance + balance;
 
 		}
@@ -81,6 +83,7 @@ public class User extends Account{
 	public void setPaymentType(String paymentType1) {
 		this.paymentType = paymentType1;
 	}
+
 	public String getPaymentType() {
 		return this.paymentType;
 	}
@@ -148,15 +151,14 @@ public class User extends Account{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public boolean getApproved() {
 		return this.approved;
 	}
-	
+
 	public void setApproved(boolean approved) {
 		this.approved = approved;
 	}
-
 
 	public void setParkingLot(String lotName) {
 		this.lotName = lotName;
@@ -170,43 +172,46 @@ public class User extends Account{
 		// TODO Auto-generated method stub
 		return this.debitBalance + "";
 	}
+
 	public String getCredittBalance() {
 		// TODO Auto-generated method stub
 		return this.creditBalnce + "";
 	}
 
-
 	public void setParkingStartTime(LocalDateTime startTime) {
 		this.parkingStartTime = startTime;
 	}
+
 	public void setParkingEndTime(LocalDateTime endTime) {
 		this.parkingEndTime = endTime;
 	}
+
 	public LocalDateTime getParkingStartTime() {
 		return this.parkingStartTime;
 	}
+
 	public LocalDateTime getParkingEndTime() {
 		return this.parkingEndTime;
 	}
 
-
 	public void setplateNumber(String plateNumber) {
 		this.plateNumber = plateNumber;
 	}
-	
+
 	public String getPlateNumber() {
 		return this.plateNumber;
 	}
 
 	public void setPrice(int price) {
-		this.price = price;		
+		this.price = price;
 	}
+
 	public void addPrice(int addedPrice) {
 		this.price = this.price + addedPrice;
 	}
+
 	public int getPrice() {
 		return this.price;
 	}
-	
-	
+
 }

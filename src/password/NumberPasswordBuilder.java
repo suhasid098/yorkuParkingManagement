@@ -1,11 +1,10 @@
 package password;
-
 //concrete builder
-public class StrongPasswordBuilder extends PasswordBuilder {
+public class NumberPasswordBuilder extends PasswordBuilder {
 
 	@Override
 	public void setLength() {
-		password.setLength(8);
+		password.setLength(4);
 	}
 
 	@Override
@@ -15,17 +14,17 @@ public class StrongPasswordBuilder extends PasswordBuilder {
 
 	@Override
 	public void setIncludeSymbols() {
-		password.addSymbols(true);
+		password.addSymbols(false);
 	}
 
 	@Override
 	public void setUpperCase() {
-		password.addUpperCase(true);
+		password.addUpperCase(false);
 	}
-
 	@Override
 	public void setLowerCase() {
-		password.addLowerCase(true);
+		password.addLowerCase(false);
 	}
 
-}
+	
+}	  
