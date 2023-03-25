@@ -1,7 +1,11 @@
 package password;
 
+import java.security.SecureRandom;
+import java.util.Random;
+
 //concrete builder
-public class StrongPasswordBuilder extends PasswordBuilder {
+public class StrongPasswordBuilder implements PasswordBuilder {
+	private Password password = new Password();;
 
 	@Override
 	public void setLength() {
@@ -26,6 +30,36 @@ public class StrongPasswordBuilder extends PasswordBuilder {
 	@Override
 	public void setLowerCase() {
 		password.addLowerCase(true);
+	}
+
+	public Password getPassword() {
+
+		Random random = new SecureRandom();
+		StringBuilder sb = new StringBuilder();
+		String numbers = "1234567890";
+		String uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String lowercase = "abcdefghijklmnopqrstuvwxyz";
+		String symbols = "!@#$%^&*()_+-={}[]|\\\\:;\\\"',.?/";
+		String validChars = lowercase;
+
+		if (password.getincludeUpperCase()) {
+			validChars += uppercase;
+		}
+		if (password.getIncludeNumbers()) {
+			validChars += numbers;
+		}
+		if (password.getSymbols()) {
+			validChars += symbols;
+		}
+
+		for (int i = 0; i < password.getLength(); i++) {
+			int index = random.nextInt(validChars.length());
+			char c = validChars.charAt(index);
+			sb.append(c);
+		}
+		password.setPassword1(sb.toString());
+
+		return password;
 	}
 
 }

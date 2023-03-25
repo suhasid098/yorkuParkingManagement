@@ -1,16 +1,16 @@
 package password;
 
-abstract class PasswordBuilder {
-	protected Password password;
+interface PasswordBuilder {
+//	Password password;
 
-	public Password getPassword() {
+//	public Password getPassword() {
+//
+//		return password;
+//	}
 
-		return password;
-	}
-
-	public void createNewPassword() {
-		password = new Password();
-	}
+//	public void createNewPassword() {
+//		password = new Password();
+//	}
 
 	public abstract void setLength();
 
@@ -21,5 +21,6 @@ abstract class PasswordBuilder {
 	public abstract void setLowerCase();
 
 	public abstract void setIncludeSymbols();
+	
 
 }

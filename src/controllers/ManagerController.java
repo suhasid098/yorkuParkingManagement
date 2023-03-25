@@ -23,7 +23,7 @@ public class ManagerController {
 		StrongPasswordBuilder strongPassword = new StrongPasswordBuilder();
 		gen.setPasswordBuilder(strongPassword);
 		gen.generatePassword();
-		String password = gen.getPassword(); // returns strong password
+		String password = strongPassword.getPassword().getPassword1(); // returns strong password
 
 		Manager manager = new Manager("Manager" + managerCount, managerCount, password);
 		maintain.managers.add(manager);
