@@ -18,7 +18,7 @@ import javax.swing.SwingConstants;
 public class LassondeLotView extends JFrame {
 	private LassondeLotView thisView = this;
 	protected Main frame;
-	private AlertStateContext alert = new AlertStateContext(); // to alert if spot is available
+	private AlertStateContext parkingSpot = new AlertStateContext(); // to alert if spot is available
 
 	public LassondeLotView(Main frame) {
 		this.frame = frame;
@@ -187,12 +187,12 @@ public class LassondeLotView extends JFrame {
 
 	private void setColorButton(JButton button) {
 		if (UserController.isSpotTaken(button.getText(), "Lassonde") == false) {
-			alert.setState(new Available());// will notify user spot is available
-			button.setToolTipText(alert.alert());
+			parkingSpot.setState(new Available());// will notify user spot is available
+			button.setToolTipText(parkingSpot.alert());
 			button.setBackground(Color.green);
 		} else {
-			alert.setState(new Unavailable());// will notify user spot isnt available
-			button.setToolTipText(alert.alert()); // using State to set tooltip
+			parkingSpot.setState(new Unavailable());// will notify user spot isnt available
+			button.setToolTipText(parkingSpot.alert()); // using State to set tooltip
 			button.setBackground(Color.red);
 		}
 	}

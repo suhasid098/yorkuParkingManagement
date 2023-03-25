@@ -26,8 +26,8 @@ public class ManagerController {
 			managerCount = maintain.managers.get(maintain.managers.size() - 1).getId() + 1;
 		}
 		Generator gen = new Generator(); // director
-		StrongPasswordBuilder strongPassword = new StrongPasswordBuilder(); // choosing a strong password rather than a
-																			// 4 digit pin
+		// choosing a strong password rather than a 4 digit pin builder
+		StrongPasswordBuilder strongPassword = new StrongPasswordBuilder(); 
 		gen.setPasswordBuilder(strongPassword);
 		gen.generatePassword();
 		String password = gen.getPassword(); // returns strong password
