@@ -8,6 +8,9 @@ import objects.Manager;
 public class ManagerController {
 	private static MaintainManager maintain = MaintainManager.getInstance();
 	private static int managerCount = 1;
+	private static Generator gen = new Generator(); // director
+	// choosing a strong password rather than a 4 digit pin builder
+	private static StrongPasswordBuilder strongPassword = new StrongPasswordBuilder();
 
 	public static Manager generateManager() {
 		if (maintain.loggedInManager.getId() != 0) {
@@ -18,9 +21,6 @@ public class ManagerController {
 			// Create super manager with generated password.
 			managerCount = maintain.managers.get(maintain.managers.size() - 1).getId() + 1;
 		}
-		Generator gen = new Generator(); // director
-		// choosing a strong password rather than a 4 digit pin builder
-		StrongPasswordBuilder strongPassword = new StrongPasswordBuilder();
 		gen.setPasswordBuilder(strongPassword);
 		gen.generatePassword();
 		String password = strongPassword.getPassword().getPassword1(); // returns strong password

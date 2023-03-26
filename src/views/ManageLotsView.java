@@ -140,7 +140,6 @@ public class ManageLotsView extends JFrame {
 					for (int i = 0; i < listModel.getSize(); i++) {
 						if (listModel.getElementAt(i).equals(selectedValue)) {
 							// Disable or enable entire lot here.
-
 							if (selectedValue.split(":")[1].equals(" Enabled")) {
 								LotController.removeLot(selectedValue.split(":")[0]);
 							} else {
