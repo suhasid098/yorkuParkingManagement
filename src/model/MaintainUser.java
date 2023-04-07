@@ -71,7 +71,6 @@ public class MaintainUser extends Maintain{
 	@Override
 	public void update() throws Exception{
 		try {		
-			
 				//Create new csv file with appropriate headers at given path.
 				CsvWriter csvOutput = new CsvWriter(new FileWriter(this.path, false), ',');
 				csvOutput.write("name");
@@ -126,6 +125,17 @@ public class MaintainUser extends Maintain{
 	}
 
 
-	
+		//Add users in User ArrayList to csv file.
+	public void clear() throws Exception{
+		try {		
+				//Create new csv file with appropriate headers at given path.
+				CsvWriter csvOutput = new CsvWriter(new FileWriter(this.path, false), ',');
+				csvOutput.flush();
+				csvOutput.close();
+			
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
 	 
 }
