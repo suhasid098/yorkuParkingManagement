@@ -103,7 +103,7 @@ public class BookingActionsView extends JFrame {
 		contentPane.add(logoutPane, BorderLayout.NORTH);
 		contentPane.add(optionsPane);
 
-		if (!UserController.getLoggedInUser().parkingSpotName.isBlank()) {
+		if (UserController.getLoggedInUser().parkingSpotName != null && !UserController.getLoggedInUser().parkingSpotName.equals("")) {
 			// Make a new button for proceeding to checkout
 			JButton checkoutButton = new JButton("Proceed to Checkout");
 			checkoutButton.addActionListener(new ActionListener() {
