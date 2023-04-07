@@ -16,16 +16,12 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextField;
 import javax.swing.JButton;
 
 @SuppressWarnings("serial")
 public class EditBookingView extends JFrame {
 	private EditBookingView thisView = this;
 	protected Main frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JButton btnNewButton;
 	public LocalDateTime endTime = null;
 	public LocalDateTime startTime = null;
 	public LocalDateTime currentTime = null;
@@ -33,6 +29,7 @@ public class EditBookingView extends JFrame {
 	public long hoursBookedFor;
 	public String price;
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public EditBookingView(Main frame) {
 		// Save previous frame.
 		this.frame = frame;
@@ -47,9 +44,7 @@ public class EditBookingView extends JFrame {
 		// Set the frame to open in the middle of the screen.
 		this.setLocationRelativeTo(null);
 
-		// Pane setup.
-		// Get the content pane.
-		Container contentPane = this.getContentPane();
+		this.getContentPane();
 		getContentPane().setLayout(null);
 
 		JLabel nameLabel = new JLabel("The total for " + UserController.getLoggedInUser().getName());
@@ -88,6 +83,7 @@ public class EditBookingView extends JFrame {
 		hourLabel.setBounds(10, 70, 197, 14);
 		getContentPane().add(hourLabel);
 
+		@SuppressWarnings("rawtypes")
 		JComboBox extendedTime = new JComboBox();
 		extendedTime.setModel(new DefaultComboBoxModel(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }));
 		extendedTime.setBounds(10, 97, 38, 22);

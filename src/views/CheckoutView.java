@@ -1,6 +1,5 @@
 package views;
 
-import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import controllers.UserController;
@@ -16,7 +15,6 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.ButtonGroup;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JRadioButton;
@@ -41,8 +39,7 @@ public class CheckoutView extends JFrame {
 	public boolean dateConfirmed = false;
 	public long hoursBookedFor;
 	public String price;
-	private ButtonGroup groupCreditDebit;
-
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public CheckoutView(Main frame) {
 		// Save previous frame.
 		this.frame = frame;
@@ -55,9 +52,7 @@ public class CheckoutView extends JFrame {
 		this.setSize(450, 450);
 		// Set the frame to open in the middle of the screen.
 		this.setLocationRelativeTo(null);
-		// Pane setup.
-		// Get the content pane.
-		Container contentPane = this.getContentPane();
+		this.getContentPane();
 		getContentPane().setLayout(null);
 
 		JLabel nameLabel = new JLabel("The total for " + UserController.getLoggedInUser().getName());
@@ -322,6 +317,7 @@ public class CheckoutView extends JFrame {
 		finalConfirmButton.setBounds(341, 380, 85, 21);
 		getContentPane().add(finalConfirmButton);
 
+		@SuppressWarnings("rawtypes")
 		JComboBox year = new JComboBox();
 		year.setModel(new DefaultComboBoxModel(new Integer[] { 2023, 2024 }));
 		year.setBounds(10, 96, 61, 22);
@@ -463,7 +459,6 @@ public class CheckoutView extends JFrame {
 				String creditDebitText = "";
 				outputMessage.setText("");
 				outputMessage.setForeground(Color.red);
-				boolean validPlateNumber = false;
 				if (creditRadioButton.isSelected() || debitRadioButton.isSelected()) {
 					if (creditRadioButton.isSelected()) {
 						creditDebitText = creditRadioButton.getText().toLowerCase();

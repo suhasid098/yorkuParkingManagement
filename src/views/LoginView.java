@@ -94,8 +94,6 @@ public class LoginView extends JFrame {
 		this.passField.setSize(fieldX, fieldY);
 		this.passField.setMaximumSize(this.passField.getSize());
 
-		// Set up button fonts and font sizes.
-		int fontSize = 10;
 		this.saveButton.setFont(new Font("Tahoma", Font.BOLD, 10));
 		cancelButton.setFont(new Font("Tahoma", Font.BOLD, 10));
 

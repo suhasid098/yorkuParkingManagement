@@ -1,8 +1,6 @@
 package views;
 
 import java.awt.Color;
-import java.awt.Container;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -33,9 +31,7 @@ public class LassondeLotView extends JFrame {
 		// Set the frame to open in the middle of the screen.
 		this.setLocationRelativeTo(null);
 
-		// Pane setup.
-		// Get the content pane.
-		Container contentPane = this.getContentPane();
+		this.getContentPane();
 		getContentPane().setLayout(null);
 
 		JLabel lblLassondeLot = new JLabel("Lassonde Lot");

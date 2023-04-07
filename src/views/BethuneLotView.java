@@ -1,8 +1,6 @@
 package views;
 
 import java.awt.Color;
-import java.awt.Container;
-
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -33,9 +31,7 @@ public class BethuneLotView extends JFrame {
 		// Set the frame to open in the middle of the screen.
 		this.setLocationRelativeTo(null);
 
-		// Pane setup.
-		// Get the content pane.
-		Container contentPane = this.getContentPane();
+		this.getContentPane();
 		getContentPane().setLayout(null);
 
 		JButton psBethune006 = new JButton("006");
@@ -115,8 +111,6 @@ public class BethuneLotView extends JFrame {
 				} else {
 					JOptionPane.showMessageDialog(null, "Unavailable");
 				}
-
-//				thisView.frame.resetContentPane();
 			}
 		});
 		psBethune002.addActionListener(new ActionListener() {

@@ -1,7 +1,5 @@
 package views;
 
-import java.awt.Container;
-
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -26,6 +24,7 @@ public class LotChoiceView extends JFrame {
 	private LotFactory factory = new LotFactory(); // Here I am using the Factory Design Pattern
 	private JTextField plateNumberField;
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public LotChoiceView(Main frame) {
 		this.frame = frame;
 		// Frame setup.
@@ -38,15 +37,14 @@ public class LotChoiceView extends JFrame {
 		// Set the frame to open in the middle of the screen.
 		this.setLocationRelativeTo(null);
 
-		// Pane setup.
-		// Get the content pane.
-		Container contentPane = this.getContentPane();
+		this.getContentPane();
 		getContentPane().setLayout(null);
 
 		JLabel selectParkingLabel = new JLabel("Select a Parking Lot");
 		selectParkingLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		selectParkingLabel.setBounds(125, 156, 159, 32);
 		getContentPane().add(selectParkingLabel);
+		@SuppressWarnings("rawtypes")
 		JComboBox lots = new JComboBox();
 		lots.setModel(new DefaultComboBoxModel(LotController.getLotList().split(",")));
 

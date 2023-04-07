@@ -7,7 +7,6 @@ import controllers.UserController;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -75,7 +74,6 @@ public class BookingActionsView extends JFrame {
 		logoutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		// Set up button fonts and font sizes.
-		int fontSize = 10;
 		logoutButton.setFont(new Font("Tahoma", Font.BOLD, 10));
 
 		JLabel greetingLabel = new JLabel("Hello " + UserController.getLoggedInUser().getName());
