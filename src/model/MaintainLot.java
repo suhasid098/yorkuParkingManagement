@@ -26,6 +26,9 @@ public class MaintainLot extends Maintain {
 	public static MaintainLot getInstance() {
 		return maintain;
 	}
+	public void resetLotOptions() {
+		lotOptions = "Vanier,Bethune,Calumet,Schulich,Lassonde";
+	}
 
 	public void load() throws Exception {
 		// Create a new reader for the csv file and read the file's headers.
@@ -56,6 +59,18 @@ public class MaintainLot extends Maintain {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void clear() {
+		try {		
+			//Create new csv file with appropriate headers at given path.
+			CsvWriter csvOutput = new CsvWriter(new FileWriter(this.path, false), ',');
+			csvOutput.flush();
+			csvOutput.close();
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}		
 	}
 
 }

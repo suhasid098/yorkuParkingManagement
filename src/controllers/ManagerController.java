@@ -18,7 +18,6 @@ public class ManagerController {
 	private static StrongPasswordBuilder strongPassword = new StrongPasswordBuilder();
 	private static NumberPasswordBuilder numberPassword = new NumberPasswordBuilder();
 
-
 	public static Manager generateManager() {
 		if (maintain.loggedInManager.getId() != 0) {
 			return null;
@@ -42,6 +41,7 @@ public class ManagerController {
 		}
 		return manager;
 	}
+
 	public static Manager generateManagerWithPinPassword() {
 		if (maintain.loggedInManager.getId() != 0) {
 			return null;
@@ -86,8 +86,29 @@ public class ManagerController {
 	public static Manager getLoggedInManager() {
 		return maintain.loggedInManager;
 	}
+
 	public static ArrayList<Manager> getManagers() {
 		return maintain.managers;
+	}
+
+	// clears file but keeps the default super manager
+	public static void clear() {
+		try {
+			maintain.clear();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static void resetManager() {
+		maintain.managers.clear();
+		Manager manager = new Manager();
+
+		manager.setName("SuperManager");
+		manager.setId(0);
+		manager.setPassword("Aa!1");
+		maintain.managers.add(manager);
 	}
 
 }

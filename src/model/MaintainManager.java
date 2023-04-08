@@ -81,4 +81,24 @@ public class MaintainManager extends Maintain {
 			e.printStackTrace();
 		}
 	}
+
+	public void clear() throws Exception {
+		try {
+			// Create new csv file with appropriate headers at given path.
+			CsvWriter csvOutput = new CsvWriter(new FileWriter(this.path, false), ',');
+			csvOutput.flush();
+			csvOutput.write("name");
+			csvOutput.write("id");
+			csvOutput.write("password");
+			csvOutput.endRecord();
+			csvOutput.write("SuperManager");
+			csvOutput.write("0");
+			csvOutput.write("Aa!1");
+			csvOutput.endRecord();
+			csvOutput.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

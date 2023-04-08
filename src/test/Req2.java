@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import controllers.LotController;
 import controllers.ManagerController;
+import controllers.UserController;
 import objects.Manager;
 import views.*;
 import views.RegisterView;
@@ -19,6 +20,8 @@ public class Req2 {
 	
 	@Test // Super Manager logs in and generates management account
 	public void test1() {
+		ManagerController.resetManager();
+
 		// logging in as a Super Manager
 		ManagerController.logInManager("SuperManager", "Aa!1");
 		ManagerActionsView mv1 = new ManagerActionsView(null);
@@ -27,13 +30,10 @@ public class Req2 {
 		Manager newManager = ManagerController.generateManager();
 		assertNotNull(newManager); // means manager has been generated
 		ManagerController.logOutManager();
-		
-		ArrayList<Manager> m = ManagerController.getManagers();
-		// Unique passwords and names
-		for (int i = 0; i < m.size()-1; i++) { // dont include last manager in the list for comparison
-			assertFalse(m.get(i).getName() == newManager.getName());
-			assertFalse(m.get(i).getPassword() == newManager.getPassword());
-		}
+
+		ManagerController.resetManager();
+		ManagerController.clear();
+
 	}
 
 	@Test // Generated manager has a unique name and password
@@ -51,6 +51,9 @@ public class Req2 {
 			assertFalse(m.get(i).getName() == newManager3.getName());
 			assertFalse(m.get(i).getPassword() == newManager3.getPassword());
 		}
+		
+		ManagerController.resetManager();
+		ManagerController.clear();
 	}
 	@Test // Manager can have either a strong generated password or a strong pin (Builder pattern)
 	public void test3() {
@@ -65,6 +68,9 @@ public class Req2 {
 		ManagerController.logOutManager();
 		
 		assertEquals(4,newManager2.getPassword().length());		
+		
+		ManagerController.resetManager();
+		ManagerController.clear();
 	}
 
 
@@ -79,6 +85,9 @@ public class Req2 {
 		Manager generatedManager = ManagerController.generateManager();
 		assertNull(generatedManager); // null beacuse only superManager can generate a manager
 		ManagerController.logOutManager();
+		
+		ManagerController.resetManager();
+		ManagerController.clear();
 	}
 
 	@Test // maintaining parking services
@@ -92,17 +101,24 @@ public class Req2 {
 		LotChoiceView lv = new LotChoiceView(null);
 
 		// All lots are enabled by default
-		assertEquals(4, LotController.getLotList().split(",").length);
+		assertEquals(5, LotController.getLotList().split(",").length);
 
 		// disable parking
 		LotController.removeLot("Lassonde");
 		// size of array has decreased by 1 because lassonde has been removed as an
 		// option
-		assertEquals(3, LotController.getLotList().split(",").length);
+		assertEquals(4, LotController.getLotList().split(",").length);
 
 		// enable parking
 		LotController.enableLot("Lassonde");
-		assertEquals(4, LotController.getLotList().split(",").length);
+		assertEquals(5, LotController.getLotList().split(",").length);
+		ManagerController.logOutManager();
+
+		ManagerController.resetManager();
+		ManagerController.clear();
+		LotController.resetLots();
+		LotController.clear();
+		
 
 	}
 	

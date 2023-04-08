@@ -72,4 +72,15 @@ public class LotController {
 			e.printStackTrace();
 		}
 	}
+	public static void clear() {
+		try {
+			maintain.clear();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public static void resetLots() {
+		maintain.resetLotOptions();
+	}
 }
