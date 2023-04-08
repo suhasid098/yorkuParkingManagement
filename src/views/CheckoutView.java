@@ -518,8 +518,13 @@ public class CheckoutView extends JFrame {
 					}
 
 				} else if (mobilePaymentRadioButton.isSelected()) {
+					int price1 = (int) (UserController.getLoggedInUser().getRate() * hoursBookedFor
+							+ UserController.getLoggedInUser().getRate());
+					
 					creditDebitText = mobilePaymentRadioButton.getText().toLowerCase();
-					UserController.setPaymentType(creditDebitText);
+//					UserController.setPaymentType(creditDebitText);
+					UserController.checkoutInfo("", "", "", creditDebitText, price1,
+							startTime, endTime);
 					outputMessage.setText("Parking Spot Booked!");
 				}
 			}
