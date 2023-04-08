@@ -5,8 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import controllers.UserController;
+import views.RegisterView;
 
 public class Req1 {
+	RegisterView rv = new RegisterView(null);
+
 	@Test // registering a user
 	public void test1() {
 		UserController.registerUser("Jimmy", "jim@gmail.com", "!Password123", "!Password123", "Faculty");
@@ -106,12 +109,12 @@ public class Req1 {
 		UserController.approveUser(UserController.getUnapprovedUsers().get(0));
 		assertEquals(2, UserController.getUnapprovedUsers().size());
 		assertEquals(1, UserController.getApprovedUsers().size());
-		
+
 		// approving Faculty member Haider
 		UserController.approveUser(UserController.getUnapprovedUsers().get(0));
 		assertEquals(1, UserController.getUnapprovedUsers().size());
 		assertEquals(2, UserController.getApprovedUsers().size());
-		
+
 		// approving non-faculty member Rebecca
 		UserController.approveUser(UserController.getUnapprovedUsers().get(0));
 		assertEquals(0, UserController.getUnapprovedUsers().size());
@@ -124,8 +127,8 @@ public class Req1 {
 																		// require registration
 		assertEquals(4, UserController.getApprovedUsers().size()); // size is increased because visitor user is
 																	// automatically approved
-
 		UserController.clearUsers();
 		UserController.clear();
 	}
+
 }
