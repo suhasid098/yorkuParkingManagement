@@ -1,6 +1,6 @@
 package password;
 
-interface PasswordBuilder {
+public interface PasswordBuilder {
 //	Password password;
 
 //	public Password getPassword() {
