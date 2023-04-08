@@ -86,6 +86,7 @@ public class Req1 {
 		UserController.clearUsers();
 		assertEquals(0, UserController.getApprovedUsers().size());
 
+		UserController.clearUsers();
 		UserController.clear();
 	}
 
@@ -129,6 +130,7 @@ public class Req1 {
 																	// automatically approved
 		UserController.clearUsers();
 		UserController.clear();
+		UserController.logOutUser(); // we have to log out of visitor manually because of automatic approval
 	}
 
 }

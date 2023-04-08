@@ -158,6 +158,9 @@ public class User extends Account {
 	public void setApproved(boolean approved) {
 		this.approved = approved;
 	}
+	public String getParkingLot() {
+		return this.lotName;
+	}
 
 	public void setParkingLot(String lotName) {
 		this.lotName = lotName;

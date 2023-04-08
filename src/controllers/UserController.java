@@ -1,6 +1,5 @@
 package controllers;
 
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -41,8 +40,12 @@ public class UserController {
 		}
 
 		// Create user and update users list and DB.
-		if (!maintain.users.isEmpty())
+		if (!maintain.users.isEmpty()) {
 			userCount = maintain.users.get(maintain.users.size() - 1).getId() + 1;
+		} else {
+			userCount = 0;
+
+		}
 		User user = new User(name, userCount, email, password, accountType);
 		maintain.users.add(user);
 		try {
@@ -146,9 +149,10 @@ public class UserController {
 	public static String checkEmail(String email) {
 		String regex = "^(.+)@(.+)$";
 		Pattern pattern = Pattern.compile(regex);
-		
+
 		// Check email format.
-		if (!(pattern.matcher(email).matches()) || !(email.contains("@") && (email.contains(".ca") || email.contains(".com")))) {
+		if (!(pattern.matcher(email).matches())
+				|| !(email.contains("@") && (email.contains(".ca") || email.contains(".com")))) {
 			return "Email invalid.";
 		}
 
@@ -171,6 +175,7 @@ public class UserController {
 		}
 		return users;
 	}
+
 	public static void clearUsers() {
 		maintain.users.clear();
 	}
@@ -187,7 +192,6 @@ public class UserController {
 		return users;
 	}
 
-	
 	// Sets a user's registration/account status to approved.
 	public static boolean approveUser(User user) {
 		boolean updated = false;
@@ -252,8 +256,19 @@ public class UserController {
 	}
 
 	public static void addParkingSpot(String spotID, String lotName) {
-		maintain.users.get(maintain.loggedInUser.getId()).setParkingSpot(spotID);
-		maintain.users.get(maintain.loggedInUser.getId()).setParkingLot(lotName);
+	
+		
+		boolean exists = false;
+		for (int i = 0; i < maintain.users.size(); i++) {
+			if (maintain.users.get(i).getParkingLot() == lotName
+					&& maintain.users.get(i).getParkingSpotName() == spotID) {
+				exists = true;
+			}
+		}
+		if(exists == false) {
+			maintain.users.get(maintain.loggedInUser.getId()).setParkingSpot(spotID);
+			maintain.users.get(maintain.loggedInUser.getId()).setParkingLot(lotName);
+		}
 
 		try {
 
@@ -345,11 +360,11 @@ public class UserController {
 	}
 
 	public static void clear() {
-	  try {
-		maintain.clear();
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}		
+		try {
+			maintain.clear();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
