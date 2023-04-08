@@ -1,9 +1,14 @@
 package controllers;
 
+import java.util.ArrayList;
+
 import model.MaintainManager;
 import password.Generator;
 import password.StrongPasswordBuilder;
 import objects.Manager;
+import objects.User;
+import password.NumberPasswordBuilder;
+import password.*;
 
 public class ManagerController {
 	private static MaintainManager maintain = MaintainManager.getInstance();
@@ -11,6 +16,8 @@ public class ManagerController {
 	private static Generator gen = new Generator(); // director
 	// choosing a strong password rather than a 4 digit pin builder
 	private static StrongPasswordBuilder strongPassword = new StrongPasswordBuilder();
+	private static NumberPasswordBuilder numberPassword = new NumberPasswordBuilder();
+
 
 	public static Manager generateManager() {
 		if (maintain.loggedInManager.getId() != 0) {
@@ -24,6 +31,29 @@ public class ManagerController {
 		gen.setPasswordBuilder(strongPassword);
 		gen.generatePassword();
 		String password = strongPassword.getPassword().getPassword1(); // returns strong password
+
+		Manager manager = new Manager("Manager" + managerCount, managerCount, password);
+		maintain.managers.add(manager);
+
+		try {
+			maintain.update();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return manager;
+	}
+	public static Manager generateManagerWithPinPassword() {
+		if (maintain.loggedInManager.getId() != 0) {
+			return null;
+		}
+		// Create user and update users list and DB.
+		if (!maintain.managers.isEmpty()) {
+			// Create super manager with generated password.
+			managerCount = maintain.managers.get(maintain.managers.size() - 1).getId() + 1;
+		}
+		gen.setPasswordBuilder(numberPassword);
+		gen.generatePassword();
+		String password = numberPassword.getPassword().getPassword1(); // returns strong password
 
 		Manager manager = new Manager("Manager" + managerCount, managerCount, password);
 		maintain.managers.add(manager);
@@ -56,4 +86,8 @@ public class ManagerController {
 	public static Manager getLoggedInManager() {
 		return maintain.loggedInManager;
 	}
+	public static ArrayList<Manager> getManagers() {
+		return maintain.managers;
+	}
+
 }
