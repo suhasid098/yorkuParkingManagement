@@ -1,103 +1,151 @@
 package test;
 
-import objects.Manager;
-import objects.SuperManager;
-
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-import org.junit.*;
+import javax.swing.DefaultComboBoxModel;
 
+import org.junit.Test;
+
+import controllers.LotController;
 import controllers.ManagerController;
-import model.MaintainManager;
-
+import objects.Manager;
+import views.*;
+import views.RegisterView;
+// might have to add clearManager for the ArrayList in ManagerController
+// and clear() for the csv
 public class Req2 {
-	private static MaintainManager maintain;
-	private Manager manager;
-	private ArrayList<Manager> dbManagers;
 	
-	@SuppressWarnings("unchecked")
-	@Before
-    public void init() {
-		maintain = MaintainManager.getInstance();
-		maintain.loggedInManager = maintain.managers.get(0);
-		dbManagers = (ArrayList<Manager>) maintain.managers.clone();
-		manager = ManagerController.generateManager();
-    }
-	
-	@After 
-	public void fin() {
-		//Remove generated manager.
-		maintain.managers = dbManagers;
-		try {
-			maintain.update();
-		} catch (Exception e) {
-			e.printStackTrace();
+	@Test // Super Manager logs in and generates management account
+	public void test1() {
+		// logging in as a Super Manager
+		ManagerController.logInManager("SuperManager", "Aa!1");
+		ManagerActionsView mv1 = new ManagerActionsView(null);
+		ManageAccountsView mv2 = new ManageAccountsView(null);
+		
+		Manager newManager = ManagerController.generateManager();
+		assertNotNull(newManager); // means manager has been generated
+		ManagerController.logOutManager();
+		
+		ArrayList<Manager> m = ManagerController.getManagers();
+		// Unique passwords and names
+		for (int i = 0; i < m.size()-1; i++) { // dont include last manager in the list for comparison
+			assertFalse(m.get(i).getName() == newManager.getName());
+			assertFalse(m.get(i).getPassword() == newManager.getPassword());
 		}
 	}
+
+	@Test // Generated manager has a unique name and password
+	public void test2() {
+		ManagerController.logInManager("SuperManager", "Aa!1");
+		Manager newManager = ManagerController.generateManager();
+		Manager newManager2 = ManagerController.generateManager();
+		Manager newManager3 = ManagerController.generateManager();
+
+
+		ArrayList<Manager> m = ManagerController.getManagers();
 	
-	@Test
-	public void testAccountGenerationPerms() {
-		//Test that super manager can generate managers.
-		Manager sManager = new SuperManager();
-		maintain.loggedInManager = sManager;
-		Manager genManager = ManagerController.generateManager();
-		assertNotNull("Super manager couldn't generate a manager", genManager);
-		
-		//Test that manager can't generate managers.
-		Manager rManager = new Manager();
-		maintain.loggedInManager = rManager;
-		genManager = ManagerController.generateManager();
-		assertNull("Manager could generate a manager", genManager);
+		for (int i = 0; i < m.size()-1; i++) { // dont include last manager in the list for comparison
+			//Manager3 does not share the same password or name as the previous passwords
+			assertFalse(m.get(i).getName() == newManager3.getName());
+			assertFalse(m.get(i).getPassword() == newManager3.getPassword());
+		}
 	}
+	@Test // Manager can have either a strong generated password or a strong pin (Builder pattern)
+	public void test3() {
+		ManagerController.logInManager("SuperManager", "Aa!1");
+		Manager newManager = ManagerController.generateManager();
+		ManagerController.logOutManager();
+
+		assertEquals(8,newManager.getPassword().length());
+		
+		ManagerController.logInManager("SuperManager", "Aa!1");
+		Manager newManager2 = ManagerController.generateManagerWithPinPassword();
+		ManagerController.logOutManager();
+		
+		assertEquals(4,newManager2.getPassword().length());		
+	}
+
+
+	@Test // Account generation is NOT enabled for non-Super Managers
+	public void test4() {
+		ManagerController.logInManager("SuperManager", "Aa!1");
+		Manager manager = ManagerController.generateManagerWithPinPassword();
+		
+		// login with newly generated manager
+		ManagerController.logInManager(manager.getName(), manager.getPassword());
+		
+		Manager generatedManager = ManagerController.generateManager();
+		assertNull(generatedManager); // null beacuse only superManager can generate a manager
+		ManagerController.logOutManager();
+	}
+
+	@Test // maintaining parking services
+	public void test5() {
+		ManagerController.logInManager("SuperManager", "Aa!1");
+		Manager newManager = ManagerController.generateManager();
+		// login with newly generated manager
+		ManagerController.logInManager(newManager.getName(), newManager.getPassword());
+
+		ManageLotsView ml = new ManageLotsView(null);
+		LotChoiceView lv = new LotChoiceView(null);
+
+		// All lots are enabled by default
+		assertEquals(4, LotController.getLotList().split(",").length);
+
+		// disable parking
+		LotController.removeLot("Lassonde");
+		// size of array has decreased by 1 because lassonde has been removed as an
+		// option
+		assertEquals(3, LotController.getLotList().split(",").length);
+
+		// enable parking
+		LotController.enableLot("Lassonde");
+		assertEquals(4, LotController.getLotList().split(",").length);
+
+	}
+
+//	// logging in as a Manager
+//	ManagerController.logInManager("Manager1","Rf/2");
+//
+
+//	Manager manager1 = ManagerController.generateManager();
+//
+//	// null beacuse only superManager can generate a manager
+//	assertNull(manager1); 
+//		ManagerController.logOutManager();
+//		
+//		// logging in as a Super Manager
+//		ManagerController.logInManager("SuperManager", "Aa!1");
+//		
+//
+//		
+//		// login with newly generated manager
+//		ManagerController.logInManager(newManager.getName(), newManager.getPassword());
+//		
+//		ManageLotsView ml = new ManageLotsView(null);
+//		LotChoiceView lv = new LotChoiceView(null);
+//		
+//
+//		// All lots are enabled by default 
+//		assertEquals(4,LotController.getLotList().split(",").length);
+//
+//		// disable parking
+//		LotController.removeLot("Lassonde");
+//		// size of array has decreased by 1 because lassonde has been removed as an option
+//		assertEquals(3,LotController.getLotList().split(",").length);
+//
+//		// enable parking
+//		LotController.enableLot("Lassonde");
+//		assertEquals(4,LotController.getLotList().split(",").length);
+//
+//
+
+
+//		ManageAccountsView mv2 = new ManageAccountsView(null);
+
 	
-	@Test
-	public void testGeneratedInfo() {
-		String password = manager.getPassword();
-		String name = manager.getName();
-		
-		//Check username is unique.
-		for(Manager m: dbManagers) {
-			if(name.equals(m.getName())) fail("Manager username already exists.");
-		}
-		
-		//Check password contains a number, uppercase, lowercase, and symbol.
-		boolean contains = false;
-		String numbers = "1234567890";
-		for(char c:numbers.toCharArray()) {
-			if(password.contains(String.valueOf(c))) {
-				contains = true;
-			}
-		}
-		assertTrue("Password does not contain a number", contains);
-		contains = false;
-		
-		String uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		for(char c:uppercase.toCharArray()) {
-			if(password.contains(String.valueOf(c))) {
-				contains = true;
-			}
-		}
-		assertTrue("Password does not contain an uppercase letter", contains);
-		contains = false;
-		
-		String lowercase = "abcdefghijklmnopqrstuvwxyz";
-		for(char c:lowercase.toCharArray()) {
-			if(password.contains(String.valueOf(c))) {
-				contains = true;
-			}
-		}
-		assertTrue("Password does not contain a lowercase letter", contains);
-		contains = false;
-		
-		String symbols = "!@#$%^&*()_+-={}[]|\\\\:;\\\"',.?/";
-		for(char c:symbols.toCharArray()) {
-			if(password.contains(String.valueOf(c))) {
-				contains = true;
-			}
-		}
-		assertTrue("Password does not contain a symbol", contains);		
-	}
+	
 
 }
