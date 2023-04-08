@@ -1,5 +1,0 @@
-name,id,email,password,parking_spot,lot,account_type,approved,payment_type,name_on_card,card_number,cvv_number,credit_balance,debit_balance,parking_startTime,parking_endTime,license_plate_number,price
-Gary,0,garysmith@gmail.com,$Tiramisu1,,,Student,false,,,,,0,1000,null,null,,0
-Haider,1,haider@gmail.com,@Haider2027,,,Faculty,false,,,,,0,1000,null,null,,0
-Rebecca,2,becky@yahoo.ca,&Graduation2020,,,Non-Faculty,false,,,,,0,1000,null,null,,0
-Marcus,3,marcus@hotmail.com,YorkUniversity!2013,,,Visitor,true,,,,,0,1000,null,null,,0

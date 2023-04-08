@@ -59,8 +59,9 @@ public class Req1 {
 		// invalid password case 1 missing lower case
 		assertEquals("Password does not contain: lowercase.",
 				UserController.registerUser("Cassie", "cassie@yahoo.ca", "!CASSIE2323", "!CASSIE2323", "Non-Faculty"));
-		// size remains 1 because user was unable to be registered due to its invalid password entry 
-		assertEquals(1, UserController.getUnapprovedUsers().size()); 
+		// size remains 1 because user was unable to be registered due to its invalid
+		// password entry
+		assertEquals(1, UserController.getUnapprovedUsers().size());
 
 		// invalid password case 2 missing upper case
 		assertEquals("Password does not contain: uppercase.",
@@ -76,13 +77,15 @@ public class Req1 {
 		assertEquals("Password does not contain: number.",
 				UserController.registerUser("Cassie", "cassie@yahoo.ca", "!Cassie", "!Cassie", "Non-Faculty"));
 		assertEquals(1, UserController.getUnapprovedUsers().size());
-		
+
 		UserController.approveUser(UserController.getUnapprovedUsers().get(0)); // approving the 1 user in the list
 		assertEquals(0, UserController.getUnapprovedUsers().size());
 		UserController.clearUsers();
+		assertEquals(0, UserController.getApprovedUsers().size());
+
 		UserController.clear();
 	}
-	
+
 	@Test
 	public void test4() {
 		// registering a student
@@ -99,26 +102,29 @@ public class Req1 {
 		// the 3 users have to be manually approved by a manager
 		assertEquals(0, UserController.getApprovedUsers().size());
 
-		// registering visitor
-		UserController.registerUser("Marcus", "marcus@hotmail.com", "YorkUniversity!2013", "YorkUniversity!2013",
-				"Visitor");
-		assertEquals(3, UserController.getUnapprovedUsers().size()); // size should still be 3 because visitors don't
-																		// require registration
-		assertEquals(1, UserController.getApprovedUsers().size()); // size is increased because visitor user is
-																	// automatically approved
 		// approving the 3 user in the list
-		// approving Student Gary
 		UserController.approveUser(UserController.getUnapprovedUsers().get(0));
 		assertEquals(2, UserController.getUnapprovedUsers().size());
-		assertEquals(2, UserController.getApprovedUsers().size()); 
+		assertEquals(1, UserController.getApprovedUsers().size());
+		
 		// approving Faculty member Haider
 		UserController.approveUser(UserController.getUnapprovedUsers().get(0));
 		assertEquals(1, UserController.getUnapprovedUsers().size());
-		assertEquals(3, UserController.getApprovedUsers().size()); 
+		assertEquals(2, UserController.getApprovedUsers().size());
+		
 		// approving non-faculty member Rebecca
 		UserController.approveUser(UserController.getUnapprovedUsers().get(0));
 		assertEquals(0, UserController.getUnapprovedUsers().size());
-		assertEquals(4, UserController.getApprovedUsers().size()); // size should still be 0 because visitors don't
+		assertEquals(3, UserController.getApprovedUsers().size()); // size should still be 0 because visitors don't
+
+		// registering visitor
+		UserController.registerUser("Marcus", "marcus@hotmail.com", "YorkUniversity!2013", "YorkUniversity!2013",
+				"Visitor");
+		assertEquals(0, UserController.getUnapprovedUsers().size()); // size should still be 3 because visitors don't
+																		// require registration
+		assertEquals(4, UserController.getApprovedUsers().size()); // size is increased because visitor user is
+																	// automatically approved
+
 		UserController.clearUsers();
 		UserController.clear();
 	}
