@@ -45,7 +45,7 @@ public class User extends Account {
 	// updating balance of either credit or debit card
 	public void chargeUser(String payementType, int parkingfee) {
 		this.paymentType = payementType;
-		parkingFee = parkingfee;
+		parkingFee = parkingfee; 
 		if (payementType.equalsIgnoreCase("credit")) {
 			creditBalnce = creditBalnce + parkingfee;
 		} else if (payementType.equalsIgnoreCase("debit")) {

@@ -1,0 +1,2 @@
+name,id,email,password,parking_spot,lot,account_type,approved,payment_type,name_on_card,card_number,cvv_number,credit_balance,debit_balance,parking_startTime,parking_endTime,license_plate_number,price
+Suha,0,Suha@gmail.com,Password1!,005,Varnier,Visitor,true,mobile payment,,,,0,1000,2023-05-01T01:00,2023-05-02T01:00,1221,375
