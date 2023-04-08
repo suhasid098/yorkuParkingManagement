@@ -105,47 +105,8 @@ public class Req2 {
 		assertEquals(4, LotController.getLotList().split(",").length);
 
 	}
-
-//	// logging in as a Manager
-//	ManagerController.logInManager("Manager1","Rf/2");
-//
-
-//	Manager manager1 = ManagerController.generateManager();
-//
-//	// null beacuse only superManager can generate a manager
-//	assertNull(manager1); 
-//		ManagerController.logOutManager();
-//		
-//		// logging in as a Super Manager
-//		ManagerController.logInManager("SuperManager", "Aa!1");
-//		
-//
-//		
-//		// login with newly generated manager
-//		ManagerController.logInManager(newManager.getName(), newManager.getPassword());
-//		
-//		ManageLotsView ml = new ManageLotsView(null);
-//		LotChoiceView lv = new LotChoiceView(null);
-//		
-//
-//		// All lots are enabled by default 
-//		assertEquals(4,LotController.getLotList().split(",").length);
-//
-//		// disable parking
-//		LotController.removeLot("Lassonde");
-//		// size of array has decreased by 1 because lassonde has been removed as an option
-//		assertEquals(3,LotController.getLotList().split(",").length);
-//
-//		// enable parking
-//		LotController.enableLot("Lassonde");
-//		assertEquals(4,LotController.getLotList().split(",").length);
-//
-//
-
-
-//		ManageAccountsView mv2 = new ManageAccountsView(null);
-
 	
 	
 
 }
+
