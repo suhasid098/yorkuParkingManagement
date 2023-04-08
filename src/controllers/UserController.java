@@ -1,8 +1,10 @@
 package controllers;
 
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.regex.Pattern;
 
 import model.MaintainUser;
 import objects.User;
@@ -86,6 +88,10 @@ public class UserController {
 		return maintain.loggedInUser;
 	}
 
+	public static ArrayList<User> getUsers() {
+		return maintain.users;
+	}
+
 	// Checks that the entered password is valid.
 	private static String checkPassword(String password) {
 		boolean lowercase = false;
@@ -137,9 +143,12 @@ public class UserController {
 	}
 
 	// Checks that the entered email is valid.
-	private static String checkEmail(String email) {
+	public static String checkEmail(String email) {
+		String regex = "^(.+)@(.+)$";
+		Pattern pattern = Pattern.compile(regex);
+		
 		// Check email format.
-		if (!(email.contains("@") && (email.contains(".ca") || email.contains(".com")))) {
+		if (!(pattern.matcher(email).matches()) || !(email.contains("@") && (email.contains(".ca") || email.contains(".com")))) {
 			return "Email invalid.";
 		}
 
@@ -160,10 +169,25 @@ public class UserController {
 				users.add(user);
 			}
 		}
+		return users;
+	}
+	public static void clearUsers() {
+		maintain.users.clear();
+	}
+
+	// Gets a list of the users that have been fully registered.
+	public static ArrayList<User> getApprovedUsers() {
+		ArrayList<User> users = new ArrayList<User>();
+		for (User user : maintain.users) {
+			if (user.getApproved()) {
+				users.add(user);
+			}
+		}
 
 		return users;
 	}
 
+	
 	// Sets a user's registration/account status to approved.
 	public static boolean approveUser(User user) {
 		boolean updated = false;
@@ -320,4 +344,12 @@ public class UserController {
 
 	}
 
+	public static void clear() {
+	  try {
+		maintain.clear();
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}		
+	}
 }
