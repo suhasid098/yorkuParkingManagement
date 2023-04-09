@@ -135,25 +135,17 @@ public class BookingActionsView extends JFrame {
 
 		// Set up what to do when the cancel button is pressed.
 		cancelButton.addActionListener(new ActionListener() {
-			LocalDateTime current = LocalDateTime.now();
-			LocalDateTime startTime = UserController.getLoggedInUser().getParkingStartTime();
-			long duration = -1;
 
 			public void actionPerformed(ActionEvent e) { // Req 8,9
-				if (current == null || startTime == null) {
-
-				} else {
-					duration = current.until(startTime, ChronoUnit.MINUTES);
-				}
-				if (duration > 0) {
-					UserController.removeParkingLot();
+			
+					boolean result = UserController.removeParkingLot();
 					JOptionPane.showMessageDialog(null,
 							"Booking canceled, Refund of $" + UserController.getRefundAmount() + " deposited into "
-									+ UserController.getType() + " card");
-				} else {
-					JOptionPane.showMessageDialog(null, "Too late");
-				}
-
+									+ UserController.getType() + " card");			
+					if(result == false) {
+						JOptionPane.showMessageDialog(null, "Too late");
+					}
+				
 			}
 		});
 
