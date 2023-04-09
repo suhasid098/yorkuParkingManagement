@@ -7,7 +7,6 @@ public class AlertStateContext {
 
 	public AlertStateContext() {
 		currentState = new Available(); 
-		// TODO Auto-generated constructor stub
 	}
 	
 	public void setState(Alert state) {

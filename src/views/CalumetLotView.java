@@ -165,7 +165,6 @@ public class CalumetLotView extends JFrame {
 	}
 
 	public AlertStateContext getParkingSpotState() {
-		// TODO Auto-generated method stub
 		return parkingSpot;
 	}
 

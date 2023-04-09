@@ -243,7 +243,6 @@ public class UserController {
 		try {
 			maintain.update();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		ArrayList<User> userList = maintain.users;
@@ -278,7 +277,6 @@ public class UserController {
 
 			maintain.update();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -297,7 +295,6 @@ public class UserController {
 		try {
 			maintain.update();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -312,7 +309,6 @@ public class UserController {
 		try {
 			maintain.update();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -346,7 +342,6 @@ public class UserController {
 				try {
 					maintain.update();
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -373,7 +368,6 @@ public class UserController {
 		try {
 			maintain.update();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -383,7 +377,6 @@ public class UserController {
 		try {
 			maintain.clear();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

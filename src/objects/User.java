@@ -88,7 +88,6 @@ public class User extends Account {
 	}
 
 	public double getRate() {
-		// TODO Auto-generated method stub
 		if (accountType.equals("Faculty")) {
 			rate = 8.00;
 
@@ -171,12 +170,10 @@ public class User extends Account {
 	}
 
 	public String getDebitBalance() {
-		// TODO Auto-generated method stub
 		return this.debitBalance + "";
 	}
 
 	public String getCredittBalance() {
-		// TODO Auto-generated method stub
 		return this.creditBalnce + "";
 	}
 
