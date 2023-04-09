@@ -1,9 +1,13 @@
 package controllers;
 
+import java.awt.event.ActionEvent;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.regex.Pattern;
+
+import javax.swing.JOptionPane;
 
 import model.MaintainUser;
 import objects.User;
@@ -314,26 +318,42 @@ public class UserController {
 
 	}
 
-	public static void removeParkingLot() {
-		maintain.users.get(maintain.loggedInUser.getId()).setParkingEndTime(null);
-		maintain.users.get(maintain.loggedInUser.getId()).setParkingStartTime(null);
-		maintain.users.get(maintain.loggedInUser.getId()).setParkingLot("");
-		maintain.users.get(maintain.loggedInUser.getId()).setParkingSpot("");
-		LocalDateTime startTime = maintain.users.get(maintain.loggedInUser.getId()).getParkingStartTime();
-		LocalDateTime en = maintain.users.get(maintain.loggedInUser.getId()).getParkingEndTime();
+	public static boolean removeParkingLot() {
+		
+		
+		LocalDateTime current = LocalDateTime.now();
+		LocalDateTime startTime = UserController.getLoggedInUser().getParkingStartTime();
+		long duration = -1;
+	
+			if (current == null || startTime == null) {
 
-		LocalDateTime currTime = LocalDateTime.now();
+			} else {
+				duration = current.until(startTime, ChronoUnit.MINUTES);
+			}
+			if (duration > 0) {
+				maintain.users.get(maintain.loggedInUser.getId()).setParkingEndTime(null);
+				maintain.users.get(maintain.loggedInUser.getId()).setParkingStartTime(null);
+				maintain.users.get(maintain.loggedInUser.getId()).setParkingLot("");
+				maintain.users.get(maintain.loggedInUser.getId()).setParkingSpot("");
+				startTime = maintain.users.get(maintain.loggedInUser.getId()).getParkingStartTime();
+				LocalDateTime en = maintain.users.get(maintain.loggedInUser.getId()).getParkingEndTime();
 
-		User u = maintain.users.get(maintain.loggedInUser.getId());
-		int price = u.getPrice();
-		u.refund(price);
-		try {
-			maintain.update();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+				LocalDateTime currTime = LocalDateTime.now();
 
+				User u = maintain.users.get(maintain.loggedInUser.getId());
+				int price = u.getPrice();
+				u.refund(price);
+				try {
+					maintain.update();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			} else {
+				return false;
+			}
+			return true;
 	}
 
 	public static String getRefundAmount() {
