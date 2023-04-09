@@ -152,7 +152,7 @@ public class CalumetLotView extends JFrame {
 
 	}
 
-	private void setColorButton(JButton button) {
+	public void setColorButton(JButton button) {
 		if (UserController.isSpotTaken(button.getText(), "Calumet") == false) {
 			parkingSpot.setState(new Available());// will notify user spot is available
 			button.setToolTipText(parkingSpot.alert());
@@ -162,6 +162,11 @@ public class CalumetLotView extends JFrame {
 			button.setToolTipText(parkingSpot.alert()); // using State to set tooltip
 			button.setBackground(Color.red);
 		}
+	}
+
+	public AlertStateContext getParkingSpotState() {
+		// TODO Auto-generated method stub
+		return parkingSpot;
 	}
 
 }
