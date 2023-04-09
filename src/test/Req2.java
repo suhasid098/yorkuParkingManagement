@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.Assert.*;
+import objects.*;
 
 import java.util.ArrayList;
 
@@ -93,6 +94,7 @@ public class Req2 {
 
 	@Test // maintaining parking services
 	public void test5() {
+		SuperManager sp = new SuperManager("SuperManager", 0,"Aa!1" );
 		ManagerController.logInManager("SuperManager", "Aa!1");
 		Manager newManager = ManagerController.generateManager();
 		// login with newly generated manager

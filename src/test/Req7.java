@@ -103,5 +103,14 @@ public class Req7 {
 		UserController.clear();
 
 	}
-
+	
+	@Test
+	public void test3() {
+		LotFactory lf = new LotFactory();
+		assertEquals("YorkUParking - Bethune",lf.getLot(null, "Bethune").getTitle());
+		assertEquals("YorkUParking - Calumet",lf.getLot(null, "Calumet").getTitle());
+		assertEquals("YorkUParking - Lassonde",lf.getLot(null, "Lassonde").getTitle());
+		assertEquals("YorkUParking - Vanier",lf.getLot(null, "Vanier").getTitle());
+		assertEquals("YorkUParking - Schulich",lf.getLot(null, "Schulich").getTitle());
+	}
 }

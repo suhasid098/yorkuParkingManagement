@@ -119,31 +119,21 @@ public class EditBookingView extends JFrame {
 
 		confirmTime_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				// check if user is editing before booking start time
-				LocalDateTime current = LocalDateTime.now();
-				LocalDateTime startTime = UserController.getLoggedInUser().getParkingStartTime();
-				long duration = -1;
-				if (current == null || startTime == null) {
-
-				} else {
-					duration = current.until(startTime, ChronoUnit.MINUTES);
-				}
-				if (duration > 0) {
-					int hours = (int) extendedTime.getSelectedItem();
-					int price1 = (int) (UserController.getLoggedInUser().getRate() * hours);
-
+				
+				///
+				int hours = (int) extendedTime.getSelectedItem();
+				int price1 = (int) (UserController.getLoggedInUser().getRate() * hours);
+				String result2 = UserController.extendTime((int) hours, price1);
+				
+				if(result2 == "edit was successful") {
 					lblAddedCost.setText("Added Cost: " + price1);
-					UserController.extendTime((int) hours, price1);
 					newEndDate_1.setText("New End Date: " + UserController.getLoggedInUser().getParkingEndTime() + "");
-
 					priceLabel.setText("Total Parking Fee: " + UserController.getLoggedInUser().getPrice());
 					DBalance.setText("Debit: " + UserController.getLoggedInUser().getDebitBalance());
 					CBalance.setText("Debit: " + UserController.getLoggedInUser().getCredittBalance());
 				} else {
 					JOptionPane.showMessageDialog(null, "Too late to edit");
 				}
-
 			}
 		});
 

@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import org.junit.Test;
 
 import controllers.UserController;
-
+import views.*;
 public class Req10 {
 
 	@Test
@@ -16,8 +16,8 @@ public class Req10 {
 		UserController.registerUser("Nene", "nenel@hotmail.com", "Atlanta1!", "Atlanta1!", "Student");
 		UserController.approveUser(UserController.getUnapprovedUsers().get(0));
 		UserController.logInUser("nenel@hotmail.com", "Atlanta1!");
-
-		// loggedIn user is booking a parking spot and making a payment
+		CheckoutView cv = new CheckoutView(null);
+		cv.setMobileLableFalse();		
 		UserController.addParkingSpot("001", "Calumet");
 		LocalDateTime startTime = LocalDateTime.of(2023, 4, 8, 0, 0);
 		LocalDateTime endTime = LocalDateTime.of(2023, 4, 9, 0, 0); // end date time has passed already
@@ -25,6 +25,10 @@ public class Req10 {
 		Duration diff = Duration.between(startTime, endTime);
 		long hoursBookedFor = diff.toHours();
 		int price1 = (int) (UserController.getLoggedInUser().getRate() * hoursBookedFor + deposit);
+		
+//		cv.creditRadioButton.action(evt, diff)
+		cv.creditRadioButton.setAction(null);
+		
 		UserController.checkoutInfo("Nene C", "9647282346", "534", "Debit", price1, startTime, endTime);
 		assertEquals("Debit", UserController.getLoggedInUser().getPaymentType());
 		UserController.clearUsers();
@@ -37,7 +41,8 @@ public class Req10 {
 		UserController.registerUser("Nene", "nenel@hotmail.com", "Atlanta1!", "Atlanta1!", "Student");
 		UserController.approveUser(UserController.getUnapprovedUsers().get(0));
 		UserController.logInUser("nenel@hotmail.com", "Atlanta1!");
-
+		CheckoutView cv = new CheckoutView(null);
+		cv.setMobileLableFalse();	
 		// loggedIn user is booking a parking spot and making a payment
 		UserController.addParkingSpot("001", "Calumet");
 		LocalDateTime startTime = LocalDateTime.of(2023, 4, 8, 0, 0);
@@ -59,7 +64,8 @@ public class Req10 {
 		UserController.registerUser("Nene", "nenel@hotmail.com", "Atlanta1!", "Atlanta1!", "Student");
 		UserController.approveUser(UserController.getUnapprovedUsers().get(0));
 		UserController.logInUser("nenel@hotmail.com", "Atlanta1!");
-
+		CheckoutView cv = new CheckoutView(null);
+		cv.setCreditLableFalse();
 		// loggedIn user is booking a parking spot and making a payment
 		UserController.addParkingSpot("001", "Calumet");
 		LocalDateTime startTime = LocalDateTime.of(2023, 4, 8, 0, 0);

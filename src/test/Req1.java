@@ -6,6 +6,8 @@ import views.Main;
 import org.junit.Test;
 
 import controllers.UserController;
+import model.MaintainUser;
+import objects.User;
 import views.RegisterView;
 
 public class Req1 {
@@ -22,12 +24,28 @@ public class Req1 {
 		assertEquals(0, UserController.getUnapprovedUsers().size());
 		assertEquals(1, UserController.getApprovedUsers().size());
 		assertTrue(UserController.getUsers().get(0).getApproved());
+		UserController.load(); // testing load for coverage
+		UserController.clearUsers();
+		UserController.clear();
+	}
+	
+	@Test // denying a user
+	public void test2() {
+		UserController.registerUser("Jimmy", "jim@gmail.com", "!Password123", "!Password123", "Faculty");
+		assertEquals(1, UserController.getUnapprovedUsers().size());
+		assertEquals(0, UserController.getApprovedUsers().size());
+		User jimmy = UserController.getUnapprovedUsers().get(0);
+		UserController.denyUser(UserController.getUnapprovedUsers().get(0));
+		assertEquals(0, UserController.getUnapprovedUsers().size());
+		assertEquals(0, UserController.getApprovedUsers().size()); // user was not approved
+		assertFalse(jimmy.getApproved());// user was not approved
+		UserController.load(); // testing load for coverage
 		UserController.clearUsers();
 		UserController.clear();
 	}
 
 	@Test // checking if email is unique and valid
-	public void test2() {
+	public void test3() {
 		// valid email registration
 		UserController.registerUser("Jane", "jane01@gmail.com", "#Goodbye23", "#Goodbye23", "Student");
 		assertEquals(1, UserController.getUnapprovedUsers().size());
@@ -56,7 +74,7 @@ public class Req1 {
 	}
 
 	@Test
-	public void test3() {
+	public void test4() {
 		// valid password registration
 		UserController.registerUser("Doris", "dorisk@hotmail.com", "*eclipseIDE2019", "*eclipseIDE2019", "Student");
 		assertEquals(1, UserController.getUnapprovedUsers().size());
@@ -93,7 +111,7 @@ public class Req1 {
 	}
 
 	@Test
-	public void test4() {
+	public void test5() {
 		// registering a student
 		UserController.registerUser("Gary", "garysmith@gmail.com", "$Tiramisu1", "$Tiramisu1", "Student");
 		assertEquals(1, UserController.getUnapprovedUsers().size());

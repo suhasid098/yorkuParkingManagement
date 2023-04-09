@@ -23,6 +23,7 @@ public class LotChoiceView extends JFrame {
 	protected Main frame;
 	private LotFactory factory = new LotFactory(); // Here I am using the Factory Design Pattern
 	private JTextField plateNumberField;
+	private JLabel lblmsg = new JLabel("");
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public LotChoiceView(Main frame) {
@@ -67,7 +68,6 @@ public class LotChoiceView extends JFrame {
 		nextBtn.setBounds(341, 382, 85, 21);
 		getContentPane().add(nextBtn);
 
-		JLabel lblmsg = new JLabel("");
 		lblmsg.setForeground(Color.RED);
 		lblmsg.setBounds(136, 300, 152, 14);
 		getContentPane().add(lblmsg);
@@ -91,12 +91,13 @@ public class LotChoiceView extends JFrame {
 				if (lotName.equals("")) {
 					lblmsg.setText("Select a lot");
 				}
-				if (plateNumber.length() < 2) {
-					lblmsg.setText("Invalid plate number");
-				}
+				
+				String result = UserController.addPlateNumber(plateNumber, lotName);
 
-				if (!lotName.equals("") && plateNumber.length() >= 2) {
-					UserController.addPlateNumber(plateNumber);
+				if (result == "Invalid plate number") {
+					lblmsg.setText(result);
+				}
+				else {
 					// update to database
 					JFrame lotFrame = factory.getLot(thisView.frame, lotName);
 					thisView.frame.changeContentPane(lotFrame, lotName);
@@ -111,5 +112,10 @@ public class LotChoiceView extends JFrame {
 			}
 		});
 
+	}
+	
+	public String getLblMessage() {
+		return lblmsg.getText();
+		
 	}
 }

@@ -29,7 +29,7 @@ public class CheckoutView extends JFrame {
 	private JLabel nameCard;
 	private JLabel cardNumberLabel;
 	private JLabel cvvLabel;
-	private JRadioButton creditRadioButton;
+	public JRadioButton creditRadioButton;
 	private JRadioButton debitRadioButton;
 	private JRadioButton mobilePaymentRadioButton;
 	private JButton finalConfirmButton;
@@ -39,6 +39,13 @@ public class CheckoutView extends JFrame {
 	public boolean dateConfirmed = false;
 	public long hoursBookedFor;
 	public String price;
+	JButton bmoButton = new JButton("BMO");
+	JButton cibcButton = new JButton("CIBC");
+	JButton rbcButton = new JButton("RBC");
+	JButton tdButton = new JButton("TD");
+	JButton scotiabankButton = new JButton("ScotiaBank");
+
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public CheckoutView(Main frame) {
 		// Save previous frame.
@@ -109,23 +116,18 @@ public class CheckoutView extends JFrame {
 		mobilePaymentRadioButton.setBounds(170, 199, 197, 21);
 		getContentPane().add(mobilePaymentRadioButton);
 
-		JButton bmoButton = new JButton("BMO");
 		bmoButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		bmoButton.setVisible(false);
 
-		JButton cibcButton = new JButton("CIBC");
 		cibcButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		cibcButton.setVisible(false);
 
-		JButton rbcButton = new JButton("RBC");
 		rbcButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		rbcButton.setVisible(false);
 
-		JButton scotiabankButton = new JButton("ScotiaBank");
 		scotiabankButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		scotiabankButton.setVisible(false);
 
-		JButton tdButton = new JButton("TD");
 		tdButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		tdButton.setVisible(false);
 
@@ -176,11 +178,12 @@ public class CheckoutView extends JFrame {
 					nameCardField.setColumns(10);
 					nameCardField.setVisible(true);
 
-					bmoButton.setVisible(false);
-					tdButton.setVisible(false);
-					rbcButton.setVisible(false);
-					scotiabankButton.setVisible(false);
-					cibcButton.setVisible(false);
+					setMobileLableFalse();
+//					bmoButton.setVisible(false);
+//					tdButton.setVisible(false);
+//					rbcButton.setVisible(false);
+//					scotiabankButton.setVisible(false);
+//					cibcButton.setVisible(false);
 
 				}
 			}
@@ -233,11 +236,12 @@ public class CheckoutView extends JFrame {
 					nameCardField.setColumns(10);
 					nameCardField.setVisible(true);
 
-					bmoButton.setVisible(false);
-					tdButton.setVisible(false);
-					rbcButton.setVisible(false);
-					scotiabankButton.setVisible(false);
-					cibcButton.setVisible(false);
+					setMobileLableFalse();
+//					bmoButton.setVisible(false);
+//					tdButton.setVisible(false);
+//					rbcButton.setVisible(false);
+//					scotiabankButton.setVisible(false);
+//					cibcButton.setVisible(false);
 				}
 			}
 		});
@@ -302,17 +306,20 @@ public class CheckoutView extends JFrame {
 					getContentPane().add(tdButton);
 					tdButton.setVisible(true);
 
-					cvvLabel.setVisible(false);
-					cvvField.setVisible(false);
-					nameCard.setVisible(false);
-					cardNumberLabel.setVisible(false);
-					cardNumberField.setVisible(false);
-					nameCardField.setVisible(false);
+					setCreditLableFalse();
+//					cvvLabel.setVisible(false);
+//					cvvField.setVisible(false);
+//					nameCard.setVisible(false);
+//					cardNumberLabel.setVisible(false);
+//					cardNumberField.setVisible(false);
+//					nameCardField.setVisible(false);
 
 				}
 			}
 		});
 
+	
+		
 		finalConfirmButton = new JButton("Confirm");
 		finalConfirmButton.setBounds(341, 380, 85, 21);
 		getContentPane().add(finalConfirmButton);
@@ -537,4 +544,22 @@ public class CheckoutView extends JFrame {
 		} catch (java.io.IOException e) {
 		}
 	}
+	public void setCreditLableFalse() {
+		cvvLabel.setVisible(false);
+		cvvField.setVisible(false);
+		nameCard.setVisible(false);
+		cardNumberLabel.setVisible(false);
+		cardNumberField.setVisible(false);
+		nameCardField.setVisible(false);
+
+	}
+	public void setMobileLableFalse() {
+		bmoButton.setVisible(false);
+		tdButton.setVisible(false);
+		rbcButton.setVisible(false);
+		scotiabankButton.setVisible(false);
+		cibcButton.setVisible(false);
+
+	}
+
 }

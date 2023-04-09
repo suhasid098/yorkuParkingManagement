@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.regex.Pattern;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import model.MaintainUser;
@@ -304,13 +305,21 @@ public class UserController {
 
 	}
 
-	public static void addPlateNumber(String plateNumber) {
-		maintain.users.get(maintain.loggedInUser.getId()).setplateNumber(plateNumber);
-		try {
-			maintain.update();
-		} catch (Exception e) {
-			e.printStackTrace();
+	public static String addPlateNumber(String plateNumber, String lotName) {
+		if (plateNumber.length() < 2 || plateNumber.length() > 7) {
+			return "Invalid plate number";
 		}
+
+		if (!lotName.equals("") && plateNumber.length() >= 2) {
+			// update to database
+			maintain.users.get(maintain.loggedInUser.getId()).setplateNumber(plateNumber);
+			try {
+				maintain.update();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return "Valid plate number";
 
 	}
 
@@ -359,24 +368,51 @@ public class UserController {
 		return maintain.users.get(maintain.loggedInUser.getId()).getPaymentType() + "";
 	}
 
-	public static void extendTime(int hours, int price1) {
-		maintain.users.get(maintain.loggedInUser.getId()).setParkingEndTime(
-				maintain.users.get(maintain.loggedInUser.getId()).getParkingEndTime().plusHours(hours));
-		maintain.users.get(maintain.loggedInUser.getId())
-				.chargeUser(maintain.users.get(maintain.loggedInUser.getId()).getPaymentType(), price1);
-		maintain.users.get(maintain.loggedInUser.getId()).addPrice(price1);
-		try {
-			maintain.update();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public static String extendTime(int hours, int price1) {
+		
+		// check if user is editing before booking start time
+		LocalDateTime current = LocalDateTime.now();
+		LocalDateTime startTime = UserController.getLoggedInUser().getParkingStartTime();
+		long duration = -1;
+		if (current == null || startTime == null) {
 
+		} else {
+			duration = current.until(startTime, ChronoUnit.MINUTES);
+		}
+		if (duration > 0) {
+			maintain.users.get(maintain.loggedInUser.getId()).setParkingEndTime(
+					maintain.users.get(maintain.loggedInUser.getId()).getParkingEndTime().plusHours(hours));
+			maintain.users.get(maintain.loggedInUser.getId())
+					.chargeUser(maintain.users.get(maintain.loggedInUser.getId()).getPaymentType(), price1);
+			maintain.users.get(maintain.loggedInUser.getId()).addPrice(price1);
+			try {
+				maintain.update();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			return "Can not change booking time";
+		}
+		
+		return "edit was successful";
+		
+		
+		
 	}
 
 	public static void clear() {
 		try {
 			maintain.clear();
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void load() {
+		try {
+			maintain.load();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
