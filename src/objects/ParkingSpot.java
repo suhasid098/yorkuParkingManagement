@@ -7,7 +7,7 @@ public class ParkingSpot {
 	public ParkingSpot(String code) {
 		this.code = code;
 	}
-	
+
 	public String getCode() {
 		return code;
 	}

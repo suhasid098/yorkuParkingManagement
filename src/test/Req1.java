@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.Assert.*;
+import views.Main;
 
 import org.junit.Test;
 
@@ -9,6 +10,7 @@ import views.RegisterView;
 
 public class Req1 {
 	RegisterView rv = new RegisterView(null);
+	Main m = new Main();
 
 	@Test // registering a user
 	public void test1() {
