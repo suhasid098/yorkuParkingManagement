@@ -182,7 +182,7 @@ public class LassondeLotView extends JFrame {
 		getContentPane().add(backButton);
 	}
 
-	private void setColorButton(JButton button) {
+	public void setColorButton(JButton button) {
 		if (UserController.isSpotTaken(button.getText(), "Lassonde") == false) {
 			parkingSpot.setState(new Available());// will notify user spot is available
 			button.setToolTipText(parkingSpot.alert());
@@ -192,5 +192,9 @@ public class LassondeLotView extends JFrame {
 			button.setToolTipText(parkingSpot.alert()); // using State to set tooltip
 			button.setBackground(Color.red);
 		}
+	}
+
+	public AlertStateContext getParkingSpotState() {
+		return parkingSpot;
 	}
 }
