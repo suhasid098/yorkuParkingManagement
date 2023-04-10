@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 import views.AlertStateContext;
 import views.Unavailable;
 
-@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = true, useJEE = true) 
+@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = false, useJEE = true) 
 public class Unavailable_ESTest extends Unavailable_ESTest_scaffolding {
 
   @Test(timeout = 4000)

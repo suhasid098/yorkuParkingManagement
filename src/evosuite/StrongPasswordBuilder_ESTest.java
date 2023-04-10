@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 import password.Password;
 import password.StrongPasswordBuilder;
 
-@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = true, useJEE = true) 
+@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = false, useJEE = true) 
 public class StrongPasswordBuilder_ESTest extends StrongPasswordBuilder_ESTest_scaffolding {
 
   @Test(timeout = 4000)
