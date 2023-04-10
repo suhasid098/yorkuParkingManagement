@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="3.0.1-dev-20150306-5afe4d1" sequence="1" timestamp="1681096374498" analysisTimestamp="1681096372732" release="">
+  <Project projectName="eecs3311project">
+    <Jar>C:\Users\natal\eecs3311project\target\classes</Jar>
+    <AuxClasspathEntry>C:\Users\natal\eecs3311project\target\classes</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\natal\eecs3311project\lib\javacsv.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\natal\eecs3311project\lib\evosuite-standalone-runtime-1.0.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\natal\.p2\pool\plugins\org.junit_4.13.2.v20211018-1956.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\natal\.p2\pool\plugins\org.hamcrest.core_1.3.0.v20180420-1519.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\natal\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\natal\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar</AuxClasspathEntry>
+    <SrcDir>C:\Users\natal\eecs3311project\src</SrcDir>
+    <Cloud id="edu.umd.cs.findbugs.cloud.doNothingCloud" online="false"></Cloud>
+  </Project>
+  <BugInstance type="SBSC_USE_STRINGBUFFER_CONCATENATION" priority="2" rank="18" abbrev="SBSC" category="PERFORMANCE" first="1">
+    <Class classname="controllers.LotController">
+      <SourceLine classname="controllers.LotController" sourcefile="LotController.java" sourcepath="controllers/LotController.java"/>
+    </Class>
+    <Method classname="controllers.LotController" name="enableLot" signature="(Ljava/lang/String;)V" isStatic="true">
+      <SourceLine classname="controllers.LotController" start="47" end="74" startBytecode="0" endBytecode="356" sourcefile="LotController.java" sourcepath="controllers/LotController.java"/>
+    </Method>
+    <SourceLine classname="controllers.LotController" start="65" end="65" startBytecode="126" endBytecode="126" sourcefile="LotController.java" sourcepath="controllers/LotController.java"/>
+  </BugInstance>
+  <BugInstance type="SBSC_USE_STRINGBUFFER_CONCATENATION" priority="2" rank="18" abbrev="SBSC" category="PERFORMANCE" first="1">
+    <Class classname="controllers.LotController">
+      <SourceLine classname="controllers.LotController" sourcefile="LotController.java" sourcepath="controllers/LotController.java"/>
+    </Class>
+    <Method classname="controllers.LotController" name="removeLot" signature="(Ljava/lang/String;)V" isStatic="true">
+      <SourceLine classname="controllers.LotController" start="12" end="40" startBytecode="0" endBytecode="347" sourcefile="LotController.java" sourcepath="controllers/LotController.java"/>
+    </Method>
+    <SourceLine classname="controllers.LotController" start="29" end="29" startBytecode="121" endBytecode="121" sourcefile="LotController.java" sourcepath="controllers/LotController.java"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="2" rank="17" abbrev="DLS" category="STYLE" first="1">
+    <Class classname="controllers.UserController">
+      <SourceLine classname="controllers.UserController" sourcefile="UserController.java" sourcepath="controllers/UserController.java"/>
+    </Class>
+    <Method classname="controllers.UserController" name="removeParkingLot" signature="()Z" isStatic="true">
+      <SourceLine classname="controllers.UserController" start="329" end="360" startBytecode="0" endBytecode="101" sourcefile="UserController.java" sourcepath="controllers/UserController.java"/>
+    </Method>
+    <LocalVariable name="?" register="1" pc="168" role="LOCAL_VARIABLE_UNKNOWN"/>
+    <SourceLine classname="controllers.UserController" start="343" end="343" startBytecode="167" endBytecode="167" sourcefile="UserController.java" sourcepath="controllers/UserController.java"/>
+    <SourceLine classname="controllers.UserController" start="343" end="343" startBytecode="167" endBytecode="167" sourcefile="UserController.java" sourcepath="controllers/UserController.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="?"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.TWO_STORES_MULTIPLE_LOADS" value="true"/>
+  </BugInstance>
+  <BugInstance type="DM_STRING_CTOR" priority="2" rank="18" abbrev="Dm" category="PERFORMANCE" first="1">
+    <Class classname="controllers.UserController">
+      <SourceLine classname="controllers.UserController" sourcefile="UserController.java" sourcepath="controllers/UserController.java"/>
+    </Class>
+    <Method classname="controllers.UserController" name="checkPassword" signature="(Ljava/lang/String;)Ljava/lang/String;" isStatic="true">
+      <SourceLine classname="controllers.UserController" start="105" end="124" startBytecode="0" endBytecode="305" sourcefile="UserController.java" sourcepath="controllers/UserController.java"/>
+    </Method>
+    <SourceLine classname="controllers.UserController" start="117" end="117" startBytecode="108" endBytecode="108" sourcefile="UserController.java" sourcepath="controllers/UserController.java"/>
+    <SourceLine classname="controllers.UserController" start="117" end="117" startBytecode="108" endBytecode="108" sourcefile="UserController.java" sourcepath="controllers/UserController.java"/>
+  </BugInstance>
+  <BugInstance type="ES_COMPARING_PARAMETER_STRING_WITH_EQ" priority="1" rank="14" abbrev="ES" category="BAD_PRACTICE" first="1">
+    <Class classname="controllers.UserController">
+      <SourceLine classname="controllers.UserController" sourcefile="UserController.java" sourcepath="controllers/UserController.java"/>
+    </Class>
+    <Method classname="controllers.UserController" name="addParkingSpot" signature="(Ljava/lang/String;Ljava/lang/String;)V" isStatic="true">
+      <SourceLine classname="controllers.UserController" start="265" end="283" startBytecode="0" endBytecode="55" sourcefile="UserController.java" sourcepath="controllers/UserController.java"/>
+    </Method>
+    <Type descriptor="Ljava/lang/String;" role="TYPE_FOUND">
+      <SourceLine classname="java.lang.String"/>
+    </Type>
+    <LocalVariable name="?" register="1" pc="33" role="LOCAL_VARIABLE_VALUE_OF"/>
+    <Method classname="objects.User" name="getParkingLot" signature="()Ljava/lang/String;" isStatic="false" role="METHOD_RETURN_VALUE_OF">
+      <SourceLine classname="objects.User" start="161" end="161" startBytecode="0" endBytecode="28" sourcefile="User.java" sourcepath="objects/User.java"/>
+    </Method>
+    <SourceLine classname="controllers.UserController" start="267" end="267" startBytecode="34" endBytecode="34" sourcefile="UserController.java" sourcepath="controllers/UserController.java"/>
+    <SourceLine classname="controllers.UserController" start="267" end="267" startBytecode="34" endBytecode="34" sourcefile="UserController.java" sourcepath="controllers/UserController.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.RefComparisonWarningProperty.STATIC_AND_PARAMETER_IN_PUBLIC_METHOD" value="true"/>
+  </BugInstance>
+  <BugInstance type="ES_COMPARING_PARAMETER_STRING_WITH_EQ" priority="1" rank="14" abbrev="ES" category="BAD_PRACTICE" first="1">
+    <Class classname="controllers.UserController">
+      <SourceLine classname="controllers.UserController" sourcefile="UserController.java" sourcepath="controllers/UserController.java"/>
+    </Class>
+    <Method classname="controllers.UserController" name="addParkingSpot" signature="(Ljava/lang/String;Ljava/lang/String;)V" isStatic="true">
+      <SourceLine classname="controllers.UserController" start="265" end="283" startBytecode="0" endBytecode="55" sourcefile="UserController.java" sourcepath="controllers/UserController.java"/>
+    </Method>
+    <Type descriptor="Ljava/lang/String;" role="TYPE_FOUND">
+      <SourceLine classname="java.lang.String"/>
+    </Type>
+    <LocalVariable name="?" register="0" pc="53" role="LOCAL_VARIABLE_VALUE_OF"/>
+    <Method classname="objects.User" name="getParkingSpotName" signature="()Ljava/lang/String;" isStatic="false" role="METHOD_RETURN_VALUE_OF">
+      <SourceLine classname="objects.User" start="134" end="134" startBytecode="0" endBytecode="28" sourcefile="User.java" sourcepath="objects/User.java"/>
+    </Method>
+    <SourceLine classname="controllers.UserController" start="268" end="268" startBytecode="54" endBytecode="54" sourcefile="UserController.java" sourcepath="controllers/UserController.java"/>
+    <SourceLine classname="controllers.UserController" start="268" end="268" startBytecode="54" endBytecode="54" sourcefile="UserController.java" sourcepath="controllers/UserController.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.RefComparisonWarningProperty.STATIC_AND_PARAMETER_IN_PUBLIC_METHOD" value="true"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="2" rank="17" abbrev="DLS" category="STYLE" first="1">
+    <Class classname="model.MaintainLot">
+      <SourceLine classname="model.MaintainLot" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+    </Class>
+    <Method classname="model.MaintainLot" name="load" signature="()V" isStatic="false">
+      <SourceLine classname="model.MaintainLot" start="35" end="42" startBytecode="0" endBytecode="22" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+    </Method>
+    <LocalVariable name="?" register="2" pc="32" role="LOCAL_VARIABLE_UNKNOWN"/>
+    <SourceLine classname="model.MaintainLot" start="39" end="39" startBytecode="31" endBytecode="31" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+    <SourceLine classname="model.MaintainLot" start="39" end="39" startBytecode="31" endBytecode="31" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.DEAD_OBJECT_STORE" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.KILLED_BY_SUBSEQUENT_STORE" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="?"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" rank="19" abbrev="Dm" category="I18N" first="1">
+    <Class classname="model.MaintainLot">
+      <SourceLine classname="model.MaintainLot" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+    </Class>
+    <Method classname="model.MaintainLot" name="clear" signature="()V" isStatic="false">
+      <SourceLine classname="model.MaintainLot" start="67" end="74" startBytecode="0" endBytecode="107" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+    </Method>
+    <Method classname="java.io.FileWriter" name="&lt;init&gt;" signature="(Ljava/lang/String;Z)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.FileWriter"/>
+    </Method>
+    <SourceLine classname="model.MaintainLot" start="67" end="67" startBytecode="13" endBytecode="13" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+    <SourceLine classname="model.MaintainLot" start="67" end="67" startBytecode="13" endBytecode="13" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" rank="19" abbrev="Dm" category="I18N" first="1">
+    <Class classname="model.MaintainLot">
+      <SourceLine classname="model.MaintainLot" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+    </Class>
+    <Method classname="model.MaintainLot" name="update" signature="()V" isStatic="false">
+      <SourceLine classname="model.MaintainLot" start="49" end="62" startBytecode="0" endBytecode="137" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+    </Method>
+    <Method classname="java.io.FileWriter" name="&lt;init&gt;" signature="(Ljava/lang/String;Z)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.FileWriter"/>
+    </Method>
+    <SourceLine classname="model.MaintainLot" start="49" end="49" startBytecode="13" endBytecode="13" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+    <SourceLine classname="model.MaintainLot" start="49" end="49" startBytecode="13" endBytecode="13" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+  </BugInstance>
+  <BugInstance type="OBL_UNSATISFIED_OBLIGATION" priority="2" rank="20" abbrev="OBL" category="EXPERIMENTAL" first="1">
+    <Class classname="model.MaintainLot">
+      <SourceLine classname="model.MaintainLot" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+    </Class>
+    <Method classname="model.MaintainLot" name="clear" signature="()V" isStatic="false">
+      <SourceLine classname="model.MaintainLot" start="67" end="74" startBytecode="0" endBytecode="107" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+    </Method>
+    <Class classname="java.io.Writer" role="CLASS_REFTYPE">
+      <SourceLine classname="java.io.Writer"/>
+    </Class>
+    <Int value="1" role="INT_OBLIGATIONS_REMAINING"/>
+    <SourceLine classname="model.MaintainLot" start="67" end="67" startBytecode="13" endBytecode="13" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java" role="SOURCE_LINE_OBLIGATION_CREATED"/>
+    <SourceLine classname="model.MaintainLot" start="68" end="68" startBytecode="22" endBytecode="22" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainLot" start="69" end="69" startBytecode="26" endBytecode="26" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainLot" start="73" end="73" startBytecode="30" endBytecode="30" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainLot" start="74" end="74" startBytecode="38" endBytecode="38" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <String value="{Writer x 1}" role="STRING_REMAINING_OBLIGATIONS"/>
+  </BugInstance>
+  <BugInstance type="OBL_UNSATISFIED_OBLIGATION" priority="2" rank="20" abbrev="OBL" category="EXPERIMENTAL" first="1">
+    <Class classname="model.MaintainLot">
+      <SourceLine classname="model.MaintainLot" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+    </Class>
+    <Method classname="model.MaintainLot" name="update" signature="()V" isStatic="false">
+      <SourceLine classname="model.MaintainLot" start="49" end="62" startBytecode="0" endBytecode="137" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+    </Method>
+    <Class classname="java.io.Writer" role="CLASS_REFTYPE">
+      <SourceLine classname="java.io.Writer"/>
+    </Class>
+    <Int value="1" role="INT_OBLIGATIONS_REMAINING"/>
+    <SourceLine classname="model.MaintainLot" start="49" end="49" startBytecode="13" endBytecode="13" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java" role="SOURCE_LINE_OBLIGATION_CREATED"/>
+    <SourceLine classname="model.MaintainLot" start="50" end="50" startBytecode="22" endBytecode="22" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainLot" start="51" end="51" startBytecode="28" endBytecode="28" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainLot" start="53" end="53" startBytecode="32" endBytecode="32" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainLot" start="55" end="55" startBytecode="40" endBytecode="40" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainLot" start="57" end="57" startBytecode="44" endBytecode="44" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainLot" start="61" end="61" startBytecode="48" endBytecode="48" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainLot" start="62" end="62" startBytecode="56" endBytecode="56" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <String value="{Writer x 1}" role="STRING_REMAINING_OBLIGATIONS"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" priority="2" rank="18" abbrev="UrF" category="STYLE" first="1">
+    <Class classname="model.MaintainLot">
+      <SourceLine classname="model.MaintainLot" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+    </Class>
+    <Field classname="model.MaintainLot" name="users" signature="Ljava/util/ArrayList;" isStatic="false">
+      <SourceLine classname="model.MaintainLot" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+    </Field>
+    <SourceLine classname="model.MaintainLot" start="12" end="12" startBytecode="12" endBytecode="12" sourcefile="MaintainLot.java" sourcepath="model/MaintainLot.java"/>
+  </BugInstance>
+  <BugInstance type="DM_BOXED_PRIMITIVE_FOR_PARSING" priority="1" rank="16" abbrev="Bx" category="PERFORMANCE" first="1">
+    <Class classname="model.MaintainManager">
+      <SourceLine classname="model.MaintainManager" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java"/>
+    </Class>
+    <Method classname="model.MaintainManager" name="load" signature="()V" isStatic="false">
+      <SourceLine classname="model.MaintainManager" start="37" end="55" startBytecode="0" endBytecode="196" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java"/>
+    </Method>
+    <Method classname="java.lang.Integer" name="intValue" signature="()I" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.lang.Integer"/>
+    </Method>
+    <Method classname="java.lang.Integer" name="parseInt" signature="(Ljava/lang/String;)I" isStatic="true" role="SHOULD_CALL"/>
+    <SourceLine classname="model.MaintainManager" start="43" end="43" startBytecode="33" endBytecode="33" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java"/>
+    <SourceLine classname="model.MaintainManager" start="43" end="43" startBytecode="33" endBytecode="33" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java"/>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" rank="19" abbrev="Dm" category="I18N" first="1">
+    <Class classname="model.MaintainManager">
+      <SourceLine classname="model.MaintainManager" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java"/>
+    </Class>
+    <Method classname="model.MaintainManager" name="clear" signature="()V" isStatic="false">
+      <SourceLine classname="model.MaintainManager" start="88" end="103" startBytecode="0" endBytecode="185" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java"/>
+    </Method>
+    <Method classname="java.io.FileWriter" name="&lt;init&gt;" signature="(Ljava/lang/String;Z)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.FileWriter"/>
+    </Method>
+    <SourceLine classname="model.MaintainManager" start="88" end="88" startBytecode="13" endBytecode="13" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java"/>
+    <SourceLine classname="model.MaintainManager" start="88" end="88" startBytecode="13" endBytecode="13" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java"/>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" rank="19" abbrev="Dm" category="I18N" first="1">
+    <Class classname="model.MaintainManager">
+      <SourceLine classname="model.MaintainManager" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java"/>
+    </Class>
+    <Method classname="model.MaintainManager" name="update" signature="()V" isStatic="false">
+      <SourceLine classname="model.MaintainManager" start="63" end="83" startBytecode="0" endBytecode="243" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java"/>
+    </Method>
+    <Method classname="java.io.FileWriter" name="&lt;init&gt;" signature="(Ljava/lang/String;Z)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.FileWriter"/>
+    </Method>
+    <SourceLine classname="model.MaintainManager" start="63" end="63" startBytecode="13" endBytecode="13" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java"/>
+    <SourceLine classname="model.MaintainManager" start="63" end="63" startBytecode="13" endBytecode="13" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java"/>
+  </BugInstance>
+  <BugInstance type="OBL_UNSATISFIED_OBLIGATION" priority="2" rank="20" abbrev="OBL" category="EXPERIMENTAL" first="1">
+    <Class classname="model.MaintainManager">
+      <SourceLine classname="model.MaintainManager" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java"/>
+    </Class>
+    <Method classname="model.MaintainManager" name="clear" signature="()V" isStatic="false">
+      <SourceLine classname="model.MaintainManager" start="88" end="103" startBytecode="0" endBytecode="185" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java"/>
+    </Method>
+    <Class classname="java.io.Writer" role="CLASS_REFTYPE">
+      <SourceLine classname="java.io.Writer"/>
+    </Class>
+    <Int value="1" role="INT_OBLIGATIONS_REMAINING"/>
+    <SourceLine classname="model.MaintainManager" start="88" end="88" startBytecode="13" endBytecode="13" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java" role="SOURCE_LINE_OBLIGATION_CREATED"/>
+    <SourceLine classname="model.MaintainManager" start="89" end="89" startBytecode="22" endBytecode="22" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainManager" start="90" end="90" startBytecode="26" endBytecode="26" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainManager" start="91" end="91" startBytecode="32" endBytecode="32" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainManager" start="92" end="92" startBytecode="38" endBytecode="38" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainManager" start="93" end="93" startBytecode="44" endBytecode="44" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainManager" start="94" end="94" startBytecode="48" endBytecode="48" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainManager" start="95" end="95" startBytecode="54" endBytecode="54" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainManager" start="96" end="96" startBytecode="60" endBytecode="60" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainManager" start="97" end="97" startBytecode="66" endBytecode="66" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainManager" start="98" end="98" startBytecode="70" endBytecode="70" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainManager" start="102" end="102" startBytecode="74" endBytecode="74" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainManager" start="103" end="103" startBytecode="82" endBytecode="82" sourcefile="MaintainManager.java" sourcepath="model/MaintainManager.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <String value="{Writer x 1}" role="STRING_REMAINING_OBLIGATIONS"/>
+  </BugInstance>
+  <BugInstance type="DM_BOXED_PRIMITIVE_FOR_PARSING" priority="1" rank="16" abbrev="Bx" category="PERFORMANCE" first="1">
+    <Class classname="model.MaintainUser">
+      <SourceLine classname="model.MaintainUser" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java"/>
+    </Class>
+    <Method classname="model.MaintainUser" name="load" signature="()V" isStatic="false">
+      <SourceLine classname="model.MaintainUser" start="34" end="68" startBytecode="0" endBytecode="464" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java"/>
+    </Method>
+    <Method classname="java.lang.Integer" name="intValue" signature="()I" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.lang.Integer"/>
+    </Method>
+    <Method classname="java.lang.Integer" name="parseInt" signature="(Ljava/lang/String;)I" isStatic="true" role="SHOULD_CALL"/>
+    <SourceLine classname="model.MaintainUser" start="41" end="41" startBytecode="52" endBytecode="52" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java"/>
+    <SourceLine classname="model.MaintainUser" start="41" end="41" startBytecode="52" endBytecode="52" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java"/>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" rank="19" abbrev="Dm" category="I18N" first="1">
+    <Class classname="model.MaintainUser">
+      <SourceLine classname="model.MaintainUser" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java"/>
+    </Class>
+    <Method classname="model.MaintainUser" name="clear" signature="()V" isStatic="false">
+      <SourceLine classname="model.MaintainUser" start="132" end="139" startBytecode="0" endBytecode="107" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java"/>
+    </Method>
+    <Method classname="java.io.FileWriter" name="&lt;init&gt;" signature="(Ljava/lang/String;Z)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.FileWriter"/>
+    </Method>
+    <SourceLine classname="model.MaintainUser" start="132" end="132" startBytecode="13" endBytecode="13" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java"/>
+    <SourceLine classname="model.MaintainUser" start="132" end="132" startBytecode="13" endBytecode="13" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java"/>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" rank="19" abbrev="Dm" category="I18N" first="1">
+    <Class classname="model.MaintainUser">
+      <SourceLine classname="model.MaintainUser" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java"/>
+    </Class>
+    <Method classname="model.MaintainUser" name="update" signature="()V" isStatic="false">
+      <SourceLine classname="model.MaintainUser" start="75" end="125" startBytecode="0" endBytecode="585" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java"/>
+    </Method>
+    <Method classname="java.io.FileWriter" name="&lt;init&gt;" signature="(Ljava/lang/String;Z)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.FileWriter"/>
+    </Method>
+    <SourceLine classname="model.MaintainUser" start="75" end="75" startBytecode="13" endBytecode="13" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java"/>
+    <SourceLine classname="model.MaintainUser" start="75" end="75" startBytecode="13" endBytecode="13" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java"/>
+  </BugInstance>
+  <BugInstance type="OBL_UNSATISFIED_OBLIGATION" priority="2" rank="20" abbrev="OBL" category="EXPERIMENTAL" first="1">
+    <Class classname="model.MaintainUser">
+      <SourceLine classname="model.MaintainUser" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java"/>
+    </Class>
+    <Method classname="model.MaintainUser" name="clear" signature="()V" isStatic="false">
+      <SourceLine classname="model.MaintainUser" start="132" end="139" startBytecode="0" endBytecode="107" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java"/>
+    </Method>
+    <Class classname="java.io.Writer" role="CLASS_REFTYPE">
+      <SourceLine classname="java.io.Writer"/>
+    </Class>
+    <Int value="1" role="INT_OBLIGATIONS_REMAINING"/>
+    <SourceLine classname="model.MaintainUser" start="132" end="132" startBytecode="13" endBytecode="13" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java" role="SOURCE_LINE_OBLIGATION_CREATED"/>
+    <SourceLine classname="model.MaintainUser" start="133" end="133" startBytecode="22" endBytecode="22" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainUser" start="134" end="134" startBytecode="26" endBytecode="26" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainUser" start="138" end="138" startBytecode="30" endBytecode="30" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <SourceLine classname="model.MaintainUser" start="139" end="139" startBytecode="38" endBytecode="38" sourcefile="MaintainUser.java" sourcepath="model/MaintainUser.java" role="SOURCE_LINE_PATH_CONTINUES"/>
+    <String value="{Writer x 1}" role="STRING_REMAINING_OBLIGATIONS"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" priority="2" rank="18" abbrev="UrF" category="STYLE" first="1">
+    <Class classname="objects.User">
+      <SourceLine classname="objects.User" sourcefile="User.java" sourcepath="objects/User.java"/>
+    </Class>
+    <Field classname="objects.User" name="parkingFee" signature="I" isStatic="false">
+      <SourceLine classname="objects.User" sourcefile="User.java" sourcepath="objects/User.java"/>
+    </Field>
+    <SourceLine classname="objects.User" start="26" end="26" startBytecode="22" endBytecode="22" sourcefile="User.java" sourcepath="objects/User.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" priority="2" rank="18" abbrev="UrF" category="STYLE" first="1">
+    <Class classname="views.EditBookingView">
+      <SourceLine classname="views.EditBookingView" sourcefile="EditBookingView.java" sourcepath="views/EditBookingView.java"/>
+    </Class>
+    <Field classname="views.EditBookingView" name="currentTime" signature="Ljava/time/LocalDateTime;" isStatic="false">
+      <SourceLine classname="views.EditBookingView" sourcefile="EditBookingView.java" sourcepath="views/EditBookingView.java"/>
+    </Field>
+    <SourceLine classname="views.EditBookingView" start="27" end="27" startBytecode="21" endBytecode="21" sourcefile="EditBookingView.java" sourcepath="views/EditBookingView.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" priority="2" rank="18" abbrev="UrF" category="STYLE" first="1">
+    <Class classname="views.EditBookingView">
+      <SourceLine classname="views.EditBookingView" sourcefile="EditBookingView.java" sourcepath="views/EditBookingView.java"/>
+    </Class>
+    <Field classname="views.EditBookingView" name="dateConfirmed" signature="Z" isStatic="false">
+      <SourceLine classname="views.EditBookingView" sourcefile="EditBookingView.java" sourcepath="views/EditBookingView.java"/>
+    </Field>
+    <SourceLine classname="views.EditBookingView" start="28" end="28" startBytecode="26" endBytecode="26" sourcefile="EditBookingView.java" sourcepath="views/EditBookingView.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" priority="2" rank="18" abbrev="UrF" category="STYLE" first="1">
+    <Class classname="views.EditBookingView">
+      <SourceLine classname="views.EditBookingView" sourcefile="EditBookingView.java" sourcepath="views/EditBookingView.java"/>
+    </Class>
+    <Field classname="views.EditBookingView" name="endTime" signature="Ljava/time/LocalDateTime;" isStatic="false">
+      <SourceLine classname="views.EditBookingView" sourcefile="EditBookingView.java" sourcepath="views/EditBookingView.java"/>
+    </Field>
+    <SourceLine classname="views.EditBookingView" start="25" end="25" startBytecode="11" endBytecode="11" sourcefile="EditBookingView.java" sourcepath="views/EditBookingView.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" priority="2" rank="18" abbrev="UrF" category="STYLE" first="1">
+    <Class classname="views.EditBookingView">
+      <SourceLine classname="views.EditBookingView" sourcefile="EditBookingView.java" sourcepath="views/EditBookingView.java"/>
+    </Class>
+    <Field classname="views.EditBookingView" name="startTime" signature="Ljava/time/LocalDateTime;" isStatic="false">
+      <SourceLine classname="views.EditBookingView" sourcefile="EditBookingView.java" sourcepath="views/EditBookingView.java"/>
+    </Field>
+    <SourceLine classname="views.EditBookingView" start="26" end="26" startBytecode="16" endBytecode="16" sourcefile="EditBookingView.java" sourcepath="views/EditBookingView.java"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_PUBLIC_OR_PROTECTED_FIELD" priority="2" rank="17" abbrev="UuF" category="STYLE" first="1">
+    <Class classname="views.EditBookingView">
+      <SourceLine classname="views.EditBookingView" sourcefile="EditBookingView.java" sourcepath="views/EditBookingView.java"/>
+    </Class>
+    <Field classname="views.EditBookingView" name="hoursBookedFor" signature="J" isStatic="false">
+      <SourceLine classname="views.EditBookingView" start="29" end="29" startBytecode="0" endBytecode="0" sourcefile="EditBookingView.java" sourcepath="views/EditBookingView.java"/>
+    </Field>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_PUBLIC_OR_PROTECTED_FIELD" priority="2" rank="17" abbrev="UuF" category="STYLE" first="1">
+    <Class classname="views.EditBookingView">
+      <SourceLine classname="views.EditBookingView" sourcefile="EditBookingView.java" sourcepath="views/EditBookingView.java"/>
+    </Class>
+    <Field classname="views.EditBookingView" name="price" signature="Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="views.EditBookingView" start="30" end="30" startBytecode="0" endBytecode="0" sourcefile="EditBookingView.java" sourcepath="views/EditBookingView.java"/>
+    </Field>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="2" rank="17" abbrev="DLS" category="STYLE" first="1">
+    <Class classname="views.SchulichLotView">
+      <SourceLine classname="views.SchulichLotView" sourcefile="SchulichLotView.java" sourcepath="views/SchulichLotView.java"/>
+    </Class>
+    <Method classname="views.SchulichLotView" name="&lt;init&gt;" signature="(Lviews/Main;)V" isStatic="false">
+      <SourceLine classname="views.SchulichLotView" start="24" end="130" startBytecode="0" endBytecode="294" sourcefile="SchulichLotView.java" sourcepath="views/SchulichLotView.java"/>
+    </Method>
+    <LocalVariable name="?" register="2" pc="56" role="LOCAL_VARIABLE_UNKNOWN"/>
+    <SourceLine classname="views.SchulichLotView" start="38" end="38" startBytecode="55" endBytecode="55" sourcefile="SchulichLotView.java" sourcepath="views/SchulichLotView.java"/>
+    <SourceLine classname="views.SchulichLotView" start="38" end="38" startBytecode="55" endBytecode="55" sourcefile="SchulichLotView.java" sourcepath="views/SchulichLotView.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="?"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.NO_LOADS" value="true"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Sun, 9 Apr 2023 23:11:27 -0400" total_classes="122" referenced_classes="124" total_bugs="28" total_size="3140" num_packages="5" java_version="17.0.1" vm_version="17.0.1+12" cpu_seconds="10.17" clock_seconds="546.85" peak_mbytes="552.91" alloc_mbytes="2048.00" gc_seconds="0.06" priority_2="18" priority_1="10">
+    <PackageStats package="controllers" total_bugs="6" total_types="3" total_size="384" priority_2="4" priority_1="2">
+      <ClassStats class="controllers.LotController" sourceFile="LotController.java" interface="false" size="62" bugs="2" priority_2="2"/>
+      <ClassStats class="controllers.ManagerController" sourceFile="ManagerController.java" interface="false" size="74" bugs="0"/>
+      <ClassStats class="controllers.UserController" sourceFile="UserController.java" interface="false" size="248" bugs="4" priority_2="2" priority_1="2"/>
+    </PackageStats>
+    <PackageStats package="model" total_bugs="14" total_types="4" total_size="222" priority_2="6" priority_1="8">
+      <ClassStats class="model.Maintain" sourceFile="Maintain.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="model.MaintainLot" sourceFile="MaintainLot.java" interface="false" size="48" bugs="6" priority_2="4" priority_1="2"/>
+      <ClassStats class="model.MaintainManager" sourceFile="MaintainManager.java" interface="false" size="65" bugs="4" priority_2="1" priority_1="3"/>
+      <ClassStats class="model.MaintainUser" sourceFile="MaintainUser.java" interface="false" size="101" bugs="4" priority_2="1" priority_1="3"/>
+    </PackageStats>
+    <PackageStats package="objects" total_bugs="1" total_types="6" total_size="217" priority_2="1">
+      <ClassStats class="objects.Account" sourceFile="Account.java" interface="false" size="28" bugs="0"/>
+      <ClassStats class="objects.Manager" sourceFile="Manager.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="objects.ParkingSpot" sourceFile="ParkingSpot.java" interface="false" size="14" bugs="0"/>
+      <ClassStats class="objects.Sensor" sourceFile="Sensor.java" interface="false" size="15" bugs="0"/>
+      <ClassStats class="objects.SuperManager" sourceFile="SuperManager.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="objects.User" sourceFile="User.java" interface="false" size="146" bugs="1" priority_2="1"/>
+    </PackageStats>
+    <PackageStats package="password" total_bugs="0" total_types="5" total_size="138">
+      <ClassStats class="password.Generator" sourceFile="Generator.java" interface="false" size="13" bugs="0"/>
+      <ClassStats class="password.NumberPasswordBuilder" sourceFile="NumberPasswordBuilder.java" interface="false" size="40" bugs="0"/>
+      <ClassStats class="password.Password" sourceFile="Password.java" interface="false" size="39" bugs="0"/>
+      <ClassStats class="password.PasswordBuilder" sourceFile="PasswordBuilder.java" interface="true" size="6" bugs="0"/>
+      <ClassStats class="password.StrongPasswordBuilder" sourceFile="StrongPasswordBuilder.java" interface="false" size="40" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="views" total_bugs="7" total_types="104" total_size="2179" priority_2="7">
+      <ClassStats class="views.Alert" sourceFile="Alert.java" interface="true" size="2" bugs="0"/>
+      <ClassStats class="views.AlertStateContext" sourceFile="AlertStateContext.java" interface="false" size="11" bugs="0"/>
+      <ClassStats class="views.Available" sourceFile="Available.java" interface="false" size="5" bugs="0"/>
+      <ClassStats class="views.BethuneLotView" sourceFile="BethuneLotView.java" interface="false" size="105" bugs="0"/>
+      <ClassStats class="views.BethuneLotView$1" sourceFile="BethuneLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.BethuneLotView$10" sourceFile="BethuneLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.BethuneLotView$11" sourceFile="BethuneLotView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.BethuneLotView$2" sourceFile="BethuneLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.BethuneLotView$3" sourceFile="BethuneLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.BethuneLotView$4" sourceFile="BethuneLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.BethuneLotView$5" sourceFile="BethuneLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.BethuneLotView$6" sourceFile="BethuneLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.BethuneLotView$7" sourceFile="BethuneLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.BethuneLotView$8" sourceFile="BethuneLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.BethuneLotView$9" sourceFile="BethuneLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.BookingActionsView" sourceFile="BookingActionsView.java" interface="false" size="60" bugs="0"/>
+      <ClassStats class="views.BookingActionsView$1" sourceFile="BookingActionsView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.BookingActionsView$2" sourceFile="BookingActionsView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.BookingActionsView$3" sourceFile="BookingActionsView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.BookingActionsView$4" sourceFile="BookingActionsView.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="views.BookingActionsView$5" sourceFile="BookingActionsView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.CalumetLotView" sourceFile="CalumetLotView.java" interface="false" size="82" bugs="0"/>
+      <ClassStats class="views.CalumetLotView$1" sourceFile="CalumetLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.CalumetLotView$2" sourceFile="CalumetLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.CalumetLotView$3" sourceFile="CalumetLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.CalumetLotView$4" sourceFile="CalumetLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.CalumetLotView$5" sourceFile="CalumetLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.CalumetLotView$6" sourceFile="CalumetLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.CalumetLotView$7" sourceFile="CalumetLotView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.CheckoutView" sourceFile="CheckoutView.java" interface="false" size="195" bugs="0"/>
+      <ClassStats class="views.CheckoutView$1" sourceFile="CheckoutView.java" interface="false" size="33" bugs="0"/>
+      <ClassStats class="views.CheckoutView$1$1" sourceFile="CheckoutView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.CheckoutView$1$2" sourceFile="CheckoutView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.CheckoutView$2" sourceFile="CheckoutView.java" interface="false" size="33" bugs="0"/>
+      <ClassStats class="views.CheckoutView$2$1" sourceFile="CheckoutView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.CheckoutView$2$2" sourceFile="CheckoutView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.CheckoutView$3" sourceFile="CheckoutView.java" interface="false" size="30" bugs="0"/>
+      <ClassStats class="views.CheckoutView$3$1" sourceFile="CheckoutView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.CheckoutView$3$2" sourceFile="CheckoutView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.CheckoutView$3$3" sourceFile="CheckoutView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.CheckoutView$3$4" sourceFile="CheckoutView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.CheckoutView$3$5" sourceFile="CheckoutView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.CheckoutView$4" sourceFile="CheckoutView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.CheckoutView$5" sourceFile="CheckoutView.java" interface="false" size="43" bugs="0"/>
+      <ClassStats class="views.CheckoutView$6" sourceFile="CheckoutView.java" interface="false" size="53" bugs="0"/>
+      <ClassStats class="views.EditBookingView" sourceFile="EditBookingView.java" interface="false" size="78" bugs="6" priority_2="6"/>
+      <ClassStats class="views.EditBookingView$1" sourceFile="EditBookingView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.EditBookingView$2" sourceFile="EditBookingView.java" interface="false" size="22" bugs="0"/>
+      <ClassStats class="views.LassondeLotView" sourceFile="LassondeLotView.java" interface="false" size="94" bugs="0"/>
+      <ClassStats class="views.LassondeLotView$1" sourceFile="LassondeLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.LassondeLotView$2" sourceFile="LassondeLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.LassondeLotView$3" sourceFile="LassondeLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.LassondeLotView$4" sourceFile="LassondeLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.LassondeLotView$5" sourceFile="LassondeLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.LassondeLotView$6" sourceFile="LassondeLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.LassondeLotView$7" sourceFile="LassondeLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.LassondeLotView$8" sourceFile="LassondeLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.LassondeLotView$9" sourceFile="LassondeLotView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.LoginView" sourceFile="LoginView.java" interface="false" size="69" bugs="0"/>
+      <ClassStats class="views.LoginView$1" sourceFile="LoginView.java" interface="false" size="21" bugs="0"/>
+      <ClassStats class="views.LoginView$2" sourceFile="LoginView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.LotChoiceView" sourceFile="LotChoiceView.java" interface="false" size="57" bugs="0"/>
+      <ClassStats class="views.LotChoiceView$1" sourceFile="LotChoiceView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.LotChoiceView$2" sourceFile="LotChoiceView.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="views.LotChoiceView$3" sourceFile="LotChoiceView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.LotFactory" sourceFile="LotFactory.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="views.Main" sourceFile="Main.java" interface="false" size="52" bugs="0"/>
+      <ClassStats class="views.Main$1" sourceFile="Main.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.Main$2" sourceFile="Main.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.ManageAccountsView" sourceFile="ManageAccountsView.java" interface="false" size="104" bugs="0"/>
+      <ClassStats class="views.ManageAccountsView$1" sourceFile="ManageAccountsView.java" interface="false" size="17" bugs="0"/>
+      <ClassStats class="views.ManageAccountsView$2" sourceFile="ManageAccountsView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.ManageAccountsView$3" sourceFile="ManageAccountsView.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="views.ManageAccountsView$4" sourceFile="ManageAccountsView.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="views.ManageAccountsView$5" sourceFile="ManageAccountsView.java" interface="false" size="11" bugs="0"/>
+      <ClassStats class="views.ManageLotsView" sourceFile="ManageLotsView.java" interface="false" size="65" bugs="0"/>
+      <ClassStats class="views.ManageLotsView$1" sourceFile="ManageLotsView.java" interface="false" size="15" bugs="0"/>
+      <ClassStats class="views.ManageLotsView$2" sourceFile="ManageLotsView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.ManageLotsView$3" sourceFile="ManageLotsView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.ManagerActionsView" sourceFile="ManagerActionsView.java" interface="false" size="46" bugs="0"/>
+      <ClassStats class="views.ManagerActionsView$1" sourceFile="ManagerActionsView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.ManagerActionsView$2" sourceFile="ManagerActionsView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.ManagerActionsView$3" sourceFile="ManagerActionsView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.RegisterView" sourceFile="RegisterView.java" interface="false" size="74" bugs="0"/>
+      <ClassStats class="views.RegisterView$1" sourceFile="RegisterView.java" interface="false" size="17" bugs="0"/>
+      <ClassStats class="views.SchulichLotView" sourceFile="SchulichLotView.java" interface="false" size="82" bugs="1" priority_2="1"/>
+      <ClassStats class="views.SchulichLotView$1" sourceFile="SchulichLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.SchulichLotView$2" sourceFile="SchulichLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.SchulichLotView$3" sourceFile="SchulichLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.SchulichLotView$4" sourceFile="SchulichLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.SchulichLotView$5" sourceFile="SchulichLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.SchulichLotView$6" sourceFile="SchulichLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.SchulichLotView$7" sourceFile="SchulichLotView.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="views.Unavailable" sourceFile="Unavailable.java" interface="false" size="5" bugs="0"/>
+      <ClassStats class="views.VanierLotView" sourceFile="VanierLotView.java" interface="false" size="94" bugs="0"/>
+      <ClassStats class="views.VanierLotView$1" sourceFile="VanierLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.VanierLotView$2" sourceFile="VanierLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.VanierLotView$3" sourceFile="VanierLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.VanierLotView$4" sourceFile="VanierLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.VanierLotView$5" sourceFile="VanierLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.VanierLotView$6" sourceFile="VanierLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.VanierLotView$7" sourceFile="VanierLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.VanierLotView$8" sourceFile="VanierLotView.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="views.VanierLotView$9" sourceFile="VanierLotView.java" interface="false" size="7" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="de.tobject.findbugs.builder.FindBugs2Eclipse" totalMilliseconds="436" invocations="2" avgMicrosecondsPerInvocation="218023" maxMicrosecondsPerInvocation="407228" standardDeviationMircosecondsPerInvocation="189205"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="101" invocations="403" avgMicrosecondsPerInvocation="252" maxMicrosecondsPerInvocation="14530" standardDeviationMircosecondsPerInvocation="974"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="84" invocations="403" avgMicrosecondsPerInvocation="210" maxMicrosecondsPerInvocation="30935" standardDeviationMircosecondsPerInvocation="1556"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="76" invocations="403" avgMicrosecondsPerInvocation="190" maxMicrosecondsPerInvocation="9809" standardDeviationMircosecondsPerInvocation="600"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="64" invocations="403" avgMicrosecondsPerInvocation="159" maxMicrosecondsPerInvocation="12261" standardDeviationMircosecondsPerInvocation="699"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="63" invocations="406" avgMicrosecondsPerInvocation="156" maxMicrosecondsPerInvocation="7819" standardDeviationMircosecondsPerInvocation="480"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="51" invocations="403" avgMicrosecondsPerInvocation="127" maxMicrosecondsPerInvocation="4408" standardDeviationMircosecondsPerInvocation="290"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="50" invocations="302" avgMicrosecondsPerInvocation="166" maxMicrosecondsPerInvocation="7898" standardDeviationMircosecondsPerInvocation="563"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="28" invocations="358" avgMicrosecondsPerInvocation="80" maxMicrosecondsPerInvocation="14361" standardDeviationMircosecondsPerInvocation="762"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="25" invocations="362" avgMicrosecondsPerInvocation="70" maxMicrosecondsPerInvocation="317" standardDeviationMircosecondsPerInvocation="47"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.DumbMethods" totalMilliseconds="23" invocations="122" avgMicrosecondsPerInvocation="188" maxMicrosecondsPerInvocation="3091" standardDeviationMircosecondsPerInvocation="365"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.LiveLocalStoreDataflowFactory" totalMilliseconds="21" invocations="368" avgMicrosecondsPerInvocation="58" maxMicrosecondsPerInvocation="11903" standardDeviationMircosecondsPerInvocation="621"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.UnreadFields" totalMilliseconds="20" invocations="122" avgMicrosecondsPerInvocation="171" maxMicrosecondsPerInvocation="1044" standardDeviationMircosecondsPerInvocation="170"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="20" invocations="403" avgMicrosecondsPerInvocation="51" maxMicrosecondsPerInvocation="2805" standardDeviationMircosecondsPerInvocation="169"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="19" invocations="124" avgMicrosecondsPerInvocation="157" maxMicrosecondsPerInvocation="3140" standardDeviationMircosecondsPerInvocation="334"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="18" invocations="434" avgMicrosecondsPerInvocation="41" maxMicrosecondsPerInvocation="1851" standardDeviationMircosecondsPerInvocation="117"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="17" invocations="124" avgMicrosecondsPerInvocation="141" maxMicrosecondsPerInvocation="1720" standardDeviationMircosecondsPerInvocation="287"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.TypeQualifierNullnessAnnotationDatabase" totalMilliseconds="16" invocations="7262" avgMicrosecondsPerInvocation="2" maxMicrosecondsPerInvocation="776" standardDeviationMircosecondsPerInvocation="13"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.LoadOfKnownNullValue" totalMilliseconds="16" invocations="122" avgMicrosecondsPerInvocation="138" maxMicrosecondsPerInvocation="1548" standardDeviationMircosecondsPerInvocation="257"/>
+      <ClassProfile name="edu.umd.cs.findbugs.DetectorToDetector2Adapter" totalMilliseconds="16" invocations="14524" avgMicrosecondsPerInvocation="1" maxMicrosecondsPerInvocation="240" standardDeviationMircosecondsPerInvocation="2"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="14" invocations="124" avgMicrosecondsPerInvocation="114" maxMicrosecondsPerInvocation="2038" standardDeviationMircosecondsPerInvocation="247"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindFieldSelfAssignment" totalMilliseconds="14" invocations="122" avgMicrosecondsPerInvocation="115" maxMicrosecondsPerInvocation="7752" standardDeviationMircosecondsPerInvocation="699"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.SerializableIdiom" totalMilliseconds="13" invocations="122" avgMicrosecondsPerInvocation="112" maxMicrosecondsPerInvocation="743" standardDeviationMircosecondsPerInvocation="75"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNullDeref$CheckCallSitesAndReturnInstructions" totalMilliseconds="13" invocations="403" avgMicrosecondsPerInvocation="32" maxMicrosecondsPerInvocation="1443" standardDeviationMircosecondsPerInvocation="103"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.RuntimeExceptionCapture" totalMilliseconds="12" invocations="122" avgMicrosecondsPerInvocation="106" maxMicrosecondsPerInvocation="1065" standardDeviationMircosecondsPerInvocation="183"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.DumbMethodInvocations" totalMilliseconds="12" invocations="122" avgMicrosecondsPerInvocation="105" maxMicrosecondsPerInvocation="8029" standardDeviationMircosecondsPerInvocation="723"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindInconsistentSync2" totalMilliseconds="12" invocations="122" avgMicrosecondsPerInvocation="102" maxMicrosecondsPerInvocation="643" standardDeviationMircosecondsPerInvocation="109"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.DefaultEncodingDetector" totalMilliseconds="11" invocations="122" avgMicrosecondsPerInvocation="95" maxMicrosecondsPerInvocation="2063" standardDeviationMircosecondsPerInvocation="268"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.MethodReturnCheck" totalMilliseconds="11" invocations="122" avgMicrosecondsPerInvocation="91" maxMicrosecondsPerInvocation="2001" standardDeviationMircosecondsPerInvocation="204"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History>
+    <AppVersion sequence="0" timestamp="1681096374497" release="" codeSize="0" numClasses="0"/>
+  </History>
+</BugCollection>
