@@ -46,12 +46,7 @@ public class VanierLotView extends JFrame {
 
 		psVanier001.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (psVanier001.getBackground() == Color.green) {
-					UserController.addParkingSpot("001", "Varnier");
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psVanier001, "001", "Vanier");
 			}
 		});
 
@@ -63,12 +58,7 @@ public class VanierLotView extends JFrame {
 		setColorButton(psVanier002);
 		psVanier002.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (psVanier002.getBackground() == Color.green) {
-					UserController.addParkingSpot("002", "Varnier");
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psVanier002, "002", "Vanier");
 			}
 		});
 
@@ -81,12 +71,7 @@ public class VanierLotView extends JFrame {
 		setColorButton(psVanier003);
 		psVanier003.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (psVanier003.getBackground() == Color.green) {
-					UserController.addParkingSpot("003", "Varnier");
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psVanier003, "003", "Vanier");
 			}
 		});
 		getContentPane().add(psVanier003);
@@ -100,12 +85,7 @@ public class VanierLotView extends JFrame {
 
 		psVanier004.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (psVanier004.getBackground() == Color.green) {
-					UserController.addParkingSpot("004", "Varnier");
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psVanier004, "004", "Vanier");
 			}
 		});
 
@@ -116,12 +96,7 @@ public class VanierLotView extends JFrame {
 		getContentPane().add(psVanier005);
 		psVanier005.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (psVanier005.getBackground() == Color.green) {
-					UserController.addParkingSpot("005", "Varnier");
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psVanier005, "005", "Vanier");
 			}
 		});
 
@@ -132,12 +107,7 @@ public class VanierLotView extends JFrame {
 		getContentPane().add(psVanier006);
 		psVanier006.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (psVanier006.getBackground() == Color.green) {
-					UserController.addParkingSpot("006", "Varnier");
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psVanier006, "006", "Vanier");
 			}
 		});
 
@@ -148,12 +118,7 @@ public class VanierLotView extends JFrame {
 		getContentPane().add(psVanier007);
 		psVanier007.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (psVanier007.getBackground() == Color.green) {
-					UserController.addParkingSpot("005", "Varnier");
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psVanier007, "007", "Vanier");
 			}
 		});
 
@@ -164,12 +129,7 @@ public class VanierLotView extends JFrame {
 		getContentPane().add(psVanier008);
 		psVanier008.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (psVanier008.getBackground() == Color.green) {
-					UserController.addParkingSpot("008", "Varnier");
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psVanier008, "008", "Vanier");
 			}
 		});
 
@@ -199,5 +159,16 @@ public class VanierLotView extends JFrame {
 	public AlertStateContext getParkingSpotState() {
 		return parkingSpot;
 	}
+	
+	private void addParkingSpot(JButton spot, String Id, String lot) {
+		if (spot.getBackground() == Color.green) {
+			UserController.addParkingSpot(Id, lot);// try without id param
+			thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+		} else {
+			JOptionPane.showMessageDialog(null, "Unavailable");
+		
+	}}
+	
+	
 
 }

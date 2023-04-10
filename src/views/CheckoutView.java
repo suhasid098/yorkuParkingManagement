@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import controllers.UserController;
 import java.awt.Font;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.Duration;
@@ -23,16 +24,16 @@ import javax.swing.JRadioButton;
 public class CheckoutView extends JFrame {
 	private CheckoutView thisView = this;
 	protected Main frame;
-	private JTextField nameCardField;
-	private JTextField cardNumberField;
-	private JTextField cvvField;
-	private JLabel nameCard;
-	private JLabel cardNumberLabel;
-	private JLabel cvvLabel;
+	public JTextField nameCardField;
+	public JTextField cardNumberField;
+	public JTextField cvvField;
+	public JLabel nameCard;
+	public JLabel cardNumberLabel;
+	public JLabel cvvLabel;
 	public JRadioButton creditRadioButton;
-	private JRadioButton debitRadioButton;
-	private JRadioButton mobilePaymentRadioButton;
-	private JButton finalConfirmButton;
+	public JRadioButton debitRadioButton;
+	public JRadioButton mobilePaymentRadioButton;
+	public JButton finalConfirmButton;
 	public LocalDateTime endTime = null;
 	public LocalDateTime startTime = null;
 	public LocalDateTime currentTime = null;
@@ -44,7 +45,7 @@ public class CheckoutView extends JFrame {
 	JButton rbcButton = new JButton("RBC");
 	JButton tdButton = new JButton("TD");
 	JButton scotiabankButton = new JButton("ScotiaBank");
-
+	public JButton backButton;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public CheckoutView(Main frame) {
@@ -179,11 +180,6 @@ public class CheckoutView extends JFrame {
 					nameCardField.setVisible(true);
 
 					setMobileLableFalse();
-//					bmoButton.setVisible(false);
-//					tdButton.setVisible(false);
-//					rbcButton.setVisible(false);
-//					scotiabankButton.setVisible(false);
-//					cibcButton.setVisible(false);
 
 				}
 			}
@@ -237,11 +233,7 @@ public class CheckoutView extends JFrame {
 					nameCardField.setVisible(true);
 
 					setMobileLableFalse();
-//					bmoButton.setVisible(false);
-//					tdButton.setVisible(false);
-//					rbcButton.setVisible(false);
-//					scotiabankButton.setVisible(false);
-//					cibcButton.setVisible(false);
+
 				}
 			}
 		});
@@ -307,19 +299,11 @@ public class CheckoutView extends JFrame {
 					tdButton.setVisible(true);
 
 					setCreditLableFalse();
-//					cvvLabel.setVisible(false);
-//					cvvField.setVisible(false);
-//					nameCard.setVisible(false);
-//					cardNumberLabel.setVisible(false);
-//					cardNumberField.setVisible(false);
-//					nameCardField.setVisible(false);
 
 				}
 			}
 		});
 
-	
-		
 		finalConfirmButton = new JButton("Confirm");
 		finalConfirmButton.setBounds(341, 380, 85, 21);
 		getContentPane().add(finalConfirmButton);
@@ -335,6 +319,7 @@ public class CheckoutView extends JFrame {
 				Month.MAY, Month.AUGUST, Month.SEPTEMBER, Month.OCTOBER, Month.NOVEMBER, Month.DECEMBER }));
 		month.setBounds(81, 96, 88, 22);
 		getContentPane().add(month);
+
 
 		JComboBox day = new JComboBox();
 		day.setModel(new DefaultComboBoxModel(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
@@ -408,7 +393,7 @@ public class CheckoutView extends JFrame {
 		minute_1.setBounds(279, 138, 38, 22);
 		getContentPane().add(minute_1);
 
-		JButton backButton = new JButton("Back");
+		backButton = new JButton("Back");
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
@@ -527,12 +512,12 @@ public class CheckoutView extends JFrame {
 				} else if (mobilePaymentRadioButton.isSelected()) {
 					int price1 = (int) (UserController.getLoggedInUser().getRate() * hoursBookedFor
 							+ UserController.getLoggedInUser().getRate());
-					
+
 					creditDebitText = mobilePaymentRadioButton.getText().toLowerCase();
-//					UserController.setPaymentType(creditDebitText);
-					UserController.checkoutInfo("", "", "", creditDebitText, price1,
-							startTime, endTime);
+					UserController.checkoutInfo("", "", "", creditDebitText, price1, startTime, endTime);
 					outputMessage.setText("Parking Spot Booked!");
+//					Point fcb= finalConfirmButton.getLocationOnScreen();
+
 				}
 			}
 		});
@@ -544,6 +529,7 @@ public class CheckoutView extends JFrame {
 		} catch (java.io.IOException e) {
 		}
 	}
+
 	public void setCreditLableFalse() {
 		cvvLabel.setVisible(false);
 		cvvField.setVisible(false);
@@ -553,6 +539,7 @@ public class CheckoutView extends JFrame {
 		nameCardField.setVisible(false);
 
 	}
+
 	public void setMobileLableFalse() {
 		bmoButton.setVisible(false);
 		tdButton.setVisible(false);

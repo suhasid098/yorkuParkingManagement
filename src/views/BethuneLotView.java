@@ -105,115 +105,67 @@ public class BethuneLotView extends JFrame {
 		psBethune001.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
-				if (psBethune001.getBackground() == Color.green) {
-					UserController.addParkingSpot("001", "Bethune");// try without id param
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psBethune001, "001", "Bethune");
 			}
+
 		});
+
 		psBethune002.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
-				if (psBethune003.getBackground() == Color.green) {
-					UserController.addParkingSpot("002", "Bethune");// try without id param
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psBethune002, "002", "Bethune");
 
 			}
 		});
 		psBethune003.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
-				if (psBethune003.getBackground() == Color.green) {
-					UserController.addParkingSpot("003", "Bethune");// try without id param
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psBethune003, "003", "Bethune");
 			}
 		});
 		psBethune004.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
-				if (psBethune004.getBackground() == Color.green) {
-					UserController.addParkingSpot("004", "Bethune");// try without id param
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psBethune004, "004", "Bethune");
 
 			}
 		});
 		psBethune005.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
-				if (psBethune005.getBackground() == Color.green) {
-					UserController.addParkingSpot("005", "Bethune");// try without id param
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psBethune005, "005", "Bethune");
 
 			}
 		});
 		psBethune006.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
-				if (psBethune006.getBackground() == Color.green) {
-					UserController.addParkingSpot("006", "Bethune");// try without id param
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psBethune006, "006", "Bethune");
 			}
 		});
 		psBethune007.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
-				if (psBethune007.getBackground() == Color.green) {
-					UserController.addParkingSpot("007", "Bethune");// try without id param
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psBethune007, "007", "Bethune");
 			}
 		});
 		psBethune008.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
-				if (psBethune008.getBackground() == Color.green) {
-					UserController.addParkingSpot("008", "Bethune");// try without id param
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psBethune008, "008", "Bethune");
 			}
 		});
 		psBethune009.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// loggedInUser var should be set by now
 
-				if (psBethune009.getBackground() == Color.green) {
-					UserController.addParkingSpot("009", "Bethune");// try without id param
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psBethune009, "009", "Bethune");
 
 			}
 		});
 		psBethune010.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (psBethune010.getBackground() == Color.green) {
-					UserController.addParkingSpot("010", "Bethune");// try without id param
-					thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
-				} else {
-					JOptionPane.showMessageDialog(null, "Unavailable");
-				}
+				addParkingSpot(psBethune010, "010", "Bethune");
 			}
 		});
 
@@ -238,8 +190,17 @@ public class BethuneLotView extends JFrame {
 			button.setBackground(Color.red);
 		}
 	}
-	
+
 	public AlertStateContext getParkingSpotState() {
 		return parkingSpot;
+	}
+
+	private void addParkingSpot(JButton spot, String Id, String lot) {
+		if (spot.getBackground() == Color.green) {
+			UserController.addParkingSpot(Id, lot);// try without id param
+			thisView.frame.changeContentPane(new BookingActionsView(thisView.frame), "Booking Options");
+		} else {
+			JOptionPane.showMessageDialog(null, "Unavailable");
+		}
 	}
 }

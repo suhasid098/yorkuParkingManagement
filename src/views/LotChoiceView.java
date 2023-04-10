@@ -85,6 +85,7 @@ public class LotChoiceView extends JFrame {
 
 		nextBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				String plateNumber = plateNumberField.getText();
 				String lotName = (String) lots.getSelectedItem();
 
