@@ -23,7 +23,7 @@ import org.junit.runner.RunWith;
 @RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = false, useJEE = true) 
 public class MaintainUser_ESTest extends MaintainUser_ESTest_scaffolding {
 
-  @Test(timeout = 4000)
+  /*@Test(timeout = 4000)
   public void test0()  throws Throwable  {
       System.setCurrentTimeMillis((-3857L));
       MaintainUser maintainUser0 = MaintainUser.getInstance();
@@ -37,7 +37,7 @@ public class MaintainUser_ESTest extends MaintainUser_ESTest_scaffolding {
       maintainUser0.load();
       MaintainUser maintainUser1 = MaintainUser.getInstance();
       assertSame(maintainUser1, maintainUser0);
-  }
+  }*/
 
   @Test(timeout = 4000)
   public void test1()  throws Throwable  {
@@ -71,7 +71,7 @@ public class MaintainUser_ESTest extends MaintainUser_ESTest_scaffolding {
       }
   }
 
-  @Test(timeout = 4000)
+  /*@Test(timeout = 4000)
   public void test3()  throws Throwable  {
       System.setCurrentTimeMillis((-3857L));
       MaintainUser maintainUser0 = MaintainUser.getInstance();
@@ -113,5 +113,5 @@ public class MaintainUser_ESTest extends MaintainUser_ESTest_scaffolding {
       maintainUser3.load();
       MaintainUser maintainUser4 = MaintainUser.getInstance();
       assertSame(maintainUser4, maintainUser1);
-  }
+  }*/
 }

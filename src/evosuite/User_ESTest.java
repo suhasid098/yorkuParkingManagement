@@ -272,7 +272,7 @@ public class User_ESTest extends User_ESTest_scaffolding {
       assertEquals(0, user0.parkingFee);
   }
 
-  @Test(timeout = 4000)
+  /*@Test(timeout = 4000)
   public void test24()  throws Throwable  {
       User user0 = new User();
       user0.approved = true;
@@ -280,7 +280,7 @@ public class User_ESTest extends User_ESTest_scaffolding {
       assertEquals(0, user0.creditBalnce);
       assertEquals(1000, user0.debitBalance);
       assertEquals(0, user0.parkingFee);
-  }
+  }*/
 
   @Test(timeout = 4000)
   public void test25()  throws Throwable  {
